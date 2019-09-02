@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
 
 import { Link } from "gatsby"
-import Layout from "../template/layout"
-import SEO from "../components/seo"
+import Layout from "../template/Layout"
+import SEO from "../components/SEO"
 
 import style from "../assets/scss/sections/404.module.scss"
 
