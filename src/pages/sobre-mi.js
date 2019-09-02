@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../template/Layout"
-import SEO from "../components/SEO"
+// import SEO from "../components/SEO"
 
 import HeroAbout from "../components/about/HeroAbout"
 import MainAbout from "../components/about/MainAbout"
@@ -54,7 +54,7 @@ export const query = graphql`
 const AboutPage = ({data}) => {
   return (
     <Layout>
-      <SEO
+      {/* <SEO
         title={data.about.title}
         description={data.about.description}
         link={[
@@ -85,7 +85,7 @@ const AboutPage = ({data}) => {
             content: data.about.opengraph.asset.url,
           },
         ]}
-      />
+      /> */}
       <section id="hero__container">
         <HeroAbout
           title={data.about._rawContent[0].heading}
