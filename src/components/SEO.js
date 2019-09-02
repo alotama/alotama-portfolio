@@ -11,24 +11,20 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 
 const SEO = props => {
-  const { lenguage, title, description, meta, link, canonical, keywords, openGraph } = props
+  const { lenguage, title, description, meta, link } = props
   const data = useStaticQuery(graphql`
     query SiteSetting {
-      allSanitySiteSettings {
-        edges {
-          node {
-            title
-            keywords
-            description
-            autor
-            canonical
-            opengraph {
-              alt
-              asset {
-                url
-              }
-            }
-            twitterProfile
+      sanitySiteSettings {
+        canonical
+        twitterProfile
+        title
+        keywords
+        description
+        autor
+        opengraph {
+          alt
+          asset {
+            url
           }
         }
       }
