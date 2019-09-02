@@ -15,7 +15,6 @@ const SEO = props => {
   const data = useStaticQuery(graphql`
     query SiteSetting {
       sanitySiteSettings {
-        canonical
         twitterProfile
         title
         keywords
