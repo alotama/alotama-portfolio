@@ -1,0 +1,45 @@
+$small: "all and (min-width : 576px)";
+$medium: "all and (min-width : 768px)";
+$large: "all and (min-width : 992px)";
+$extra-large: "all and (min-width : 1200px)";
+
+$alotama-red: #d51224;
+$alotama-white: #f3f4f5;
+$alotama-black: #130f10;
+$alotama-gray: #f7f6f3;
+
+@mixin text-decoration {
+  display: inline-block;
+  position: relative;
+
+  &:hover {
+    color: $alotama-red;
+
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    left: 0;
+    height: 2px;
+  }
+
+  &::after {
+    transition: width 0.4s cubic-bezier(0.98, 0.35, 0.58, 0.97) 0.1s;
+    background: $alotama-red;
+  }
+}
+
+@mixin textStyle_bold-72px {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.024em;
+}

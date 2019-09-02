@@ -1,0 +1,269 @@
+@charset "UTF-8";
+
+@import url("https://use.typekit.net/ejv7ikd.css");
+@import "variables", "functions", "spaces";
+
+/* --- NORMALIZE, FLEXBOX, ANIMATIONS --- */
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1;
+}
+
+@import "normalize", "flexboxgrid", "fonts", "animation";
+@import "header", "footer";
+
+/* --- GENERAL --- */
+body,
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-family: "europa", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 300;
+  font-style: normal;
+
+  @media #{$large} {
+    font-size: 18px;
+  }
+}
+
+body * {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+html {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: default;
+  margin: 0;
+}
+
+html,
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+html ul {
+  list-style: none;
+  padding: 0px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fit-content {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  display: table;
+}
+
+*:focus {
+  border: none;
+  outline: none;
+}
+
+figure {
+  margin: 0;
+}
+
+.master-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.master-container .master-container-padding {
+  padding: 0px 20px;
+}
+
+.hero__container {
+  position: relative;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  margin-bottom: var(--space-xxs);
+
+  .hero__content {
+    width: 90%;
+
+    .hero__title {
+      margin-bottom: var(--space-normal);
+      h1 {
+        font-size: 3rem;
+        @media #{$large} {
+          font-size: 4rem;
+        }
+      }
+    }
+
+    .hero__subtitle {
+      max-width: 700px;
+      width: 100%;
+    }
+  }
+
+  .hero__scroll {
+    position: absolute;
+    width: 22px;
+    height: 42px;
+    border-radius: 15px;
+    border: 2px solid rgba($alotama-red, 0.2);
+    -webkit-animation: intro 1s forwards;
+    animation: intro 1s forwards;
+    animation-delay: 1s;
+    bottom: 5vh;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    @include add_transition(0.3s, ease-in-out);
+
+    .scroll__action {
+      display: block;
+      width: 3px;
+      height: 3px;
+      margin: 6px auto;
+      border-radius: 4px;
+      background: rgba($alotama-black, 0.5);
+      -webkit-animation: finger 2s infinite;
+      animation: finger 2s infinite;
+    }
+  }
+}
+
+@-webkit-keyframes intro {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes finger {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}
+
+@keyframes finger {
+  0% {
+    background: rgba($alotama-black, 1);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    background: rgba($alotama-black, 0.5);
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}
+
+.work__link * {
+  cursor: pointer;
+}
+
+#work {
+  .col-xs-12:not(:last-of-type) {
+    .work__container {
+      margin-bottom: var(--space-giant);
+    }
+  }
+}
+
+.work__container {
+  .work__thumbnail {
+    border-radius: 6px;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-normal);
+
+    @media #{$large} {
+      height: 480px;
+    }
+
+    @include add_transition(0.3s, linear);
+
+    img {
+      @include add_transition(0.25s, linear);
+    }
+  }
+
+  .wrapper-content {
+    min-height: 100%;
+    position: relative;
+  }
+}
+
+.color-red {
+  color: $alotama-red;
+}
+
+.page_wrapper {
+  position: relative;
+  min-height: 100vh;
+}

@@ -1,0 +1,14 @@
+
+node_modules/
+
+.cache/
+
+plugins/.DS_Store
+
+.DS_Store
+
+.env.development
+
+.env
+
+package-lock.json

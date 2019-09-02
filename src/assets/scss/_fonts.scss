@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@import "variables";
+@import "functions";
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+h5 {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+h6 {
+  font-size: 1rem;
+  line-height: 1
+}
+
+.text--underline {
+  @include text-decoration;
+}
+
+.font--big {
+  font-size: 1.5rem;
+
+  @media #{$large} {
+    font-size: 1rem;
+  }
+}
+
+.font--light {
+  font-weight: 300;
+  font-style: normal;
+}
