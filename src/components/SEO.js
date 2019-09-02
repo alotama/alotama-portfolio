@@ -31,7 +31,7 @@ const SEO = props => {
     }
   `)
 
-  const settings = data.allSanitySiteSettings.edges[0].node
+  const settings = data.sanitySiteSettings
 
   return (
     <Fragment>
