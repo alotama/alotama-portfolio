@@ -51,7 +51,7 @@ export const query = graphql`
   }
 `
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({data}) => {
   return (
     <Layout>
       <SEO
