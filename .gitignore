@@ -1,6 +1,8 @@
 
 node_modules/
 
+public/
+
 .cache/
 
 plugins/.DS_Store

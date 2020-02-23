@@ -4,82 +4,75 @@ import Layout from "../template/Layout"
 import SEO from "../components/SEO"
 import postStyle from "../assets/scss/sections/post.module.scss"
 import { Text } from "../components/assets/Title"
-import BodyContent from "../components/assets/BodyContent"
 import Fade from "react-reveal/Fade"
 
 export const query = graphql`
   query ArticleQuery($id: String) {
-    sanityBlog(id: { eq: $id }) {
+    ghostPost(id: {eq: $id}) {
       title
-      mainImage {
-        alt
-        caption
-        asset {
-          fluid(maxWidth: 1000, maxHeight: 420, toFormat: JPG) {
-            src
-            srcSet
-          }
-        }
+      canonical_url
+      meta_title
+      meta_description
+      feature_image
+      tags {
+        name
       }
-      categories {
-        category
-      }
-      _rawBody
-      publishedAt(formatString: "D [de] MMMM YYYY")
-      slug {
-        current
-      }
-      _updatedAt
-      _createdAt
+      published_at(formatString: "D [de] MMMM YYYY")
+      created_at
+      updated_at
+      slug
+      html
+      ghostId
     }
   }
 `
 
 const post = props => {
   const { data } = props
+  
   return (
     <Layout>
       <SEO
-        title={data.sanityBlog.title}
-        description={data.sanityBlog.excerpt}
+        title={data.ghostPost.meta_title}
+        description={data.ghostPost.meta_description}
         link={[
           {
             rel: 'canonical',
-            href: `https://alotama.com/blog/${data.sanityBlog.slug.current}`
+            href: data.ghostPost.canonical_url
           }
         ]}
         meta={[
           {
             property: "article:section",
-            content: data.sanityBlog.categories[0].category,
+            content: data.ghostPost.tags[0].name,
           },
           {
             property: "article:published_time",
-            content: data.sanityBlog._createdAt,
+            content: data.ghostPost.created_at,
           },
           {
             property: "article:modified_time",
-            content: data.sanityBlog._updatedAt,
+            content: data.ghostPost.updated_at,
           },
           {
             property: "og:type",
-            content: data.sanityBlog.categories[0].category[0],
+            content: data.ghostPost.tags[0].name,
           },
           {
             property: "og:title",
-            content: data.sanityBlog.title,
+            content: data.ghostPost.meta_title,
           },
           {
             property: "og:url",
-            content: `https://alotama.com/blog/${data.sanityBlog.slug.current}`,
+            content: data.ghostPost.slug,
           },
           {
             property: "og:image",
-            content: data.sanityBlog.mainImage.asset.fluid.src
+            content: data.ghostPost.feature_image
           },
           {
             property: "og:image:secure_url",
-            content: data.sanityBlog.mainImage.asset.fluid.src
+            content: data.ghostPost.feature_image
           },
         ]}
       />
@@ -92,15 +85,15 @@ const post = props => {
                   <header className={postStyle.article__header}>
                     <div className={postStyle.article__details}>
                       <small className={postStyle.details__date}>
-                        {data.sanityBlog.publishedAt}
+                        {data.ghostPost.published_at}
                       </small>
                     </div>
                     <div className={postStyle.article__title}>
-                      <Text type="h1" title={data.sanityBlog.title} />
+                      <Text type="h1" title={data.ghostPost.title} />
                     </div>
                     <div className={postStyle.article_category}>
                       <span className={postStyle.details__category}>
-                        Categoría: {data.sanityBlog.categories[0].category[0]}
+                        Categoría: {data.ghostPost.tags[0].name}
                       </span>
                     </div>
                   </header>
@@ -114,9 +107,8 @@ const post = props => {
             <Fade ssrFadeout top distance="15px" delay="250">
               <figure className={postStyle.featuredImages__content}>
                 <img
-                  srcSet={data.sanityBlog.mainImage.asset.fluid.srcSet}
-                  src={data.sanityBlog.mainImage.asset.fluid.src}
-                  alt={data.sanityBlog.mainImage.alt}
+                  srcSet={data.ghostPost.feature_image}
+                  src={data.ghostPost.feature_image}
                 />
               </figure>
             </Fade>
@@ -127,7 +119,7 @@ const post = props => {
             <div className="master-container-padding">
               <div className="row">
                 <div className="col-lg-offset-2 col-lg-8 col-xs-12">
-                  <BodyContent blocks={data.sanityBlog._rawBody} />
+                  <div dangerouslySetInnerHTML={{__html: data.ghostPost.html}} />
                 </div>
               </div>
             </div>

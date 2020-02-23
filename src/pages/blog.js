@@ -11,32 +11,22 @@ import Fade from "react-reveal/Fade"
 
 export const query = graphql`
   query BlogQuery {
-    blog: sanityPages(title: { in: "Blog" }) {
+    blog: ghostPage(title: {eq: "Blog"}) {
       title
-      description
+      meta_description
+      canonical_url
     }
-    posts: allSanityBlog(sort: { fields: publishedAt, order: DESC }) {
+    posts: allGhostPost(sort: {fields: published_at, order: DESC}) {
       edges {
         node {
+          slug
           title
           excerpt
+          tags {
+            name
+          }
+          feature_image
           id
-          mainImage {
-            alt
-            caption
-            asset {
-              fluid(maxWidth: 960, maxHeight: 480) {
-                src
-                srcSet
-              }
-            }
-          }
-          categories {
-            category
-          }
-          slug {
-            current
-          }
         }
       }
     }
@@ -46,16 +36,16 @@ export const query = graphql`
 const blog = ({ data }) => {
   return (
     <Layout>
-      <SEO title={data.blog.title} />
+      <SEO title={data.blog.title} description={data.blog.description} />
       <main className={blogStyle.highlightPost_wrapper}>
         <div className="master-container">
           <div className="master-container-padding">
             <HighlightPost
               id={data.posts.edges[0].node.id}
-              slug={data.posts.edges[0].node.slug.current}
-              src={data.posts.edges[0].node.mainImage.asset.fluid.src}
+              slug={data.posts.edges[0].node.slug}
+              src={data.posts.edges[0].node.feature_image}
               title={data.posts.edges[0].node.title}
-              category={data.posts.edges[0].node.categories[0].category[0]}
+              category={data.posts.edges[0].node.tags[0].name[0]}
             />
           </div>
         </div>
@@ -78,15 +68,16 @@ const blog = ({ data }) => {
                     key={index * 2}
                   >
                     <PostItem
-                      id={article.node.id}
+                      id={article.node.ghostId}
                       onUse={false}
                       width={470}
                       height={320}
-                      slug={article.node.slug.current}
+                      slug={article.node.slug}
                       key={index}
-                      source={article.node.mainImage.asset.fluid.src}
-                      sourceSet={article.node.mainImage.asset.fluid.srcSet}
-                      altText={article.node.mainImage.alt}
+                      id={article.node.id}
+                      source={article.node.feature_image}
+                      sourceSet={article.node.feature_image}
+                      altText={article.node.title}
                       excerpt={article.node.excerpt}
                       title={article.node.title}
                     />
@@ -109,11 +100,12 @@ const blog = ({ data }) => {
                       onUse={true}
                       width={308}
                       height={205}
+                      slug={article.node.slug}
+                      key={index}
                       id={article.node.id}
-                      slug={article.node.slug.current}
-                      source={article.node.mainImage.asset.fluid.src}
-                      sourceSet={article.node.mainImage.asset.fluid.srcSet}
-                      altText={article.node.mainImage.alt}
+                      source={article.node.feature_image}
+                      sourceSet={article.node.feature_image}
+                      altText={article.node.title}
                       excerpt={article.node.excerpt}
                       title={article.node.title}
                     />

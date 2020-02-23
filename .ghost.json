@@ -1,0 +1,10 @@
+{
+  "development": {
+    "apiUrl": "https://admin.alotama.com",
+    "contentApiKey": "3eddf05a9023f296d69c6ec087"
+  },
+  "production": {
+    "apiUrl": "https://admin.alotama.com",
+    "contentApiKey": "c572ed6fd8631c16bf43b4ba2c"
+  }
+}
