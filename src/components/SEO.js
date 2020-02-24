@@ -14,28 +14,22 @@ const SEO = props => {
   const { lenguage, title, description, meta, link } = props
   const data = useStaticQuery(graphql`
     query SiteSetting {
-      sanitySiteSettings {
-        twitterProfile
+      ghostSettings {
         title
-        keywords
+        twitter
+        url
         description
-        autor
-        opengraph {
-          alt
-          asset {
-            url
-          }
-        }
+        lang
       }
     }
   `)
 
-  const settings = data.sanitySiteSettings
+  const settings = data.ghostSettings
 
   return (
     <Fragment>
       <Helmet
-        htmlAttributes={{ lenguage }}
+        htmlAttributes={settings.lang}
         title={title}
         titleTemplate={`%s | ${settings.title}`}
         link={[].concat(link)}
@@ -46,11 +40,11 @@ const SEO = props => {
           },
           {
             property: `og:locale`,
-            content: 'es_ES'
+            content: "es_ES",
           },
           {
-            property: 'og:type',
-            content: 'website'
+            property: "og:type",
+            content: "website",
           },
           {
             name: `twitter:card`,
@@ -65,13 +59,13 @@ const SEO = props => {
             content: settings.autor,
           },
           {
-            name: 'twitter:site',
-            content: settings.twitterProfile
+            name: "twitter:site",
+            content: settings.twitterProfile,
           },
           {
-            name: 'twitter:image',
-            content: settings.opengraph.asset.url
-          }
+            name: "twitter:image",
+            content: settings.opengraph.asset.url,
+          },
         ].concat(meta)}
       />
     </Fragment>
@@ -79,11 +73,11 @@ const SEO = props => {
 }
 
 SEO.defaultProps = {
-  lenguage: 'es',
-  title: '',
-  description: '',
+  lenguage: "es",
+  title: "",
+  description: "",
   meta: [],
-  link: []
+  link: [],
 }
 
 SEO.propTypes = {

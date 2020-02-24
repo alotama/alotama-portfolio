@@ -1,14 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../template/Layout"
 import SEO from "../components/SEO"
 import postStyle from "../assets/scss/sections/post.module.scss"
+import Prism from "prismjs"
+import "prismjs/themes/prism.css"
 import { Text } from "../components/assets/Title"
 import Fade from "react-reveal/Fade"
 
 export const query = graphql`
   query ArticleQuery($id: String) {
-    ghostPost(id: {eq: $id}) {
+    ghostPost(id: { eq: $id }) {
       title
       canonical_url
       meta_title
@@ -29,7 +31,9 @@ export const query = graphql`
 
 const post = props => {
   const { data } = props
-  
+  useEffect(() => {
+    Prism.highlightAll()
+  })
   return (
     <Layout>
       <SEO
@@ -37,9 +41,9 @@ const post = props => {
         description={data.ghostPost.meta_description}
         link={[
           {
-            rel: 'canonical',
-            href: data.ghostPost.canonical_url
-          }
+            rel: "canonical",
+            href: data.ghostPost.canonical_url,
+          },
         ]}
         meta={[
           {
@@ -68,11 +72,11 @@ const post = props => {
           },
           {
             property: "og:image",
-            content: data.ghostPost.feature_image
+            content: data.ghostPost.feature_image,
           },
           {
             property: "og:image:secure_url",
-            content: data.ghostPost.feature_image
+            content: data.ghostPost.feature_image,
           },
         ]}
       />
@@ -119,7 +123,9 @@ const post = props => {
             <div className="master-container-padding">
               <div className="row">
                 <div className="col-lg-offset-2 col-lg-8 col-xs-12">
-                  <div dangerouslySetInnerHTML={{__html: data.ghostPost.html}} />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: data.ghostPost.html }}
+                  />
                 </div>
               </div>
             </div>

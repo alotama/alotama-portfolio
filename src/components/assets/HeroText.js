@@ -1,11 +1,8 @@
 import React from 'react'
-import BodyContent from './BodyContent';
 
 const HeroText = ({text}) => {
 	return (
-		<div className="hero__subtitle">
-			<BodyContent blocks={text} />
-		</div>
+		<div className="hero__subtitle" dangerouslySetInnerHTML={{ __html: text}} />
 	)
 }
 

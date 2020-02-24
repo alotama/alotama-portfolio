@@ -11,12 +11,12 @@ import Fade from "react-reveal/Fade"
 
 export const query = graphql`
   query BlogQuery {
-    blog: ghostPage(title: {eq: "Blog"}) {
+    blog: ghostPage(title: { eq: "Blog" }) {
       title
       meta_description
       canonical_url
     }
-    posts: allGhostPost(sort: {fields: published_at, order: DESC}) {
+    posts: allGhostPost(sort: { fields: published_at, order: DESC }) {
       edges {
         node {
           slug

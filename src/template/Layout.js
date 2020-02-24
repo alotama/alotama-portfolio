@@ -11,7 +11,7 @@ import Header from "../components/header/Header"
 import Footer from "../components/footer/Footer"
 import "../assets/scss/general.scss"
 
-import ReactBreakpoints from 'react-breakpoints'
+import ReactBreakpoints from "react-breakpoints"
 
 const breakpoints = {
   mobile: 320,
@@ -25,13 +25,13 @@ const breakpoints = {
 
 const Layout = ({ children }) => {
   useEffect(() => {
-    let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty("--vh", `${vh}px`);
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty("--vh", `${vh}px`)
 
-		window.addEventListener("resize", () => {
-			let vh = window.innerHeight * 0.01;
-			document.documentElement.style.setProperty("--vh", `${vh}px`);
-		});
+    window.addEventListener("resize", () => {
+      let vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty("--vh", `${vh}px`)
+    })
   }, [])
 
   return (

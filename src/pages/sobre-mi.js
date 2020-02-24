@@ -10,67 +10,66 @@ import LatestWork from "../components/about/LatestWork"
 
 export const query = graphql`
   query AboutQuery {
-    about: sanityPages(title: { in: "Sobre mí" }) {
+    about: ghostPage(slug: {eq: "sobre-mi"}) {
+      id
       title
-  		slug {
-  		  current
-  		}
-      description
-  		opengraph {
-        alt
-        asset {
-          url
-        }
-      }
-      _rawContent
+      slug
+      meta_title
+      meta_description
+      canonical_url
+      html
+      published_at
+      created_at
+      updated_at
+      og_image
     }
-    project: allSanityProject(
-      sort: { fields: publishedAt, order: DESC }
-      limit: 1
-    ) {
+    social: file(name: {eq: "about-social"}) {
+      childMarkdownRemark {
+        html
+      }
+    }
+    skills: file(name: {eq: "about-skills"}) {
+      childMarkdownRemark {
+        html
+      }
+    }
+    lastPost: allGhostPost(sort: {fields: id, order: DESC}) {
       edges {
         node {
           title
-          linkTo
-          mainImage {
-            caption
-            alt
-            asset {
-              fluid(maxWidth: 1000, maxHeight: 420, toFormat: JPG) {
-                src
-                srcSet
-              }
-            }
+          feature_image
+          tags {
+            name
           }
-          categories {
-            category
-          }
+          ghostId
+          canonical_url
         }
       }
     }
   }
+
 `
 
-const AboutPage = ({data}) => {
+const AboutPage = ({ data }) => {
   return (
     <Layout>
       <SEO
         title={data.about.title}
-        description={data.about.description}
+        description={data.about.meta_description}
         link={[
           {
             rel: "canonical",
-            href: `https://alotama.com/${data.about.slug.current}`,
+            href: data.about.canonical_url,
           },
         ]}
         meta={[
           {
             property: "article:published_time",
-            content: data.about._createdAt,
+            content: data.about.created_at,
           },
           {
             property: "article:modified_time",
-            content: data.about._updatedAt,
+            content: data.about.updated_at,
           },
           {
             property: "og:title",
@@ -78,37 +77,37 @@ const AboutPage = ({data}) => {
           },
           {
             property: "og:url",
-            content: `https://alotama.com/${data.about.slug.current}`,
+            content: data.about.canonical_url,
           },
           {
             property: "og:image",
-            content: data.about.opengraph.asset.url,
+            content: data.about.og_image,
           },
         ]}
       />
       <section id="hero__container">
         <HeroAbout
-          title={data.about._rawContent[0].heading}
-          subtitle={data.about._rawContent[0].subheading}
-          content={data.about._rawContent[0].text}
+          title={"Sobre mí."}
+          subtitle={"Un nikkei viviendo en Argentina."}
+          content={data.social.childMarkdownRemark.html}
         />
       </section>
       <main id="main__container">
         <div className="master-container">
           <div className="master-container-padding">
             <div className="row">
-              <MainAbout content={data.about._rawContent[1].text} />
+              <MainAbout content={data.about.html} />
             </div>
-            <Skills array={data.about._rawContent[2].skills} />
-            <LatestWork
-              href={data.project.edges[0].node.linkTo}
-              title={data.project.edges[0].node.title}
-              source={data.project.edges[0].node.mainImage.asset.fluid.src}
+            <Skills content={data.skills.childMarkdownRemark.html} />
+            {/* <LatestWork
+              href={data.lastPost.edges[0].node.canonical_url}
+              title={data.lastPost.edges[0].node.title}
+              source={data.lastPost.edges[0].node.mainImage.asset.fluid.src}
               sourceSet={
-                data.project.edges[0].node.mainImage.asset.fluid.srcSet
+                data.lastPost.edges[0].node.mainImage.asset.fluid.srcSet
               }
-              altText={data.project.edges[0].node.mainImage.caption}
-            />
+              altText={data.lastPost.edges[0].node.mainImage.caption}
+            /> */}
           </div>
         </div>
       </main>

@@ -7,49 +7,39 @@ import Main from "../components/main/Main"
 
 export const query = graphql`
   query HomeQuery {
-    projects: allSanityProject(
-      limit: 5
-      sort: { fields: publishedAt, order: DESC }
-    ) {
+    projects: allFile(filter: {name: {regex: "/(?:project\\-)/"}}, limit: 5) {
       edges {
         node {
-          id
-          mainImage {
-            alt
-            caption
-            asset {
+          childMarkdownRemark {
+            frontmatter {
+              title
+              tags
               url
-              fluid(maxHeight: 720, maxWidth: 960) {
-                src
-                srcSet
-              }
+              thumbnail
             }
-          }
-          title
-          linkTo
-          categories {
-            category
           }
         }
       }
     }
-    home: sanityPages(title: { in: "Home" }) {
-      description
+    home: ghostPage(slug: {eq: "home"}) {
+      canonical_url
+      meta_title
+      meta_description
       title
-      _rawContent
+      html
     }
   }
 `
 
-const IndexPage = (props) => {
+const IndexPage = props => {
   const { data } = props
   return (
     <Layout>
-      <SEO title={data.home.title} />
+      <SEO title={data.home.meta_title} />
       <section id="hero__container">
         <Hero
-          title={data.home._rawContent[0].heading}
-          text={data.home._rawContent[0].text}
+          title={data.home.title}
+          text={data.home.html}
         />
       </section>
       <main id="main__container">
@@ -59,14 +49,11 @@ const IndexPage = (props) => {
               {data.projects.edges.map((work, index) => (
                 <Main
                   key={index}
-                  linkTo={work.node.linkTo}
-                  source={work.node.mainImage.asset.fluid.src}
-                  sourceSet={work.node.mainImage.asset.fluid.srcSet}
-                  width={960}
-                  height={480}
-                  altText={work.node.mainImage.alt}
-                  title={work.node.title}
-                  category={work.node.categories[0].category.join(" ")}
+                  linkTo={work.node.url}
+                  source={work.node.childMarkdownRemark.frontmatter.thumbnail}
+                  altText={work.node.childMarkdownRemark.frontmatter.title}
+                  title={work.node.childMarkdownRemark.frontmatter.title}
+                  category={work.node.childMarkdownRemark.frontmatter.tags}
                 />
               ))}
             </div>

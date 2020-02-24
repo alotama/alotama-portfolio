@@ -18,7 +18,7 @@ const HeroAbout = ({ title, subtitle, content }) => {
             </div>
             <div className={aboutStlye.hero__subtitle}>
               <Fade top distance="15px" delay={150}>
-                <BodyContent blocks={content} />
+                <div dangerouslySetInnerHTML={{  __html: content }} />
               </Fade>
             </div>
           </article>
