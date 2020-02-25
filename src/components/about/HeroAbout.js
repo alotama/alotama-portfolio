@@ -1,6 +1,5 @@
 import React from "react"
 import { Text } from "../assets/Title"
-import BodyContent from "../assets/BodyContent"
 import aboutStlye from "../../assets/scss/sections/about.module.scss"
 import Fade from "react-reveal/Fade"
 

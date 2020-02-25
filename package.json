@@ -6,9 +6,6 @@
   "author": "Sebastián Tamashiro <sebastian@alotama.com>",
   "dependencies": {
     "@loadable/component": "^5.10.1",
-    "@sanity/block-content-to-react": "^2.0.6",
-    "@sanity/client": "^0.140.17",
-    "@sanity/image-url": "^0.140.12",
     "dotenv": "^8.0.0",
     "gatsby": "^2.6.0",
     "gatsby-image": "^2.1.4",
@@ -24,7 +21,6 @@
     "gatsby-remark-prismjs": "^3.3.31",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-ghost": "^4.0.3",
-    "gatsby-source-sanity": "^4.0.1",
     "gatsby-transformer-remark": "^2.6.53",
     "node-sass": "^4.12.0",
     "prismjs": "^1.19.0",

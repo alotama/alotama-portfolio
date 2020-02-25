@@ -62,10 +62,6 @@ const SEO = props => {
             name: "twitter:site",
             content: settings.twitterProfile,
           },
-          {
-            name: "twitter:image",
-            content: settings.opengraph.asset.url,
-          },
         ].concat(meta)}
       />
     </Fragment>

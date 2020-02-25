@@ -1,5 +1,4 @@
 import React from "react"
-import BodyContent from "../assets/BodyContent"
 import Fade from "react-reveal/Fade"
 
 const MainAbout = ({ className, content }) => {
