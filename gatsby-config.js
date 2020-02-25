@@ -1,3 +1,5 @@
+const ghostConfig = require('./ghost-config');
+
 require("dotenv").config({
   path: '.env',
 })
@@ -64,11 +66,15 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-ghost`,
+      options:  process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
-          apiUrl: `https://admin.alotama.com`,
-          contentApiKey: process.env.GHOST_CONTENT_API_KEY,
-          version: `v3` // Ghost API version, optional, defaults to "v3".
-                        // Pass in "v2" if your Ghost install is not on 3.0 yet!!!
+        production: true,
+        generateStatsFile: true,
+        analyzerMode: 'static',
+        disable: !process.env.BUNDLE_ANALYZE
       }
     },
     {
