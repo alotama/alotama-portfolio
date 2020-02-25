@@ -62,27 +62,25 @@ const post = ({ pageContext }) => {
       <div className={"articles__container"}>
         <div className="master-container">
           <div className="master-container-padding">
-            <section className="row">
-              <div className="col-lg-offset-2 col-lg-8 col-xs-12">
-                <Fade ssrFadeout top distance="15px">
-                  <header className={"article__header"}>
-                    <div className={"article__details"}>
-                      <small className={"details__date"}>
-                        {data.published_at}
-                      </small>
-                    </div>
-                    <div className={"article__title"}>
-                      <Text type="h1" title={data.title} />
-                    </div>
-                    <div className={"article_category"}>
-                      <span className={"details__category"}>
-                        Categoría: {data.tags[0].name}
-                      </span>
-                    </div>
-                  </header>
-                </Fade>
-              </div>
-            </section>
+
+            <Fade ssrFadeout top distance="15px">
+              <header className={"article__header"}>
+                <div className={"article__details"}>
+                  <small className={"details__date"}>
+                    {data.published_at}
+                  </small>
+                </div>
+                <div className={"article__title"}>
+                  <Text type="h1" title={data.title} />
+                </div>
+                <div className={"article_category"}>
+                  <span className={"details__category"}>
+                    Categoría: {data.tags[0].name}
+                  </span>
+                </div>
+              </header>
+            </Fade>
+
           </div>
         </div>
         <section className={"featuredImages__wrapper"}>
@@ -100,13 +98,9 @@ const post = ({ pageContext }) => {
         <main className={"post__container"}>
           <div className="master-container">
             <div className="master-container-padding">
-              <div className="row">
-                <div className="col-lg-offset-2 col-lg-8 col-xs-12">
-                  <div
-                    dangerouslySetInnerHTML={{ __html: data.html }}
-                  />
-                </div>
-              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: data.html }}
+              />
             </div>
           </div>
         </main>

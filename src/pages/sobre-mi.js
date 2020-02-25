@@ -9,7 +9,7 @@ import LatestWork from "../components/about/LatestWork"
 import useAboutData from '../utils/use-aboutData'
 import '../assets/styles/scss/sections/about.scss'
 
-const AboutPage = ({ data }) => {
+const AboutPage = () => {
   const { about, social, skills, lastPost } = useAboutData()
   return (
     <Layout>
@@ -33,9 +33,7 @@ const AboutPage = ({ data }) => {
       <main id="main__container">
         <div className="master-container">
           <div className="master-container-padding">
-            <div className="row">
-              <MainAbout content={about.html} />
-            </div>
+            <MainAbout content={about.html} />
             <Skills content={skills.childMarkdownRemark.html} />
             {/* <LatestWork
               href={data.lastPost.edges[0].node.canonical_url}

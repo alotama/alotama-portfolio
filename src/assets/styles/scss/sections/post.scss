@@ -99,6 +99,7 @@
   ul {
     list-style-type: disc;
     list-style-position: inside;
+    padding-left: 0;
     li {
       font-size: 1.2rem;
       line-height: 1.5;
@@ -106,37 +107,14 @@
     }
   }
 
-  blockquote.wp-block-quote.is-style-large {
-    position: relative;
-    padding: 0;
-
-    &:after {
-      content: "";
-      position: absolute;
-      height: 100%;
-      width: 6px;
-      display: block;
-      background-color: $alotama-black;
-      top: 0;
-      left: -1em;
-    }
-  }
-
-  blockquote.wp-block-quote {
+  blockquote {
     position: relative;
     margin-bottom: var(--space-normal);
-
-    * {
+    padding-left: calc(2rem - 5px);
+    margin-left: 0;
+    border-left: 5px solid $alotama-black;
+    * { 
       color: $alotama-black;
-    }
-
-    &:after {
-      content: '"';
-      font-size: 5rem;
-      position: absolute;
-      top: 0.36em;
-      left: -1em;
-      display: block;
     }
   }
 
