@@ -1,9 +1,7 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../template/Layout"
 import SEO from "../components/SEO"
-import blogStyle from "../assets/scss/sections/blog.module.scss"
-
+import "../assets/styles/scss/sections/blog.scss"
 import PostItem from "../components/blog/PostItem"
 import HighlightPost from "../components/blog/HighlightPost"
 import { Text } from "../components/assets/Title"
@@ -15,7 +13,7 @@ const blog = () => {
   return (
     <Layout>
       <SEO title={blog.title} description={blog.description} />
-      <main className={blogStyle.highlightPost_wrapper}>
+      <main className={"highlightPost_wrapper"}>
         <div className="master-container">
           <div className="master-container-padding">
             <HighlightPost
@@ -28,15 +26,15 @@ const blog = () => {
           </div>
         </div>
       </main>
-      <section className={blogStyle.blogGrid_wrapper}>
+      <section className={"blogGrid_wrapper"}>
         <div className="master-container">
           <div className="master-container-padding">
             <Fade top distance="15px" delay={250}>
-              <article className={blogStyle.blogGrid_title}>
+              <article className={"blogGrid_title"}>
                 <Text type="h1" title="Más artículos." />
               </article>
             </Fade>
-            <section className={blogStyle.blogGrid_moreRecent}>
+            <section className={"blogGrid_moreRecent"}>
               {posts.edges.slice(1, 5).map((article, index) => {
                 return (
                   <Fade
@@ -64,7 +62,7 @@ const blog = () => {
               })}
             </section>
 
-            <section className={blogStyle.blogGrid_oldPost}>
+            <section className={"blogGrid_oldPost"}>
               {posts.edges.slice(5).map((article, index) => {
                 return (
                   <Fade

@@ -1,12 +1,12 @@
 import React, { useEffect } from "react"
-import { graphql } from "gatsby"
-import Layout from "../template/Layout"
+import Layout from "./Layout"
 import SEO from "../components/SEO"
-import postStyle from "../assets/scss/sections/post.module.scss"
 import Prism from "prismjs"
-import "prismjs/themes/prism.css"
 import { Text } from "../components/assets/Title"
 import Fade from "react-reveal/Fade"
+import "prismjs/themes/prism.css"
+import "../assets/styles/scss/sections/post.scss"
+import "../assets/styles/custom-prism.css"
 
 const post = ({ pageContext }) => {
   const { data } = pageContext
@@ -59,23 +59,23 @@ const post = ({ pageContext }) => {
           },
         ]}
       />
-      <div className={postStyle.articles__container}>
+      <div className={"articles__container"}>
         <div className="master-container">
           <div className="master-container-padding">
             <section className="row">
               <div className="col-lg-offset-2 col-lg-8 col-xs-12">
                 <Fade ssrFadeout top distance="15px">
-                  <header className={postStyle.article__header}>
-                    <div className={postStyle.article__details}>
-                      <small className={postStyle.details__date}>
+                  <header className={"article__header"}>
+                    <div className={"article__details"}>
+                      <small className={"details__date"}>
                         {data.published_at}
                       </small>
                     </div>
-                    <div className={postStyle.article__title}>
+                    <div className={"article__title"}>
                       <Text type="h1" title={data.title} />
                     </div>
-                    <div className={postStyle.article_category}>
-                      <span className={postStyle.details__category}>
+                    <div className={"article_category"}>
+                      <span className={"details__category"}>
                         Categoría: {data.tags[0].name}
                       </span>
                     </div>
@@ -85,10 +85,10 @@ const post = ({ pageContext }) => {
             </section>
           </div>
         </div>
-        <section className={postStyle.featuredImages__wrapper}>
+        <section className={"featuredImages__wrapper"}>
           <div className="master-container">
             <Fade ssrFadeout top distance="15px" delay="250">
-              <figure className={postStyle.featuredImages__content}>
+              <figure className={"featuredImages__content"}>
                 <img
                   srcSet={data.feature_image}
                   src={data.feature_image}
@@ -97,7 +97,7 @@ const post = ({ pageContext }) => {
             </Fade>
           </div>
         </section>
-        <main className={postStyle.post__container}>
+        <main className={"post__container"}>
           <div className="master-container">
             <div className="master-container-padding">
               <div className="row">

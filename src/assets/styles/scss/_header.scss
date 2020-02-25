@@ -44,7 +44,7 @@ $nav-item-nb: 6;
       white-space: nowrap;
       @media #{$large} {
         font-size: 1rem;
-        padding: 0.25em 0.5em 0.25em;
+        padding: 0.25em 1em 0.25em;
       }
 
       .active {
@@ -147,7 +147,6 @@ $nav-item-nb: 6;
 
     .navbar__item {
       display: block;
-      width: 100%;
       position: relative;
 
       &:hover {

@@ -1,6 +1,5 @@
 import React from "react"
 import { Text } from "../assets/Title"
-import aboutStlye from "../../assets/scss/sections/about.module.scss"
 import Fade from "react-reveal/Fade"
 
 const LatestWork = ({ href, title, source, sourceSet, altText }) => {
@@ -15,16 +14,16 @@ const LatestWork = ({ href, title, source, sourceSet, altText }) => {
               rel="noopener noreferrer"
               className="work__link"
             >
-              <article className={aboutStlye.work__container}>
+              <article className={"work__container"}>
                 <div
-                  className={`${aboutStlye.work__description} ${
-                    aboutStlye.work__description
+                  className={`${"work__description"} ${
+                    "work__description"
                   }`}
                 >
                   <Text type="h5" title="Último trabajo." />
                   <p>{title}</p>
                 </div>
-                <figure className={aboutStlye.work__thumbnail}>
+                <figure className={"work__thumbnail"}>
                   <img src={source} srcSet={sourceSet} alt={altText} />
                 </figure>
               </article>

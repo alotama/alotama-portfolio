@@ -1,0 +1,6 @@
+code[class*="language-"], pre[class*="language-"] {
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  font-size: 0.8rem;
+}

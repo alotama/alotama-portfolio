@@ -2,12 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../template/Layout"
 import SEO from "../components/SEO"
-
 import HeroAbout from "../components/about/HeroAbout"
 import MainAbout from "../components/about/MainAbout"
 import Skills from "../components/about/Skills"
 import LatestWork from "../components/about/LatestWork"
 import useAboutData from '../utils/use-aboutData'
+import '../assets/styles/scss/sections/about.scss'
 
 const AboutPage = ({ data }) => {
   const { about, social, skills, lastPost } = useAboutData()

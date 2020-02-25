@@ -18,7 +18,7 @@ html {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   font-family: "europa", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  font-size: 75%;
   line-height: 1.5;
   font-weight: 300;
   font-style: normal;
@@ -47,20 +47,6 @@ body {
   position: relative;
 }
 
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.clearfix {
-  zoom: 1;
-}
-
 p,
 h1,
 h2,
@@ -78,22 +64,10 @@ a {
   text-decoration: none;
 }
 
-html ul {
-  list-style: none;
-  padding: 0px;
-}
-
 img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-.fit-content {
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  width: fit-content;
-  display: table;
 }
 
 *:focus {
@@ -266,11 +240,4 @@ figure {
 .page_wrapper {
   position: relative;
   min-height: 100vh;
-}
-
-code[class*="language-"], pre[class*="language-"] {
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-  font-size: 0.8rem;
 }

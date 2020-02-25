@@ -1,6 +1,5 @@
 import React from "react"
 import { Text } from "../assets/Title"
-import aboutStlye from "../../assets/scss/sections/about.module.scss"
 import Fade from "react-reveal/Fade"
 
 const HeroAbout = ({ title, subtitle, content }) => {
@@ -8,14 +7,14 @@ const HeroAbout = ({ title, subtitle, content }) => {
     <div className="master-container">
       <div className="master-container-padding">
         <section className="hero__container">
-          <article className={aboutStlye.hero__content}>
-            <div className={aboutStlye.hero__title}>
+          <article className={"hero__content"}>
+            <div className={"hero__title"}>
               <Fade top distance="15px">
                 <Text type="h1" title={title} />
                 <h2 className="font--light color-red">{subtitle}</h2>
               </Fade>
             </div>
-            <div className={aboutStlye.hero__subtitle}>
+            <div className={"hero__subtitle"}>
               <Fade top distance="15px" delay={150}>
                 <div dangerouslySetInnerHTML={{  __html: content }} />
               </Fade>

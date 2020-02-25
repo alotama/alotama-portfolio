@@ -9,7 +9,7 @@ import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import Header from "../components/header/Header"
 import Footer from "../components/footer/Footer"
-import "../assets/scss/general.scss"
+import "../assets/styles/scss/general.scss"
 
 import ReactBreakpoints from "react-breakpoints"
 
