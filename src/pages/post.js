@@ -8,75 +8,54 @@ import "prismjs/themes/prism.css"
 import { Text } from "../components/assets/Title"
 import Fade from "react-reveal/Fade"
 
-export const query = graphql`
-  query ArticleQuery($id: String) {
-    ghostPost(id: { eq: $id }) {
-      title
-      canonical_url
-      meta_title
-      meta_description
-      feature_image
-      tags {
-        name
-      }
-      published_at(formatString: "D [de] MMMM YYYY")
-      created_at
-      updated_at
-      slug
-      html
-      ghostId
-    }
-  }
-`
-
-const post = props => {
-  const { data } = props
+const post = ({ pageContext }) => {
+  const { data } = pageContext
   useEffect(() => {
     Prism.highlightAll()
   })
   return (
     <Layout>
       <SEO
-        title={data.ghostPost.meta_title}
-        description={data.ghostPost.meta_description}
+        title={data.meta_title}
+        description={data.meta_description}
         link={[
           {
             rel: "canonical",
-            href: data.ghostPost.canonical_url,
+            href: data.canonical_url,
           },
         ]}
         meta={[
           {
             property: "article:section",
-            content: data.ghostPost.tags[0].name,
+            content: data.tags[0].name,
           },
           {
             property: "article:published_time",
-            content: data.ghostPost.created_at,
+            content: data.created_at,
           },
           {
             property: "article:modified_time",
-            content: data.ghostPost.updated_at,
+            content: data.updated_at,
           },
           {
             property: "og:type",
-            content: data.ghostPost.tags[0].name,
+            content: data.tags[0].name,
           },
           {
             property: "og:title",
-            content: data.ghostPost.meta_title,
+            content: data.meta_title,
           },
           {
             property: "og:url",
-            content: data.ghostPost.slug,
+            content: data.slug,
           },
           {
             property: "og:image",
-            content: data.ghostPost.feature_image,
+            content: data.feature_image,
           },
           {
             property: "og:image:secure_url",
-            content: data.ghostPost.feature_image,
+            content: data.feature_image,
           },
         ]}
       />
@@ -89,15 +68,15 @@ const post = props => {
                   <header className={postStyle.article__header}>
                     <div className={postStyle.article__details}>
                       <small className={postStyle.details__date}>
-                        {data.ghostPost.published_at}
+                        {data.published_at}
                       </small>
                     </div>
                     <div className={postStyle.article__title}>
-                      <Text type="h1" title={data.ghostPost.title} />
+                      <Text type="h1" title={data.title} />
                     </div>
                     <div className={postStyle.article_category}>
                       <span className={postStyle.details__category}>
-                        Categoría: {data.ghostPost.tags[0].name}
+                        Categoría: {data.tags[0].name}
                       </span>
                     </div>
                   </header>
@@ -111,8 +90,8 @@ const post = props => {
             <Fade ssrFadeout top distance="15px" delay="250">
               <figure className={postStyle.featuredImages__content}>
                 <img
-                  srcSet={data.ghostPost.feature_image}
-                  src={data.ghostPost.feature_image}
+                  srcSet={data.feature_image}
+                  src={data.feature_image}
                 />
               </figure>
             </Fade>
@@ -124,7 +103,7 @@ const post = props => {
               <div className="row">
                 <div className="col-lg-offset-2 col-lg-8 col-xs-12">
                   <div
-                    dangerouslySetInnerHTML={{ __html: data.ghostPost.html }}
+                    dangerouslySetInnerHTML={{ __html: data.html }}
                   />
                 </div>
               </div>
