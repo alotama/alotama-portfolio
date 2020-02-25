@@ -8,44 +8,22 @@ import PostItem from "../components/blog/PostItem"
 import HighlightPost from "../components/blog/HighlightPost"
 import { Text } from "../components/assets/Title"
 import Fade from "react-reveal/Fade"
+import useBlogData from '../utils/use-blogData'
 
-export const query = graphql`
-  query BlogQuery {
-    blog: ghostPage(title: { eq: "Blog" }) {
-      title
-      meta_description
-      canonical_url
-    }
-    posts: allGhostPost(sort: { fields: published_at, order: DESC }) {
-      edges {
-        node {
-          slug
-          title
-          excerpt
-          tags {
-            name
-          }
-          feature_image
-          id
-        }
-      }
-    }
-  }
-`
-
-const blog = ({ data }) => {
+const blog = () => {
+  const { blog, posts } = useBlogData()
   return (
     <Layout>
-      <SEO title={data.blog.title} description={data.blog.description} />
+      <SEO title={blog.title} description={blog.description} />
       <main className={blogStyle.highlightPost_wrapper}>
         <div className="master-container">
           <div className="master-container-padding">
             <HighlightPost
-              id={data.posts.edges[0].node.id}
-              slug={data.posts.edges[0].node.slug}
-              src={data.posts.edges[0].node.feature_image}
-              title={data.posts.edges[0].node.title}
-              category={data.posts.edges[0].node.tags[0].name[0]}
+              id={posts.edges[0].node.id}
+              slug={posts.edges[0].node.slug}
+              src={posts.edges[0].node.feature_image}
+              title={posts.edges[0].node.title}
+              category={posts.edges[0].node.tags[0].name[0]}
             />
           </div>
         </div>
@@ -59,7 +37,7 @@ const blog = ({ data }) => {
               </article>
             </Fade>
             <section className={blogStyle.blogGrid_moreRecent}>
-              {data.posts.edges.slice(1, 5).map((article, index) => {
+              {posts.edges.slice(1, 5).map((article, index) => {
                 return (
                   <Fade
                     top
@@ -87,7 +65,7 @@ const blog = ({ data }) => {
             </section>
 
             <section className={blogStyle.blogGrid_oldPost}>
-              {data.posts.edges.slice(5).map((article, index) => {
+              {posts.edges.slice(5).map((article, index) => {
                 return (
                   <Fade
                     top
