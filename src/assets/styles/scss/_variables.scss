@@ -3,17 +3,19 @@ $medium: "all and (min-width : 768px)";
 $large: "all and (min-width : 992px)";
 $extra-large: "all and (min-width : 1200px)";
 
-$alotama-red: #d51224;
-$alotama-white: #f3f4f5;
-$alotama-black: #130f10;
-$alotama-gray: #f7f6f3;
+$red: #d51224;
+$white: #f3f4f5;
+$black: #130f10;
+$gray: #f7f6f3;
+
+$font-base: 112.5; //(112.5%) = 18px
 
 @mixin text-decoration {
   display: inline-block;
   position: relative;
 
   &:hover {
-    color: $alotama-red;
+    color: $red;
 
     &::after {
       width: 100%;
@@ -33,7 +35,7 @@ $alotama-gray: #f7f6f3;
 
   &::after {
     transition: width 0.4s cubic-bezier(0.98, 0.35, 0.58, 0.97) 0.1s;
-    background: $alotama-red;
+    background: $red;
   }
 }
 

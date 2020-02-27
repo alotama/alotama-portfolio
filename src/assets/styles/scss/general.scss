@@ -10,27 +10,17 @@
 }
 
 @import "normalize", "fonts", "animation";
-@import "header", "footer";
+@import "footer";
 
 /* --- GENERAL --- */
-body,
 html {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   font-family: "europa", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 75%;
+  font-size: $font-base'%';
   line-height: 1.5;
   font-weight: 300;
   font-style: normal;
-
-  @media #{$large} {
-    font-size: 18px;
-  }
-}
-
-body * {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 html {
@@ -58,8 +48,7 @@ h6 {
   margin: 0;
 }
 
-html,
-a {
+html, a {
   color: inherit;
   text-decoration: none;
 }
@@ -89,10 +78,6 @@ figure {
   box-sizing: border-box;
 }
 
-.master-container .master-container-padding {
-  padding: 0px 20px;
-}
-
 .hero__container {
   position: relative;
   height: 100vh;
@@ -118,17 +103,17 @@ figure {
     }
 
     .hero__subtitle {
-      max-width: 700px;
+      max-width: convert-px-to-rm(700);
       width: 100%;
     }
   }
 
   .hero__scroll {
     position: absolute;
-    width: 22px;
-    height: 42px;
-    border-radius: 15px;
-    border: 2px solid rgba($alotama-red, 0.2);
+    width: convert-px-to-rm(22);
+    height: convert-px-to-rm(42);
+    border-radius: convert-px-to-rm(15);
+    border: 2px solid rgba($red, 0.2);
     -webkit-animation: intro 1s forwards;
     animation: intro 1s forwards;
     animation-delay: 1s;
@@ -144,7 +129,7 @@ figure {
       height: 3px;
       margin: 6px auto;
       border-radius: 4px;
-      background: rgba($alotama-black, 0.5);
+      background: rgba($black, 0.5);
       -webkit-animation: finger 2s infinite;
       animation: finger 2s infinite;
     }
@@ -185,13 +170,13 @@ figure {
 
 @keyframes finger {
   0% {
-    background: rgba($alotama-black, 1);
+    background: rgba($black, 1);
     opacity: 1;
   }
 
   100% {
     opacity: 0;
-    background: rgba($alotama-black, 0.5);
+    background: rgba($black, 0.5);
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
   }
@@ -234,7 +219,7 @@ figure {
 }
 
 .color-red {
-  color: $alotama-red;
+  color: $red;
 }
 
 .page_wrapper {
