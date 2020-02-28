@@ -1,36 +1,20 @@
 @charset "UTF-8";
 
 @import url("https://use.typekit.net/ejv7ikd.css");
-@import "variables", "functions", "spaces";
+@import "variables", "functions", "spaces", 'grid';
 
-/* --- NORMALIZE, FLEXBOX, ANIMATIONS --- */
-@-ms-viewport {
-  width: extend-to-zoom;
-  zoom: 1;
-}
-
-@import "normalize", "flexboxgrid", "fonts", "animation";
-@import "header", "footer";
+@import "normalize", "fonts", "animation";
+@import "footer";
 
 /* --- GENERAL --- */
-body,
 html {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   font-family: "europa", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  font-size: $font-base;
   line-height: 1.5;
   font-weight: 300;
   font-style: normal;
-
-  @media #{$large} {
-    font-size: 18px;
-  }
-}
-
-body * {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 html {
@@ -47,20 +31,6 @@ body {
   position: relative;
 }
 
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.clearfix {
-  zoom: 1;
-}
-
 p,
 h1,
 h2,
@@ -72,28 +42,15 @@ h6 {
   margin: 0;
 }
 
-html,
-a {
+html, a {
   color: inherit;
   text-decoration: none;
-}
-
-html ul {
-  list-style: none;
-  padding: 0px;
 }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-.fit-content {
-  width: -moz-fit-content;
-  width: -webkit-fit-content;
-  width: fit-content;
-  display: table;
 }
 
 *:focus {
@@ -103,20 +60,6 @@ img {
 
 figure {
   margin: 0;
-}
-
-.master-container {
-  position: relative;
-  display: block;
-  width: 100%;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-}
-
-.master-container .master-container-padding {
-  padding: 0px 20px;
 }
 
 .hero__container {
@@ -131,7 +74,7 @@ figure {
   margin-bottom: var(--space-xxs);
 
   .hero__content {
-    width: 90%;
+    width: 80%;
 
     .hero__title {
       margin-bottom: var(--space-normal);
@@ -154,7 +97,7 @@ figure {
     width: 22px;
     height: 42px;
     border-radius: 15px;
-    border: 2px solid rgba($alotama-red, 0.2);
+    border: 2px solid rgba($red, 0.2);
     -webkit-animation: intro 1s forwards;
     animation: intro 1s forwards;
     animation-delay: 1s;
@@ -170,7 +113,7 @@ figure {
       height: 3px;
       margin: 6px auto;
       border-radius: 4px;
-      background: rgba($alotama-black, 0.5);
+      background: rgba($black, 0.5);
       -webkit-animation: finger 2s infinite;
       animation: finger 2s infinite;
     }
@@ -211,13 +154,13 @@ figure {
 
 @keyframes finger {
   0% {
-    background: rgba($alotama-black, 1);
+    background: rgba($black, 1);
     opacity: 1;
   }
 
   100% {
     opacity: 0;
-    background: rgba($alotama-black, 0.5);
+    background: rgba($black, 0.5);
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
   }
@@ -260,17 +203,10 @@ figure {
 }
 
 .color-red {
-  color: $alotama-red;
+  color: $red;
 }
 
 .page_wrapper {
   position: relative;
   min-height: 100vh;
-}
-
-code[class*="language-"], pre[class*="language-"] {
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-  font-size: 0.8rem;
 }

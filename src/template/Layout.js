@@ -7,9 +7,9 @@
 
 import React, { useEffect } from "react"
 import PropTypes from "prop-types"
-import Header from "../components/header/Header"
+import Navbar from "../components/navbar"
 import Footer from "../components/footer/Footer"
-import "../assets/scss/general.scss"
+import "../assets/styles/scss/general.scss"
 
 import ReactBreakpoints from "react-breakpoints"
 
@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
 
   return (
     <ReactBreakpoints breakpoints={breakpoints}>
-      <Header />
+      <Navbar />
       <div className="page_wrapper">{children}</div>
       <Footer />
     </ReactBreakpoints>

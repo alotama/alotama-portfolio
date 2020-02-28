@@ -1,3 +1,5 @@
+@import "./variables";
+
 @mixin font_family($fontname, $filename) {
   @font-face {
     font-family: $fontname;
@@ -48,6 +50,11 @@
     background-color: $background;
     color: $color;
   }
+}
+
+@function convert-px-to-rm($px) {
+  $result: $font-base / $px;
+  @return #{$result}rem;
 }
 
 %drop-shadow {

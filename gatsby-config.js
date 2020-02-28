@@ -4,7 +4,12 @@ require("dotenv").config({
   path: '.env',
 })
 
+
+
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://www.alotama.com`,
+  },
   plugins: [
     `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
@@ -66,7 +71,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-ghost`,
-      options:  process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
+      options: process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
     },
     {
       resolve: 'gatsby-plugin-webpack-bundle-analyzer',
@@ -81,7 +86,52 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data/`,
+        path: `${__dirname}/src/content/`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        query: `
+          {
+            allGhostPost {
+              edges {
+                  node {
+                    id
+                    slug
+                    updated_at
+                    created_at
+                    feature_image
+                  }
+              }
+            }
+            allGhostPage {
+              edges {
+                  node {
+                    id
+                    slug
+                    updated_at
+                    created_at
+                    feature_image
+                  }
+              }
+            }
+          }`,
+        mapping: {
+          allGhostPost: {
+            sitemap: `posts`,
+          },
+          allGhostPage: {
+            sitemap: `pages`,
+          },
+        },
+        exclude: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+          `/offline-plugin-app-shell-fallback`,
+        ],
+        createLinkInHead: true,
       },
     },
     {

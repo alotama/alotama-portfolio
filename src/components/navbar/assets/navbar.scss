@@ -1,3 +1,6 @@
+@import '../../../assets/styles/scss/variables';
+@import '../../../assets/styles/scss/functions';
+
 $timing-function: cubic-bezier(1, 0, 0.54, 0.53);
 $nav-item-nb: 6;
 
@@ -38,18 +41,18 @@ $nav-item-nb: 6;
     margin: 0;
 
     li {
-      padding: 0.25em 0.5em 0.25em 0;
+      padding: 0.25rem 0.5em 0.25rem 0;
+      margin: 0 0.3rem 0;
       font-size: 2.4rem;
-      margin: 0 0.6em 0;
       white-space: nowrap;
       @media #{$large} {
         font-size: 1rem;
-        padding: 0.25em 0.5em 0.25em;
+        padding: 0.25rem 1em 0.25rem;
       }
 
       .active {
         font-weight: 700;
-        color: $alotama-red;
+        color: $red;
       }
     }
   }
@@ -82,7 +85,7 @@ $nav-item-nb: 6;
     width: 100%;
     display: block;
     border-radius: 3px;
-    background-color: $alotama-black;
+    background-color: $black;
     @include add_transition(0.2s, linear);
   }
 
@@ -147,11 +150,10 @@ $nav-item-nb: 6;
 
     .navbar__item {
       display: block;
-      width: 100%;
       position: relative;
 
       &:hover {
-        color: $alotama-red;
+        color: $red;
 
         &::after {
           width: 100%;
@@ -171,7 +173,7 @@ $nav-item-nb: 6;
 
       &::after {
         transition: width 0.4s cubic-bezier(0.98, 0.35, 0.58, 0.97) 0.1s;
-        background: $alotama-red;
+        background: $red;
       }
     }
   }
@@ -218,6 +220,7 @@ $nav-item-nb: 6;
   @include add_transition(0.3s, ease-in-out);
 
   @media #{$large} {
+    display: flex;
     visibility: visible;
     pointer-events: all;
     position: static;
@@ -254,10 +257,6 @@ $nav-item-nb: 6;
       transform: translateX(0%);
       opacity: 1;
     }
-  }
-
-  @media #{$large} {
-    display: block;
   }
 }
 
@@ -456,19 +455,19 @@ $nav-item-nb: 6;
 .clipboard {
   border: none;
   background-color: transparent;
-  padding-left: 0.25em;
-  padding: 0.25em 0.5em 0.25em 0;
+  padding-left: 0.25rem;
+  padding: 0.25rem 0.5rem 0.25rem 0;
   font-size: 2.4rem;
-  margin: 0 0.6em 0;
   text-align: left;
   cursor: pointer;
   display: none;
 
   @media #{$large} {
-    padding: 0.25em 0 0.25em 0.25em;
-    margin: 0 0 0 0.6em;
+    padding: 0.25rem 0 0.25rem 0.25rem;
+    margin: 0 0 0 0.6rem;
     text-align: center;
     font-size: 1rem;
+    line-height: 1.5;
     display: block;
   }
 }
