@@ -18,46 +18,8 @@ const post = ({ pageContext }) => {
       <SEO
         title={data.meta_title}
         description={data.meta_description}
-        link={[
-          {
-            rel: "canonical",
-            href: data.canonical_url,
-          },
-        ]}
-        meta={[
-          {
-            property: "article:section",
-            content: data.tags[0].name,
-          },
-          {
-            property: "article:published_time",
-            content: data.created_at,
-          },
-          {
-            property: "article:modified_time",
-            content: data.updated_at,
-          },
-          {
-            property: "og:type",
-            content: data.tags[0].name,
-          },
-          {
-            property: "og:title",
-            content: data.meta_title,
-          },
-          {
-            property: "og:url",
-            content: data.slug,
-          },
-          {
-            property: "og:image",
-            content: data.feature_image,
-          },
-          {
-            property: "og:image:secure_url",
-            content: data.feature_image,
-          },
-        ]}
+        url={data.canonical_url}
+        isBlogPost
       />
       <div className={"articles__container"}>
         <div className="master-container">

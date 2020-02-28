@@ -15,12 +15,8 @@ const AboutPage = () => {
       <SEO
         title={about.title}
         description={about.meta_description}
-        link={[
-          {
-            rel: "canonical",
-            href: about.canonical_url,
-          },
-        ]}
+        url={about.canonical_url}
+        isPage
       />
       <section id="hero__container">
         <HeroAbout
