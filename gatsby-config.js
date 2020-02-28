@@ -4,7 +4,12 @@ require("dotenv").config({
   path: '.env',
 })
 
+
+
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://www.alotama.com`,
+  },
   plugins: [
     `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
