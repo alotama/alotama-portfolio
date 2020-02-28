@@ -49,6 +49,7 @@
     }
     .recentPost_heading {
       @include textStyle_bold-72px;
+      width: 100%;
     }
     .recentPost_category {
       margin-top: var(--space-lg);
