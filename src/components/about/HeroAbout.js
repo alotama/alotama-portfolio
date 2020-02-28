@@ -1,6 +1,5 @@
 import React from "react"
 import { Text } from "../assets/Title"
-import Fade from "react-reveal/Fade"
 
 const HeroAbout = ({ title, subtitle, content }) => {
   return (
@@ -9,15 +8,15 @@ const HeroAbout = ({ title, subtitle, content }) => {
         <section className="hero__container">
           <article className={"hero__content"}>
             <div className={"hero__title"}>
-              <Fade top distance="15px">
+            
                 <Text type="h1" title={title} />
                 <h2 className="font--light color-red">{subtitle}</h2>
-              </Fade>
+            
             </div>
             <div className={"hero__subtitle"}>
-              <Fade top distance="15px" delay={150}>
+            
                 <div dangerouslySetInnerHTML={{  __html: content }} />
-              </Fade>
+          
             </div>
           </article>
           <div className="hero__scroll">

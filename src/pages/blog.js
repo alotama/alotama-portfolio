@@ -5,7 +5,7 @@ import "../assets/styles/scss/sections/blog.scss"
 import PostItem from "../components/blog/PostItem"
 import HighlightPost from "../components/blog/HighlightPost"
 import { Text } from "../components/assets/Title"
-import Fade from "react-reveal/Fade"
+
 import useBlogData from '../utils/use-blogData'
 
 const blog = () => {
@@ -21,7 +21,7 @@ const blog = () => {
               slug={posts.edges[0].node.slug}
               src={posts.edges[0].node.feature_image}
               title={posts.edges[0].node.title}
-              category={posts.edges[0].node.tags[0].name[0]}
+              category={posts.edges[0].node.tags[0].name}
             />
           </div>
         </div>
@@ -29,20 +29,15 @@ const blog = () => {
       <section className={"blogGrid_wrapper"}>
         <div className="master-container">
           <div className="master-container-padding">
-            <Fade top distance="15px" delay={250}>
+           
               <article className={"blogGrid_title"}>
                 <Text type="h1" title="Más artículos." />
               </article>
-            </Fade>
+           
             <section className={"blogGrid_moreRecent"}>
               {posts.edges.slice(1, 5).map((article, index) => {
                 return (
-                  <Fade
-                    top
-                    distance="15px"
-                    delay={150 * (index * 2)}
-                    key={index * 2}
-                  >
+                  
                     <PostItem
                       id={article.node.ghostId}
                       onUse={false}
@@ -57,7 +52,7 @@ const blog = () => {
                       excerpt={article.node.excerpt}
                       title={article.node.title}
                     />
-                  </Fade>
+                  
                 )
               })}
             </section>
@@ -65,12 +60,7 @@ const blog = () => {
             <section className={"blogGrid_oldPost"}>
               {posts.edges.slice(5).map((article, index) => {
                 return (
-                  <Fade
-                    top
-                    distance="15px"
-                    delay={150 * (index * 2)}
-                    key={index * 2}
-                  >
+                 
                     <PostItem
                       key={index}
                       onUse={true}
@@ -85,7 +75,7 @@ const blog = () => {
                       excerpt={article.node.excerpt}
                       title={article.node.title}
                     />
-                  </Fade>
+                  
                 )
               })}
             </section>

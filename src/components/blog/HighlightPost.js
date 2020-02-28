@@ -2,12 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 import { Text } from "../assets/Title"
 
-import Fade from "react-reveal/Fade"
-
 const HighlightPost = ({ slug, id, src, title, category }) => {
   return (
     <Link to={`/blog/${slug}`} id={id}>
-      <Fade top distance="15px">
+    
         <section
           className={"highlightPost_container"}
           style={{
@@ -27,7 +25,7 @@ const HighlightPost = ({ slug, id, src, title, category }) => {
             </p>
           </article>
         </section>
-      </Fade>
+      
     </Link>
   )
 }

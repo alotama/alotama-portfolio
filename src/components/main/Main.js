@@ -1,10 +1,9 @@
 import React from "react"
 import { Text } from "../assets/Title"
-import Fade from "react-reveal/Fade"
 
 const Main = ({ source, sourceSet, altText, title, category, linkTo }) => {
   return (
-    <Fade>
+    
       <div className="col-xs-12">
         <a
           href={linkTo}
@@ -23,7 +22,7 @@ const Main = ({ source, sourceSet, altText, title, category, linkTo }) => {
           </article>
         </a>
       </div>
-    </Fade>
+    
   )
 }
 

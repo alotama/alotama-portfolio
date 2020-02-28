@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../template/Layout"
 import SEO from "../components/SEO"
 import HeroAbout from "../components/about/HeroAbout"
@@ -32,8 +31,9 @@ const AboutPage = () => {
       </section>
       <main id="main__container">
         <div className="master-container">
-          <div className="master-container-padding">
+          <div className="layout__narrow-column">
             <MainAbout content={about.html} />
+          </div>
             <Skills content={skills.childMarkdownRemark.html} />
             {/* <LatestWork
               href={data.lastPost.edges[0].node.canonical_url}
@@ -44,7 +44,6 @@ const AboutPage = () => {
               }
               altText={data.lastPost.edges[0].node.mainImage.caption}
             /> */}
-          </div>
         </div>
       </main>
     </Layout>

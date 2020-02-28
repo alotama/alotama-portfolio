@@ -1,11 +1,11 @@
 import React from "react"
 import { Text } from "../assets/Title"
-import Fade from "react-reveal/Fade"
+
 
 const LatestWork = ({ href, title, source, sourceSet, altText }) => {
   return (
     <section className="flow__section">
-      <Fade top distance="15px" delay={250}>
+      
         <div className="col-xs-12">
           <a
             href={href}
@@ -28,7 +28,7 @@ const LatestWork = ({ href, title, source, sourceSet, altText }) => {
             </article>
           </a>
         </div>
-      </Fade>
+      
     </section>
   )
 }

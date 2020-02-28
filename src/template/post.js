@@ -3,7 +3,7 @@ import Layout from "./Layout"
 import SEO from "../components/SEO"
 import Prism from "prismjs"
 import { Text } from "../components/assets/Title"
-import Fade from "react-reveal/Fade"
+
 import "prismjs/themes/prism.css"
 import "../assets/styles/scss/sections/post.scss"
 import "../assets/styles/custom-prism.css"
@@ -61,9 +61,8 @@ const post = ({ pageContext }) => {
       />
       <div className={"articles__container"}>
         <div className="master-container">
-          <div className="master-container-padding">
-
-            <Fade ssrFadeout top distance="15px">
+          <div className="layout__narrow-column">
+            
               <header className={"article__header"}>
                 <div className={"article__details"}>
                   <small className={"details__date"}>
@@ -79,25 +78,25 @@ const post = ({ pageContext }) => {
                   </span>
                 </div>
               </header>
-            </Fade>
+          
 
           </div>
         </div>
         <section className={"featuredImages__wrapper"}>
           <div className="master-container">
-            <Fade ssrFadeout top distance="15px" delay="250">
+            
               <figure className={"featuredImages__content"}>
                 <img
                   srcSet={data.feature_image}
                   src={data.feature_image}
                 />
               </figure>
-            </Fade>
+           
           </div>
         </section>
         <main className={"post__container"}>
           <div className="master-container">
-            <div className="master-container-padding">
+            <div className="layout__narrow-column">
               <div
                 dangerouslySetInnerHTML={{ __html: data.html }}
               />
