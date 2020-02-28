@@ -5,13 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { Fragment } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
+import { Helmet } from "react-helmet"
 
-const SEO = props => {
-  const { lenguage, title, description, meta, link } = props
+const SEO = ({ title, description, url, thumbnail, isPage, isBlogPost }) => {
   const data = useStaticQuery(graphql`
     query SiteSetting {
       ghostSettings {
@@ -24,62 +23,69 @@ const SEO = props => {
     }
   `)
 
-  const settings = data.ghostSettings
+  const settings = data.ghostSettings;
+  
+  const getPageTitle = (context) => {
+    if (context) {
+      return `${title} | Tama. Sebastián. – Desarrollador Front-End`
+    } else if (isBlogPost) {
+      return `${title} | Tama. Sebastián.`
+    } else {
+      return `${settings.title} | Tama. Sebastián. – Desarrollador Front-End`
+    }
+  }
+
+  const pageTitle = getPageTitle(isPage);
+  const pageDescription = description || settings.description
+  const pageURL = url || settings.url
+  const pageThumbnail = thumbnail || null
+  
+  console.log()
 
   return (
-    <Fragment>
-      <Helmet
-        htmlAttributes={settings.lang}
-        title={title}
-        titleTemplate={`%s | ${settings.title}`}
-        link={[].concat(link)}
-        meta={[
-          {
-            name: `description`,
-            content: description,
-          },
-          {
-            property: `og:locale`,
-            content: "es_ES",
-          },
-          {
-            property: "og:type",
-            content: "website",
-          },
-          {
-            name: `twitter:card`,
-            content: `summary`,
-          },
-          {
-            name: `twitter:description`,
-            content: settings.description,
-          },
-          {
-            name: `twitter:title`,
-            content: settings.autor,
-          },
-          {
-            name: "twitter:site",
-            content: settings.twitterProfile,
-          },
-        ].concat(meta)}
-      />
-    </Fragment>
+    <Helmet>
+      {/* General tags */}
+      <html lang={settings.lang}/>
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+      {pageThumbnail && <meta name="image" content={pageThumbnail} />}
+      <link rel="canonical" href={pageURL} />
+      <meta name="robots" content="index, follow" />
+      <link rel="stylesheet" type="text/css" href="https://use.typekit.net/ejv7ikd.css"/>
+
+      {/* OpenGraph tags */}
+      <meta property="og:url" content={pageURL} />
+      {isBlogPost ? <meta property="og:type" content="article" /> : null}
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
+      {pageThumbnail && <meta property="og:image" content={pageThumbnail} />}
+
+      {/* Twitter Card tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content={settings.twitter} />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={pageDescription} />
+      {pageThumbnail && <meta name="twitter:image" content={pageThumbnail} />}
+    </Helmet>
   )
 }
 
-SEO.defaultProps = {
-  lenguage: "es",
-  title: "",
-  description: "",
-  meta: [],
-  link: [],
+SEO.propTypes = {
+  title:PropTypes.string,
+  description:PropTypes.string,
+  url: PropTypes.string,
+  thumbnail: PropTypes.string,
+  isBlogPost:PropTypes.bool,
+  isPage:PropTypes.bool
 }
 
-SEO.propTypes = {
-  description: PropTypes.string,
-  lenguage: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-}
+SEO.defaultProps = {
+  title:'',
+  description: '',
+  thumbnail:'',
+  url:process.env.SITE_URL,
+  isBlogPost: false,
+  isPage: false
+};
 
 export default SEO

@@ -12,10 +12,15 @@ const blog = () => {
   const { blog, posts } = useBlogData()
   return (
     <Layout>
-      <SEO title={blog.title} description={blog.description} />
+      <SEO
+        title={blog.title}
+        description={blog.description}
+        url={blog.url}
+        isPage
+      />
       <main className={"highlightPost_wrapper"}>
         <div className="master-container">
-          <div className="master-container-padding">
+
             <HighlightPost
               id={posts.edges[0].node.id}
               slug={posts.edges[0].node.slug}
@@ -24,14 +29,14 @@ const blog = () => {
               category={posts.edges[0].node.tags[0].name}
             />
           </div>
-        </div>
+        
       </main>
       <section className={"blogGrid_wrapper"}>
         <div className="master-container">
-          <div className="master-container-padding">
+
            
               <article className={"blogGrid_title"}>
-                <Text type="h1" title="Más artículos." />
+                <Text type="h2" title="Más artículos." />
               </article>
            
             <section className={"blogGrid_moreRecent"}>
@@ -80,7 +85,7 @@ const blog = () => {
               })}
             </section>
           </div>
-        </div>
+
       </section>
     </Layout>
   )
