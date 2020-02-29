@@ -5,6 +5,10 @@
   "version": "2.0.0",
   "author": "Sebastián Tamashiro <sebastian@alotama.com>",
   "dependencies": {
+    "@loadable/babel-plugin": "^5.12.0",
+    "@loadable/component": "^5.12.0",
+    "@loadable/webpack-plugin": "^5.12.0",
+    "babel-preset-gatsby": "^0.2.29",
     "dotenv": "^8.0.0",
     "gatsby": "^2.6.0",
     "gatsby-image": "^2.1.4",
