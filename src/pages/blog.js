@@ -11,11 +11,12 @@ const HighlightPost = loadable(() => import(`../components/blog/HighlightPost`))
 
 const blog = () => {
   const { blog, posts } = useBlogData()
+  console.log(blog.description)
   return (
     <>
       <SEO
         title={blog.title}
-        description={blog.description}
+        description={blog.meta_description}
         url={blog.url}
         isPage
       />
