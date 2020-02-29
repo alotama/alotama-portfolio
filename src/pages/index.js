@@ -1,14 +1,15 @@
 import React from "react"
-import Layout from "../template/Layout"
-import SEO from "../components/SEO"
-import Hero from "../components/main/Hero"
-import Main from "../components/main/Main"
+import loadable from '@loadable/component'
 import useHomeData from '../utils/use-homeData';
+import SEO from "../components/SEO"
+
+const Hero = loadable(() => import(`../components/main/Hero`));
+const Main = loadable(() => import(`../components/main/Main`));
 
 const IndexPage = () => {
   const { home, projects } = useHomeData()
   return (
-    <Layout>
+    <>
       <SEO title={home.meta_title} />
       <section id="hero__container">
         <Hero
@@ -34,7 +35,7 @@ const IndexPage = () => {
           </div>
         </div>
       </main>
-    </Layout>
+    </>
   )
 }
 

@@ -1,17 +1,19 @@
 import React from "react"
-import Layout from "../template/Layout"
 import SEO from "../components/SEO"
-import HeroAbout from "../components/about/HeroAbout"
-import MainAbout from "../components/about/MainAbout"
-import Skills from "../components/about/Skills"
-import LatestWork from "../components/about/LatestWork"
+import loadable from '@loadable/component'
+
+const HeroAbout = loadable(() => import(`../components/about/HeroAbout`));
+const MainAbout = loadable(() => import(`../components/about/MainAbout`));
+const Skills = loadable(() => import(`../components/about/Skills`));
+// const LatestWork = loadable(() => import(`../components/about/LatestWork`));
+
 import useAboutData from '../utils/use-aboutData'
 import '../assets/styles/scss/sections/about.scss'
 
 const AboutPage = () => {
   const { about, social, skills, lastPost } = useAboutData()
   return (
-    <Layout>
+    <>
       <SEO
         title={about.title}
         description={about.meta_description}
@@ -42,7 +44,7 @@ const AboutPage = () => {
             /> */}
         </div>
       </main>
-    </Layout>
+    </>
   )
 }
 

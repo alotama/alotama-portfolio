@@ -7,9 +7,11 @@
 
 import React, { useEffect } from "react"
 import PropTypes from "prop-types"
-import Navbar from "../components/navbar"
-import Footer from "../components/footer/Footer"
+import loadable from '@loadable/component'
 import "../assets/styles/scss/general.scss"
+
+const Navbar = loadable(() => import(`../components/navbar`));
+const Footer = loadable(() => import(`../components/footer/Footer`));
 
 import ReactBreakpoints from "react-breakpoints"
 
