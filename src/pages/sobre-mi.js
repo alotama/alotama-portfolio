@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../template/Layout"
 import SEO from "../components/SEO"
 import loadable from '@loadable/component'
 
@@ -14,7 +13,7 @@ import '../assets/styles/scss/sections/about.scss'
 const AboutPage = () => {
   const { about, social, skills, lastPost } = useAboutData()
   return (
-    <Layout>
+    <>
       <SEO
         title={about.title}
         description={about.meta_description}
@@ -45,7 +44,7 @@ const AboutPage = () => {
             /> */}
         </div>
       </main>
-    </Layout>
+    </>
   )
 }
 

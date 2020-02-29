@@ -1,10 +1,9 @@
 import React from "react"
-import Layout from "../template/Layout"
 import SEO from "../components/SEO"
 import loadable from '@loadable/component'
 import { Text } from "../components/assets/Title"
-import "../assets/styles/scss/sections/blog.scss"
 import useBlogData from '../utils/use-blogData'
+import "../assets/styles/scss/sections/blog.scss"
 
 const PostItem = loadable(() => import(`../components/blog/PostItem`));
 const HighlightPost = loadable(() => import(`../components/blog/HighlightPost`));
@@ -13,7 +12,7 @@ const HighlightPost = loadable(() => import(`../components/blog/HighlightPost`))
 const blog = () => {
   const { blog, posts } = useBlogData()
   return (
-    <Layout>
+    <>
       <SEO
         title={blog.title}
         description={blog.description}
@@ -89,7 +88,7 @@ const blog = () => {
           </div>
 
       </section>
-    </Layout>
+    </>
   )
 }
 

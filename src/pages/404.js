@@ -1,7 +1,5 @@
 import React, { useEffect } from "react"
-
 import { Link } from "gatsby"
-import Layout from "../template/Layout"
 import SEO from "../components/SEO"
 
 import "../assets/styles/scss/sections/404.scss"
@@ -13,7 +11,7 @@ const NotFoundPage = () => {
   }, [])
 
   return (
-    <Layout>
+    <>
       <SEO title="404: Not found" />
       <section className="master-container">
         <div className="master-container-padding">
@@ -36,7 +34,7 @@ const NotFoundPage = () => {
           </section>
         </div>
       </section>
-    </Layout>
+    </>
   )
 }
 

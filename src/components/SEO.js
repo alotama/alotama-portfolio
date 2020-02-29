@@ -51,7 +51,6 @@ const SEO = ({ title, description, url, thumbnail, isPage, isBlogPost }) => {
       {pageThumbnail && <meta name="image" content={pageThumbnail} />}
       <link rel="canonical" href={pageURL} />
       <meta name="robots" content="index, follow" />
-      <link rel="stylesheet" type="text/css" href="https://use.typekit.net/ejv7ikd.css"/>
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={pageURL} />
