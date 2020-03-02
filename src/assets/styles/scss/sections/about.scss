@@ -35,14 +35,12 @@ ul.skills__container {
   @media #{$medium} {
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, auto-fit);
-    grid-gap: 1rem;
+    grid-gap: var(--space-md);
   }
   .skills_content {
     grid-column: 1 / -1;
     grid-row: 1;
     font-size: 1.8rem;
-    margin-bottom: var(--space-md);
     @media #{$medium} {
       grid-column: 1 / 2;
       grid-row: 1 / -1;
