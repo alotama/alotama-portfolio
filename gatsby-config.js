@@ -92,7 +92,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-rollbar",
       options: {
-        accessToken: "e036553ac01e46f992772e783f6a7186",
+        accessToken: process.env.ROLLBAR_KEY,
         captureUncaught: true,
         captureUnhandledRejections: true,
         payload: {
