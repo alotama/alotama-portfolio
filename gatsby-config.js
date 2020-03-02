@@ -90,6 +90,17 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-rollbar",
+      options: {
+        accessToken: "e036553ac01e46f992772e783f6a7186",
+        captureUncaught: true,
+        captureUnhandledRejections: true,
+        payload: {
+          environment: "production"
+        }
+      }
+    },
+    {
       resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
         query: `
