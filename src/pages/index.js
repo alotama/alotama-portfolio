@@ -10,7 +10,12 @@ const IndexPage = () => {
   const { home, projects } = useHomeData()
   return (
     <>
-      <SEO title={home.meta_title} />
+      <SEO
+        title={home.meta_title}
+        description={home.meta_description}
+        url={home.canonical_url}
+        isPage
+      />
       <section id="hero__container">
         <Hero
           title={home.title}

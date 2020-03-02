@@ -4,7 +4,7 @@ import { Text } from "../assets/Title"
 const HeroAbout = ({ title, subtitle, content }) => {
   return (
     <div className="master-container">
-      <div className="master-container-padding">
+      
         <section className="hero__container">
           <article className={"hero__content"}>
             <div className={"hero__title"}>
@@ -23,7 +23,7 @@ const HeroAbout = ({ title, subtitle, content }) => {
             <div className="scroll__action" />
           </div>
         </section>
-      </div>
+      
     </div>
   )
 }

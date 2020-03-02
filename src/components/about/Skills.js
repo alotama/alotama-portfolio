@@ -5,7 +5,7 @@ const Skills = ({ content }) => {
   return (
     <section className={"skills__section"}>
       <article className={"skills_content"}>
-        <Text type="h6" title="Skills." />
+        <Text type="h3" title="Conocimientos." />
       </article>
       <div className={"skills_contentList"} dangerouslySetInnerHTML={{  __html:  content }} />
     </section>

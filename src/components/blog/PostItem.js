@@ -9,8 +9,6 @@ const useExcerpt = ({excerpt}) => (
       switch (currentBreakpoint) {
         case "mobile":
           return null
-        case "tablet":
-          return null
         default:
           return <p>{excerpt}</p>
       }

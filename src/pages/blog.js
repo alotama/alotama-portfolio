@@ -15,8 +15,8 @@ const blog = () => {
     <>
       <SEO
         title={blog.title}
-        description={blog.description}
-        url={blog.url}
+        description={blog.meta_description}
+        url={blog.canonical_url}
         isPage
       />
       <main className={"highlightPost_wrapper"}>

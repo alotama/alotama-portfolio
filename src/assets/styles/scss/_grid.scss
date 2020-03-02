@@ -11,8 +11,14 @@
 
 .layout__narrow-column {
   display: grid;
-  grid-template-columns: minmax(1rem, 9rem) repeat(auto-fit, minmax(18rem, 1fr)) minmax(1rem, 9rem);
+  width: 100%;
+  @media #{$medium} {
+    grid-template-columns: minmax(1rem, 9rem) repeat(auto-fit, minmax(18rem, 1fr)) minmax(1rem, 9rem);
+  }
   & > *  {
-    grid-column-start: 2;
+    overflow: hidden;
+    @media #{$medium} {
+      grid-column-start: 2;
+    }
   }
 }

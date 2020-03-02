@@ -17,15 +17,11 @@ import ReactBreakpoints from "react-breakpoints"
 
 const breakpoints = {
   mobile: 320,
-  mobileLandscape: 480,
-  tablet: 768,
-  tabletLandscape: 1024,
   desktop: 1200,
-  desktopLarge: 1500,
-  desktopWide: 1920,
 }
 
 const Layout = ({ children }) => {
+
   useEffect(() => {
     let vh = window.innerHeight * 0.01
     document.documentElement.style.setProperty("--vh", `${vh}px`)
@@ -39,7 +35,7 @@ const Layout = ({ children }) => {
   return (
     <ReactBreakpoints breakpoints={breakpoints}>
       <Navbar />
-      <div className="page_wrapper">{children}</div>
+        <div className="page_wrapper">{children}</div>
       <Footer />
     </ReactBreakpoints>
   )
