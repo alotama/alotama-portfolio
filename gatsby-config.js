@@ -101,6 +101,13 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: process.env.YOUR_HOTJAR_ID,
+        sv: process.env.YOUR_HOTJAR_SNIPPET_VERSION
+      },
+    },
+    {
       resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
         query: `
