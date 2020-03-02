@@ -10,15 +10,17 @@ html {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   font-family: "europa", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: $font-base;
+  font-size: 100%;
   font-display: swap;
   line-height: 1.5;
   font-weight: 300;
   font-style: normal;
+  @media #{$medium} {
+    font-size: 112.5%;
+  }
 }
 
 html {
-  overflow: auto;
   overflow-x: hidden;
 }
 
@@ -74,8 +76,9 @@ figure {
   margin-bottom: var(--space-xxs);
 
   .hero__content {
-    width: 80%;
-
+    @media #{$large} {
+      width: 80%;
+    }
     .hero__title {
       margin-bottom: var(--space-normal);
       h1 {

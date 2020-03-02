@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import Layout from "./Layout"
+
 import SEO from "../components/SEO"
 import Prism from "prismjs"
 import { Text } from "../components/assets/Title"
@@ -14,7 +14,7 @@ const post = ({ pageContext }) => {
     Prism.highlightAll()
   })
   return (
-    <Layout>
+    <>
       <SEO
         title={data.meta_title}
         description={data.meta_description}
@@ -66,7 +66,7 @@ const post = ({ pageContext }) => {
           </div>
         </main>
       </div>
-    </Layout>
+    </>
   )
 }
 

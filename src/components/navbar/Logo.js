@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { HamburgerContext } from '../../utils/context/hamburgerContext'
 
-const Brand = () => {
+export default () => {
+  const [state, setState] = useContext(HamburgerContext);
+  const closeHamburger = () => {
+    if (state) {
+      return setState(state => !state)
+    }
+  }
   return (
-    <div className="brand__container">
+    <div className="brand__container" onClick={() => closeHamburger()}>
       <svg
         viewBox="0 0 147 42.72"
         width="75"
@@ -23,5 +30,3 @@ const Brand = () => {
     </div>
   )
 }
-
-export default Brand

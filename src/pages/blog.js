@@ -11,7 +11,6 @@ const HighlightPost = loadable(() => import(`../components/blog/HighlightPost`))
 
 const blog = () => {
   const { blog, posts } = useBlogData()
-  console.log(blog.description)
   return (
     <>
       <SEO

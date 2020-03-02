@@ -27,22 +27,20 @@ const AboutPage = () => {
           content={social.childMarkdownRemark.html}
         />
       </section>
-      <main id="main__container">
-        <div className="master-container">
-          <div className="layout__narrow-column">
-            <MainAbout content={about.html} />
-          </div>
-            <Skills content={skills.childMarkdownRemark.html} />
-            {/* <LatestWork
-              href={data.lastPost.edges[0].node.canonical_url}
-              title={data.lastPost.edges[0].node.title}
-              source={data.lastPost.edges[0].node.mainImage.asset.fluid.src}
-              sourceSet={
-                data.lastPost.edges[0].node.mainImage.asset.fluid.srcSet
-              }
-              altText={data.lastPost.edges[0].node.mainImage.caption}
-            /> */}
+      <main className='master-container'>
+        <div className="layout__narrow-column">
+          <MainAbout content={about.html} />
         </div>
+          <Skills content={skills.childMarkdownRemark.html} />
+          {/* <LatestWork
+            href={data.lastPost.edges[0].node.canonical_url}
+            title={data.lastPost.edges[0].node.title}
+            source={data.lastPost.edges[0].node.mainImage.asset.fluid.src}
+            sourceSet={
+              data.lastPost.edges[0].node.mainImage.asset.fluid.srcSet
+            }
+            altText={data.lastPost.edges[0].node.mainImage.caption}
+          /> */}
       </main>
     </>
   )
