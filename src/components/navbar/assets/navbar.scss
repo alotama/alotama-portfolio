@@ -247,6 +247,9 @@ $nav-item-nb: 6;
     background-color: white;
     pointer-events: all;
     opacity: 1;
+    @media #{$medium} {
+      background-color: transparent;
+    }
 
     &:after {
       -webkit-animation: borderIn 0.5s forwards;
@@ -449,6 +452,13 @@ $nav-item-nb: 6;
 
   100% {
     transform: translateY(-9px) rotate(135deg);
+  }
+}
+
+.clipboard__container {
+  opacity: 0;
+  &.displated {
+    opacity: 1;
   }
 }
 

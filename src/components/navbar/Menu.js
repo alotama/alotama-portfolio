@@ -8,15 +8,22 @@ const Menu = () => {
 
   function onSuccess(e) {
     const clipboardCard = document.querySelector(".clipboard__card")
+    const clipboardContainer = document.querySelector(".clipboard__container")
   
+    const showClipboard = () => {
+      clipboardCard.classList.add("copied")
+      clipboardContainer.classList.add("displated")
+    }
+
     const hideClipboard = () => {
       clipboardCard.classList.remove("copied")
     }
-  
-    clipboardCard.classList.add("copied")
+
+    showClipboard()
     setTimeout(hideClipboard, 2000)
     e.clearSelection()
   }
+  
   return (
     <div className={`navbar__content ${state ? "js-open" : ""}`}>
       <ul className="navbar__menu">
