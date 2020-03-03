@@ -25,7 +25,7 @@ const Menu = () => {
   }
   
   return (
-    <div className={`navbar__content ${state ? "js-open" : ""}`}>
+    <div className={`navbar__content ${!state && 'js-open'}`}>
       <ul className="navbar__menu">
         <li className="navbar__item">
           <Link to="/sobre-mi" onClick={() => setState(state => !state)}>Sobre mí</Link>
