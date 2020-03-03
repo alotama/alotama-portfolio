@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 
-export const HamburgerContext = createContext([{}, () => {}]);
+export const HamburgerContext = createContext([null, () => {}]);
 
 export const HamburgerContextProvider = ({ children }) => {
   const [state, setState] = useState(false);

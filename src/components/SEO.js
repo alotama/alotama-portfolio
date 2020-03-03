@@ -40,8 +40,6 @@ const SEO = ({ title, description, url, thumbnail, isPage, isBlogPost }) => {
   const pageURL = url || settings.url
   const pageThumbnail = thumbnail || null
   
-  console.log()
-
   return (
     <Helmet>
       {/* General tags */}
