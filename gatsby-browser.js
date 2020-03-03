@@ -1,5 +1,6 @@
 const React = require("react")
 const Layout = require("./src/template/Layout").default
+require('./src/assets/styles/scss/general.scss')
 
 exports.wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get

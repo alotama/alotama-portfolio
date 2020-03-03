@@ -8,9 +8,8 @@
 import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import loadable from '@loadable/component'
-import "../assets/styles/scss/general.scss"
+import Navbar from '../components/navbar';
 
-const Navbar = loadable(() => import(`../components/navbar`));
 const Footer = loadable(() => import(`../components/footer/Footer`));
 
 import ReactBreakpoints from "react-breakpoints"
