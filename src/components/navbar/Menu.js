@@ -23,9 +23,13 @@ const Menu = () => {
     setTimeout(hideClipboard, 2000)
     e.clearSelection()
   }
+
+  /*
+    Se está verificando que state sea true porque, al iniciar la aplicación, el contexto es un objeto vacío por lo que el ternary es true y devuelve 'js-open'.
+  */
   
   return (
-    <div className={`navbar__content ${!state && 'js-open'}`}>
+    <div className={`navbar__content ${state === true ? 'js-open' : ''}`}>
       <ul className="navbar__menu">
         <li className="navbar__item">
           <Link to="/sobre-mi" onClick={() => setState(state => !state)}>Sobre mí</Link>
