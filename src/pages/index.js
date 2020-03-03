@@ -1,52 +1,32 @@
 import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../template/Layout"
+import loadable from '@loadable/component'
+import useHomeData from '../utils/use-homeData';
 import SEO from "../components/SEO"
-import Hero from "../components/main/Hero"
-import Main from "../components/main/Main"
 
-export const query = graphql`
-  query HomeQuery {
-    projects: allFile(filter: {name: {regex: "/(?:project\\-)/"}}, limit: 5) {
-      edges {
-        node {
-          childMarkdownRemark {
-            frontmatter {
-              title
-              tags
-              url
-              thumbnail
-            }
-          }
-        }
-      }
-    }
-    home: ghostPage(slug: {eq: "home"}) {
-      canonical_url
-      meta_title
-      meta_description
-      title
-      html
-    }
-  }
-`
+const Hero = loadable(() => import(`../components/main/Hero`));
+const Main = loadable(() => import(`../components/main/Main`));
 
-const IndexPage = props => {
-  const { data } = props
+const IndexPage = () => {
+  const { home, projects } = useHomeData()
   return (
-    <Layout>
-      <SEO title={data.home.meta_title} />
+    <>
+      <SEO
+        title={home.meta_title}
+        description={home.meta_description}
+        url={home.canonical_url}
+        isPage
+      />
       <section id="hero__container">
         <Hero
-          title={data.home.title}
-          text={data.home.html}
+          title={home.title}
+          text={home.html}
         />
       </section>
       <main id="main__container">
         <div className="master-container">
           <div className="master-container-padding">
             <div className="row" id="work">
-              {data.projects.edges.map((work, index) => (
+              {projects.edges.map((work, index) => (
                 <Main
                   key={index}
                   linkTo={work.node.url}
@@ -60,7 +40,7 @@ const IndexPage = props => {
           </div>
         </div>
       </main>
-    </Layout>
+    </>
   )
 }
 

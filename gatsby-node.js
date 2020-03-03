@@ -1,3 +1,10 @@
+const LoadablePlugin = require('@loadable/webpack-plugin')
+exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, actions }) => {
+  actions.setWebpackConfig({
+    plugins: [new LoadablePlugin()]
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -6,7 +13,19 @@ exports.createPages = async ({ graphql, actions }) => {
       allGhostPost {
         edges {
           node {
+            title
+            canonical_url
+            meta_title
+            meta_description
+            feature_image
+            tags {
+              name
+            }
+            published_at(formatString: "D [de] MMMM YYYY")
+            created_at
+            updated_at
             slug
+            html
             id
           }
         }
@@ -20,13 +39,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.allGhostPost.edges || []
   posts.forEach(edge => {
-    const id = edge.node.id
+    const data = edge.node
     const path = `/blog/${edge.node.slug}`
 
     createPage({
       path,
-      component: require.resolve("./src/pages/post.js"),
-      context: { id },
+      component: require.resolve("./src/template/post.js"),
+      context: { data },
     })
   })
 }

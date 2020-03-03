@@ -1,8 +1,15 @@
+const ghostConfig = require('./ghost-config');
+
 require("dotenv").config({
   path: '.env',
 })
 
+
+
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://www.alotama.com`,
+  },
   plugins: [
     `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
@@ -64,18 +71,85 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-ghost`,
+      options: process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
-          apiUrl: `https://admin.alotama.com`,
-          contentApiKey: process.env.GHOST_CONTENT_API_KEY,
-          version: `v3` // Ghost API version, optional, defaults to "v3".
-                        // Pass in "v2" if your Ghost install is not on 3.0 yet!!!
+        production: true,
+        generateStatsFile: true,
+        analyzerMode: 'static',
+        disable: !process.env.BUNDLE_ANALYZE
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data/`,
+        path: `${__dirname}/src/content/`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-rollbar",
+      options: {
+        accessToken: process.env.ROLLBAR_KEY,
+        captureUncaught: true,
+        captureUnhandledRejections: true,
+        payload: {
+          environment: "production"
+        }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: process.env.YOUR_HOTJAR_ID,
+        sv: process.env.YOUR_HOTJAR_SNIPPET_VERSION
+      },
+    },
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        query: `
+          {
+            allGhostPost {
+              edges {
+                  node {
+                    id
+                    slug
+                    updated_at
+                    created_at
+                    feature_image
+                  }
+              }
+            }
+            allGhostPage {
+              edges {
+                  node {
+                    id
+                    slug
+                    updated_at
+                    created_at
+                    feature_image
+                  }
+              }
+            }
+          }`,
+        mapping: {
+          allGhostPost: {
+            sitemap: `posts`,
+          },
+          allGhostPage: {
+            sitemap: `pages`,
+          },
+        },
+        exclude: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+          `/offline-plugin-app-shell-fallback`,
+        ],
+        createLinkInHead: true,
       },
     },
     {
