@@ -6,6 +6,8 @@ import { HamburgerContext } from '../../utils/context/hamburgerContext'
 const Menu = () => {
   const [state, setState] = useContext(HamburgerContext);
 
+  console.log(state)
+
   function onSuccess(e) {
     const clipboardCard = document.querySelector(".clipboard__card")
     const clipboardContainer = document.querySelector(".clipboard__container")
