@@ -2,7 +2,7 @@
   "name": "alotama-website",
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "Sebastián Tamashiro <sebastian@alotama.com>",
   "dependencies": {
     "@loadable/babel-plugin": "^5.12.0",
