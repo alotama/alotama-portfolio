@@ -8,8 +8,7 @@
     "@loadable/babel-plugin": "^5.12.0",
     "@loadable/component": "^5.12.0",
     "@loadable/webpack-plugin": "^5.12.0",
-    "babel-preset-gatsby": "^0.2.29",
-    "dotenv": "^8.0.0",
+    "babel-preset-gatsby": "^0.2.29",    
     "gatsby": "^2.19.27",
     "gatsby-image": "^2.1.4",
     "gatsby-plugin-advanced-sitemap": "^1.5.1",
@@ -39,6 +38,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "dotenv": "^8.0.0",
     "eslint-config-react-app": "^4.0.1",
     "prettier": "^1.17.1"
   },
