@@ -1,6 +1,6 @@
 import React from "react"
 
-const Text = ({ type, title, className }) => {
+export const Text = ({ type, title, className }) => {
   let text = title.split("")
 
   text = text.map((t, i) => {
@@ -31,14 +31,16 @@ const Text = ({ type, title, className }) => {
   }
 }
 
-const Div = ({ children }) => <div className="hero__title">{children}</div>
+export const Title = ({ type, title, className }) => {
+  let classNames = []
+  
+  if (className) {
+    classNames.push(className)
+  }
 
-const Title = ({ type, title }) => {
   return (
-    <Div>
+    <div className={classNames.join(' ')}>
       <Text type={type} title={title} />
-    </Div>
+    </div>
   )
 }
-
-export { Title, Text }

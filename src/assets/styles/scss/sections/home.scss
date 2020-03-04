@@ -1,0 +1,47 @@
+@import '../general.scss';
+
+.home__last-posts {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  margin-bottom: var(--space-xl);
+  .last-posts__title {
+    margin-bottom: var(--space-normal);
+    grid-row: 1;
+    grid-column: 1/-1;
+  }
+  .last-posts__container {
+    grid-row: 2/-1;
+    @media #{$large} {
+      grid-column: 1/-1;
+      grid-template-columns: repeat(3, 1fr);
+      display: grid;
+      column-gap: 1rem;
+    }
+    .last-posts__item {
+      &:not(:last-of-type) {
+        margin-bottom: var(--space-md);
+      }
+    }
+  }
+}
+
+.home__projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  .projects__title {
+    margin-bottom: var(--space-normal);
+  }
+  .projects__container {
+    grid-row: 2/-1;
+    .work__container {
+      &:not(:last-of-type) {
+        margin-bottom: var(--space-md);
+        @media #{$large} {
+          margin-bottom: var(--space-giant);
+        }
+      }
+    }
+  }
+}
