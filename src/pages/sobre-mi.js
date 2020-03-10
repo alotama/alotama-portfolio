@@ -12,6 +12,7 @@ import '../assets/styles/scss/sections/about.scss'
 
 const AboutPage = () => {
   const { about, social, skills, lastPost } = useAboutData()
+  console.log('lastPost ->', lastPost)
   return (
     <>
       <SEO
@@ -35,7 +36,7 @@ const AboutPage = () => {
       </main>
       <aside className='lastWorks'>
         <div className='master-container'>
-         <LatestWork
+          <LatestWork
             href={lastPost.childMarkdownRemark.frontmatter.url}
             title={lastPost.childMarkdownRemark.frontmatter.title}
             source={lastPost.childMarkdownRemark.frontmatter.thumbnail}
