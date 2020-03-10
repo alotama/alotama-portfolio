@@ -25,13 +25,17 @@ const useAboutData = () => {
         html
       }
     }
-    lastPost: file {
-      childMarkdownRemark {
-        frontmatter {
-          url
-          title
-          thumbnail
-          tags
+    lastPost: allFile(filter: {name: {regex: "/(?:project\\-)/"}}, limit: 1, sort: {order: ASC, fields: birthtime}) {
+      edges {
+        node {
+          childMarkdownRemark {
+            frontmatter {
+              title
+              tags
+              url
+              thumbnail
+            }
+          }
         }
       }
     }
