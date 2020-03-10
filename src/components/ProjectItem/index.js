@@ -1,6 +1,5 @@
 import React from "react"
 import { Text } from "../assets/Title"
-import './projectItem.scss'
 
 export default ({ source, sourceSet, altText, title, category, linkTo }) => {
   return (
