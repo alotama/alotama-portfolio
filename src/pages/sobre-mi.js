@@ -13,7 +13,6 @@ import '../components/ProjectItem/projectItem.scss'
 
 const AboutPage = () => {
   const { about, social, skills, lastPost } = useAboutData()
-  console.log('lastPost ->', lastPost)
   return (
     <>
       <SEO
