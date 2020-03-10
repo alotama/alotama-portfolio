@@ -1,6 +1,6 @@
 import React from "react"
 import loadable from '@loadable/component'
-import useHomeData from '../utils/use-homeData';
+import useHomeData from '../utils/useStaticQueries/use-homeData';
 import SEO from "../components/SEO"
 import { Title } from "../components/assets/Title"
 import '../assets/styles/scss/sections/home.scss'

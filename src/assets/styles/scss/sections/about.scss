@@ -31,7 +31,7 @@ ul.skills__container {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto repeat(2, 1fr);
   width: 100%;
-  margin: var(--space-xl) 0 var(--space-giant);
+  margin: var(--space-xl) 0 var(--space-xl);
   @media #{$medium} {
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: minmax(1rem, 9rem) repeat(auto-fit, minmax(18rem, 1fr));

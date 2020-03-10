@@ -2,7 +2,7 @@ import React from "react"
 import SEO from "../components/SEO"
 import loadable from '@loadable/component'
 import { Text } from "../components/assets/Title"
-import useBlogData from '../utils/use-blogData'
+import useBlogData from '../utils/useStaticQueries/use-blogData'
 import "../assets/styles/scss/sections/blog.scss"
 
 const PostItem = loadable(() => import(`../components/PostItem`));

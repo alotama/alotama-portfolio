@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path,
       component: require.resolve("./src/template/post.js"),
-      context: { data },
+      context: { data, id: data.id },
     })
   })
 }
