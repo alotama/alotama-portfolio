@@ -169,42 +169,6 @@ figure {
   }
 }
 
-.work__link * {
-  cursor: pointer;
-}
-
-#work {
-  .col-xs-12:not(:last-of-type) {
-    .work__container {
-      margin-bottom: var(--space-giant);
-    }
-  }
-}
-
-.work__container {
-  .work__thumbnail {
-    border-radius: 6px;
-    height: 100%;
-    overflow: hidden;
-    margin-bottom: var(--space-normal);
-
-    @media #{$large} {
-      height: 480px;
-    }
-
-    @include add_transition(0.3s, linear);
-
-    img {
-      @include add_transition(0.25s, linear);
-    }
-  }
-
-  .wrapper-content {
-    min-height: 100%;
-    position: relative;
-  }
-}
-
 .color-red {
   color: $red;
 }

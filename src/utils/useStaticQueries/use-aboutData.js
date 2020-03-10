@@ -25,16 +25,13 @@ const useAboutData = () => {
         html
       }
     }
-    lastPost: allGhostPost(sort: {fields: id, order: DESC}) {
-      edges {
-        node {
+    lastPost: file {
+      childMarkdownRemark {
+        frontmatter {
+          url
           title
-          feature_image
-          tags {
-            name
-          }
-          ghostId
-          canonical_url
+          thumbnail
+          tags
         }
       }
     }

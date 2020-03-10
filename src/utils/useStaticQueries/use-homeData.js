@@ -24,6 +24,16 @@ const useHomeData = () => {
         title
         html
       }
+      lastPosts: allGhostPost(limit: 3, sort: {order: DESC, fields: published_at}) {
+        edges {
+          node {
+            title
+            slug
+            feature_image
+            excerpt
+          }
+        }
+      }
     }`)
 
   return data

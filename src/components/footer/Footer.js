@@ -2,8 +2,8 @@ import React from "react"
 
 const Footer = () => {
   return (
-    <footer className='footer'>
-      <div className="master-container">
+    <footer className='master-container'>
+      <div className="footer">
         <article className="footer__copyright">
           <p> Copyright {new Date().getFullYear()} </p>
         </article>

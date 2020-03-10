@@ -1,0 +1,21 @@
+@import '../../assets/styles/scss/general.scss';
+
+.last-posts__title {
+  margin-bottom: var(--space-normal);
+  grid-row: 1;
+  grid-column: 1/-1;
+}
+.last-posts__container {
+  grid-row: 2/-1;
+  @media #{$large} {
+    grid-column: 1/-1;
+    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    column-gap: 1rem;
+  }
+  .last-posts__item {
+    &:not(:last-of-type) {
+      margin-bottom: var(--space-md);
+    }
+  }
+}

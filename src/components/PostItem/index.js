@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { Text } from "../assets/Title"
 import { Media } from "react-breakpoints"
 
-const useExcerpt = ({excerpt}) => (
+const useExcerpt = ({ excerpt }) => (
   <Media>
     {({ currentBreakpoint }) => {
       switch (currentBreakpoint) {
@@ -16,20 +16,25 @@ const useExcerpt = ({excerpt}) => (
   </Media>
 )
 
-const PostItem = ({ slug, id, source, sourceSet, altText, title, excerpt, index, onUse }) => {
+
+export default ({ slug, id, source, altText, title, excerpt, className, index, onUse }) => {
+  let classNames = ["blogGrid_post"]
+
+  if (className) {
+    classNames.push(className)
+  }
+
   return (
-    <Link to={`/blog/${slug}`} id={id}>
-      <article className={"blogGrid_post"} key={index}>
+    <article className={classNames.join(' ')} key={index}>
+      <Link to={`/blog/${slug}`} id={id}>
         <figure className={"post_thumbnail"}>
-          <img src={source} srcSet={sourceSet} alt={altText} /> 
+          <img src={source} alt={altText} />
         </figure>
         <div className={"post_content"}>
           <Text type="h2" title={title} />
-          {onUse ? useExcerpt({excerpt}) : <p>{excerpt}</p>}
+          {onUse ? useExcerpt({ excerpt }) : <p>{excerpt}</p>}
         </div>
-      </article>
-    </Link>
+      </Link>
+    </article>
   )
 }
-
-export default PostItem

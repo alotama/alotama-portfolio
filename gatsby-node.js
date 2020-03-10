@@ -6,7 +6,11 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, ac
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
+
+  createRedirect({ fromPath: '/home', toPath: '/', isPermanent: true, statusCode: 200 })
+  // createRedirect({ fromPath: '/home', toPath: '/', isPermanent: true })
+  // createRedirect({ fromPath: '/home', toPath: '/', isPermanent: true })
 
   const result = await graphql(`
     query AllPostQuery {
@@ -45,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path,
       component: require.resolve("./src/template/post.js"),
-      context: { data },
+      context: { data, id: data.id },
     })
   })
 }
