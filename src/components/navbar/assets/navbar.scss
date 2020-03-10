@@ -248,7 +248,7 @@ $nav-item-nb: 6;
     pointer-events: all;
     opacity: 1;
     @media #{$medium} {
-      background-color: transparent;
+      background-color: white;
     }
 
     &:after {

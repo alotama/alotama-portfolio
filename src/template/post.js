@@ -74,6 +74,7 @@ const post = ({ data, pageContext }) => {
               <img
                 srcSet={pageContextData.feature_image}
                 src={pageContextData.feature_image}
+                alt={pageContextData.title}
               />
             </figure>
 
