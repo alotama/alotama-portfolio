@@ -19,7 +19,15 @@ export const query = graphql`
         node {
           title
           slug
-          feature_image
+          featureImageSharp {
+            childImageSharp {
+              fluid(maxWidth: 310) {
+                src
+                srcSet
+                sizes
+              }
+            }
+          }
           excerpt
           id
         }
@@ -71,11 +79,12 @@ const post = ({ data, pageContext }) => {
           <div className="master-container">
 
             <figure className={"featuredImages__content"}>
-              <img
-                srcSet={pageContextData.feature_image}
-                src={pageContextData.feature_image}
-                alt={pageContextData.title}
-              />
+              <picture>
+                <source
+                    srcset={pageContextData.featureImageSharp.childImageSharp.fluid.srcSet}
+                    sizes={pageContextData.featureImageSharp.childImageSharp.fluid.sizes} />
+                <img src={pageContextData.featureImageSharp.childImageSharp.fluid.src} alt={pageContextData.title} />
+              </picture>
             </figure>
 
           </div>
@@ -101,7 +110,9 @@ const post = ({ data, pageContext }) => {
                     slug={article.node.slug}
                     key={index}
                     id={article.node.id}
-                    source={article.node.feature_image}
+                    source={article.node.featureImageSharp.childImageSharp.fluid.src}
+                    srcSet={article.node.featureImageSharp.childImageSharp.fluid.src}
+                    sizes={article.node.featureImageSharp.childImageSharp.fluid.sizes}
                     altText={article.node.title}
                     excerpt={article.node.excerpt}
                     title={article.node.title}

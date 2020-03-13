@@ -21,7 +21,15 @@ exports.createPages = async ({ graphql, actions }) => {
             canonical_url
             meta_title
             meta_description
-            feature_image
+            featureImageSharp {
+              childImageSharp {
+                 fluid(maxWidth: 1024) {
+                  src
+                  srcSet
+                  sizes
+                }
+              }
+            }
             tags {
               name
             }

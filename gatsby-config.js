@@ -9,8 +9,11 @@ module.exports = {
     siteUrl: `https://www.alotama.com`,
   },
   plugins: [
+    'gatsby-plugin-robots-txt',
     `gatsby-plugin-sass`,
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -73,6 +76,33 @@ module.exports = {
       options: process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/content/`,
+      },
+    },
+    {
+        resolve: `gatsby-plugin-ghost-images`,
+        options: {
+            // An array of node types and image fields per node
+            // Image fields must contain a valid absolute path to the image to be downloaded
+            lookup: [
+                {
+                    type: `GhostPost`,
+                    imgTags: [`feature_image`],
+                },
+            ],
+            // Additional condition to exclude nodes 
+            // Takes precedence over lookup
+            exclude: node => (
+                node.ghostId === undefined
+            ),
+            // Additional information messages useful for debugging
+            verbose: true,
+        },
+    },
+    {
       resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
         production: true,
@@ -80,13 +110,6 @@ module.exports = {
         analyzerMode: 'static',
         disable: !process.env.BUNDLE_ANALYZE
       }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: `${__dirname}/src/content/`,
-      },
     },
     {
       resolve: "gatsby-plugin-rollbar",
