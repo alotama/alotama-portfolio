@@ -38,7 +38,9 @@ const IndexPage = () => {
                   slug={article.node.slug}
                   key={index}
                   id={article.node.id}
-                  source={article.node.feature_image}
+                  source={article.node.featureImageSharp.childImageSharp.fluid.src}
+                  sourceSet={article.node.featureImageSharp.childImageSharp.fluid.srcSet}
+                  sizes={article.node.featureImageSharp.childImageSharp.fluid.sizes}
                   altText={article.node.title}
                   excerpt={article.node.excerpt}
                   title={article.node.title}
@@ -54,7 +56,9 @@ const IndexPage = () => {
               <ProjectItem
                 key={index}
                 linkTo={work.node.url}
-                source={work.node.childMarkdownRemark.frontmatter.thumbnail}
+                source={work.node.childMarkdownRemark.frontmatter.thumbnail.childImageSharp.fluid.src}
+                sourceSet={work.node.childMarkdownRemark.frontmatter.thumbnail.childImageSharp.fluid.srcSet}
+                sizes={work.node.childMarkdownRemark.frontmatter.thumbnail.childImageSharp.fluid.sizes}
                 altText={work.node.childMarkdownRemark.frontmatter.title}
                 title={work.node.childMarkdownRemark.frontmatter.title}
                 category={work.node.childMarkdownRemark.frontmatter.tags}

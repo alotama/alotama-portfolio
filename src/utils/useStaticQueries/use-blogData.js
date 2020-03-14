@@ -17,13 +17,21 @@ const useBlogData = () => {
           tags {
             name
           }
-          feature_image
+          featureImageSharp {
+            childImageSharp {
+              fluid(maxWidth:1000, toFormat: WEBP) {
+                src
+                srcSet
+                sizes
+              }
+            }
+          }
           id
         }
       }
     }
   }`)
-  
+
   return data
 }
 

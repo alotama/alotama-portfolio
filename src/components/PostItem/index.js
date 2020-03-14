@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { Text } from "../assets/Title"
 import { Media } from "react-breakpoints"
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 const useExcerpt = ({ excerpt }) => (
   <Media>
@@ -17,7 +18,7 @@ const useExcerpt = ({ excerpt }) => (
 )
 
 
-export default ({ slug, id, srcSet, sizes, source, altText, title, excerpt, className, index, onUse }) => {
+export default ({ slug, id, sourceSet, sizes, source, altText, title, excerpt, className, index, onUse }) => {
   let classNames = ["blogGrid_post"]
 
   if (className) {
@@ -28,12 +29,17 @@ export default ({ slug, id, srcSet, sizes, source, altText, title, excerpt, clas
     <article className={classNames.join(' ')} key={index}>
       <Link to={`/blog/${slug}`} id={id}>
         <figure className={"post_thumbnail"}>
-          <picture>
-            <source
-              srcset={srcSet}
-              sizes={sizes} />
-            <img src={source} alt={altText} />
-          </picture>
+          <LazyLoadComponent
+            height={120}
+            width={300}
+          >
+            <picture>
+              <source
+                srcSet={sourceSet}
+                sizes={sizes} />
+              <img src={source} alt={altText} />
+            </picture>
+          </LazyLoadComponent>
         </figure>
         <div className={"post_content"}>
           <Text type="h2" title={title} />
