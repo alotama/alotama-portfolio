@@ -4,6 +4,7 @@ import loadable from '@loadable/component'
 import { graphql } from "gatsby"
 import Prism from "prismjs"
 import { Title, Text } from "../components/assets/Title"
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 import "prismjs/themes/prism.css"
 import "../assets/styles/scss/sections/post.scss"
@@ -19,7 +20,15 @@ export const query = graphql`
         node {
           title
           slug
-          feature_image
+          featureImageSharp {
+            childImageSharp {
+              fluid(maxWidth: 310) {
+                src
+                srcSet
+                sizes
+              }
+            }
+          }
           excerpt
           id
         }
@@ -71,11 +80,12 @@ const post = ({ data, pageContext }) => {
           <div className="master-container">
 
             <figure className={"featuredImages__content"}>
-              <img
-                srcSet={pageContextData.feature_image}
-                src={pageContextData.feature_image}
-                alt={pageContextData.title}
-              />
+              <picture>
+                <source
+                  srcset={pageContextData.featureImageSharp.childImageSharp.fluid.srcSet}
+                  sizes={pageContextData.featureImageSharp.childImageSharp.fluid.sizes} />
+                <img src={pageContextData.featureImageSharp.childImageSharp.fluid.src} alt={pageContextData.title} />
+              </picture>
             </figure>
 
           </div>
@@ -89,28 +99,32 @@ const post = ({ data, pageContext }) => {
             </div>
           </div>
         </main>
-        <aside className="lastPosts">
-          <div className="master-container">
-            <Title type="h2" title={'Otros artículos.'} className="last-posts__title" />
-            <section className="last-posts__container">
-              {lastPosts.edges.map((article, index) => {
-                return (
-                  <PostItem
-                    onUse={false}
-                    className={"last-posts__item"}
-                    slug={article.node.slug}
-                    key={index}
-                    id={article.node.id}
-                    source={article.node.feature_image}
-                    altText={article.node.title}
-                    excerpt={article.node.excerpt}
-                    title={article.node.title}
-                  />
-                )
-              })}
-            </section>
-          </div>
-        </aside>
+        <LazyLoadComponent>
+          <aside className="lastPosts">
+            <div className="master-container">
+              <Title type="h2" title={'Otros artículos.'} className="last-posts__title" />
+              <section className="last-posts__container">
+                {lastPosts.edges.map((article, index) => {
+                  return (
+                    <PostItem
+                      onUse={false}
+                      className={"last-posts__item"}
+                      slug={article.node.slug}
+                      key={index}
+                      id={article.node.id}
+                      source={article.node.featureImageSharp.childImageSharp.fluid.src}
+                      sourceSet={article.node.featureImageSharp.childImageSharp.fluid.src}
+                      sizes={article.node.featureImageSharp.childImageSharp.fluid.sizes}
+                      altText={article.node.title}
+                      excerpt={article.node.excerpt}
+                      title={article.node.title}
+                    />
+                  )
+                })}
+              </section>
+            </div>
+          </aside>
+        </LazyLoadComponent>
       </div>
     </>
   )
