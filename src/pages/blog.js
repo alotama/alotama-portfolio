@@ -35,7 +35,7 @@ const blog = () => {
 
 
           <article className={"blogGrid_title"}>
-            <Text type="h2" title="Más artículos." />
+            <Text type="h1" title="Más artículos del blog." />
           </article>
 
           <section className={"blogGrid_moreRecent"}>
