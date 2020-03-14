@@ -16,7 +16,7 @@ const HighlightPost = ({ slug, id, src, title, category }) => {
           <article className={"highlightPost_content"}>
             <span className={"recentPost_title"}>Último artículo</span>
             <Text
-              type="h1"
+              type="h2"
               title={title}
               className={"recentPost_heading"}
             />

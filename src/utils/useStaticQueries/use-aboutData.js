@@ -33,7 +33,15 @@ const useAboutData = () => {
               title
               tags
               url
-              thumbnail
+              thumbnail {
+                childImageSharp {
+                  fluid(maxWidth:1000) {
+                    src
+                    srcSet
+                    sizes
+                  }
+                }
+              }
             }
           }
         }
