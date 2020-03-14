@@ -11,7 +11,15 @@ const useHomeData = () => {
                 title
                 tags
                 url
-                thumbnail
+                thumbnail {
+                  childImageSharp {
+                    fluid(maxWidth:1000, toFormat: WEBP) {
+                      src
+                      srcSet
+                      sizes
+                    }
+                  }
+              	}
               }
             }
           }
@@ -29,7 +37,15 @@ const useHomeData = () => {
           node {
             title
             slug
-            feature_image
+            featureImageSharp {
+              childImageSharp {
+                fluid(maxWidth: 725, webpQuality: 10, toFormat: WEBP) {
+                  src
+                  srcSet
+                  sizes
+                }
+              }
+            }
             excerpt
           }
         }

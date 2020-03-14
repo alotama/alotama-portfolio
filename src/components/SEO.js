@@ -27,11 +27,11 @@ const SEO = ({ title, description, url, thumbnail, isPage, isBlogPost }) => {
   
   const getPageTitle = (context) => {
     if (context) {
-      return `${title} | Tama. Sebastián. – Desarrollador Front-End`
+      return `${title} | Sebastián A. Tamashiro – Desarrollador Front-End`
     } else if (isBlogPost) {
-      return `${title} | Tama. Sebastián.`
+      return `${title} | Sebastián A. Tamashiro`
     } else {
-      return `${settings.title} | Tama. Sebastián. – Desarrollador Front-End`
+      return `${settings.title} | Sebastián A. Tamashiro – Desarrollador Front-End`
     }
   }
 
