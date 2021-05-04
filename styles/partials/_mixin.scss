@@ -3,3 +3,11 @@
   width: 100%;
   margin: 0 auto;
 }
+
+@mixin last-point {
+  &::after {
+    content: '.';
+    color: $primary;
+    font-size: 1em;
+  }
+}

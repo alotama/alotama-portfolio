@@ -1,0 +1,5 @@
+@import '../partials/variables.scss';
+
+.master_container {
+  @include master-container;
+}

@@ -1,0 +1,16 @@
+@import '../partials/variables.scss';
+
+.article {
+  .articleCover {
+    border: 4px solid $black;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .articleTitle {
+    @include title-primary-regular;
+    margin-bottom: 1.5rem;
+  }
+  .articleExcerpt {
+    margin-bottom: 1.5rem;
+  }
+}

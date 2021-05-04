@@ -37,8 +37,8 @@ const AboutPage = () => {
           <h2>Herramientas</h2>
         </div>
         <ul>
-          {ListSkills.map(item => (
-            <li>{item}</li>
+          {ListSkills.map((item, index) => (
+            <li key={`${item}-${index}`}>{item}</li>
           ))}
         </ul>
         <ProjectCluster

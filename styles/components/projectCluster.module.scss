@@ -1,0 +1,44 @@
+@import '../partials/variables.scss';
+
+.project {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rem;
+  .projectInfo {
+    width: 24rem;
+    margin-right: 1rem;
+    .projectTitle {
+      .featuredProject {
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 1;
+        display: block;
+      }
+      .title {
+        @include last-point;
+        font-size: 3.2rem;
+        line-height: 0.8;
+        letter-spacing: -0.04em;
+      }
+      .description {
+        font-size: 1.4rem;
+        line-height: 0.8;
+        font-weight: 300;
+      }
+    }
+    .projectCategory {
+      list-style: none;
+      margin: 1.5rem 0 0 0 0;
+      padding: 0;
+    }
+  }
+  .projectCoverPage {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    figcaption {
+      display: none;
+    }
+  }
+}

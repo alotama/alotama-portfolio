@@ -1,15 +1,24 @@
 import React from 'react'
+import Image from 'next/image'
+import styles from '../../styles/components/article.module.scss'
 
-const ArticleCluster = () => {
+const ArticleCluster = ({ imageSrc, title, excerpt, publishDate, duration }) => {
   return (
-    <article>
-      <figure></figure>
-      <div>
-        <h3>Contruir una API con GraphQL y MongoDB usando Express.js</h3>
-        <p>Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web</p>
+    <article className={styles.article}>
+      <figure className={styles.articleCover}>
+        <Image
+          src={imageSrc}
+          layout="intrinsic"
+          width={328}
+          height={252}
+        />
+      </figure>
+      <div className={styles.articleInfo}>
+        <h3 className={styles.articleTitle}>{title}</h3>
+        <p className={styles.articleExcerpt}>{excerpt}</p>
       </div>
-      <div>
-        <small>15 de Abril 2021 — 7 minutos de lectura</small>
+      <div className={styles.articleDetail}>
+        <small>{`${publishDate}-${duration}`}</small>
       </div>
     </article>
   )

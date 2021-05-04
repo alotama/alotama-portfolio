@@ -1,0 +1,51 @@
+@import '../partials/variables.scss';
+
+$margin-gap: 1.3rem;
+
+.hero {
+  height: 31rem;
+  display: block;
+  margin-top: 5rem;
+  .heroWrapper {
+    text-align: center;
+    .heroContainer {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      row-gap: $margin-gap;
+      margin-bottom: $margin-gap;
+      .heroTitle {
+        grid-column: 3/11;
+        grid-row: 1/1;
+        @include title-primary-large;
+        @include last-point;
+      }
+      .heroContent {
+        grid-column: 4/10;
+        grid-row: 2/2;
+      }
+    }
+  }
+}
+
+.heroButtons {
+  a {
+    margin-right: 1rem;
+  }
+}
+
+.articlesContainer {
+  margin-bottom: 10rem;
+  .articlesTitle {
+    @include title-primary-medium;
+    @include last-point;
+    margin-bottom: 4rem;
+  }
+  .articlesLayout {
+    display: flex;
+    article {
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

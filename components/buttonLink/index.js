@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from '../../styles/components/button.module.scss'
 
-const Button = ({ secondary, children }) => {
-  
+const ButtonLink = React.forwardRef(({ onClick, href, secondary, children }, ref) => {
   let buttonBasic = [styles.button]
 
   if (secondary) {
@@ -10,13 +9,11 @@ const Button = ({ secondary, children }) => {
   }
 
   const buttonClass = buttonBasic.join(' ');
-
-
   return (
-    <button className={buttonClass}>
+    <a className={buttonClass} href={href} onClick={onClick} ref={ref}>
       {children}
-    </button>
+    </a>
   )
-}
+})
 
-export default Button
+export default ButtonLink;
