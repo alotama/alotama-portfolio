@@ -1,0 +1,20 @@
+@import '../partials/variables.scss';
+
+.footer {
+  margin-top: 6rem;
+  .footer__container {
+    @include master-container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer__socialLinks {
+    list-style: none;
+    li {
+      display: inline-block;
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

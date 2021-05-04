@@ -1,0 +1,25 @@
+@import '../partials/variables.scss';
+
+.header {
+  background-color: $white;
+  @include master-container;
+  padding: 1rem 0;
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header__navbar {
+    display: flex;
+    align-items: center;
+    a {
+      margin-right: 1rem
+    }
+  }
+}
+
+.headerLenguage {
+  border: 1px solid $black;
+  padding: 0.25rem 1.25rem;
+  border-radius: 4px;
+}
