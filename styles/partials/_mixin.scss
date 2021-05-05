@@ -11,3 +11,9 @@
     font-size: 1em;
   }
 }
+
+@mixin layout-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 1.3rem;
+}

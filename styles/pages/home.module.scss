@@ -3,15 +3,13 @@
 $margin-gap: 1.3rem;
 
 .hero {
-  height: 31rem;
+  height: $heightHero;
   display: block;
   margin-top: 5rem;
   .heroWrapper {
     text-align: center;
     .heroContainer {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      row-gap: $margin-gap;
+      @include layout-grid;
       margin-bottom: $margin-gap;
       .heroTitle {
         grid-column: 3/11;

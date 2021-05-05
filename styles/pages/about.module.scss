@@ -1,0 +1,82 @@
+@import '../partials/variables.scss';
+
+.heroAbout {
+  height: $heightHero;
+  .heroContent {
+    margin: 8rem 0 1.3rem 0;
+    .heroTitle {
+      @include title-primary-large;
+      @include last-point;
+    }
+    .heroSubtitle {
+      @include title-secondary-large;
+      color: $primary;
+    }
+  }
+  .heroSocialLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    .heroSocialLinks_item {
+      display: inline-block;
+      &:not(:last-of-type) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+.intentionAbout {
+  @include layout-grid;
+  position: relative;
+  .intentionAbout_content {
+    grid-column: 1/10;
+    position: relative;
+    z-index: 1;
+    margin-top: 0.5rem;
+    margin-bottom: 10rem;
+    padding-right: 1em;
+    .intentionFirst {
+      @include paragraph-large;
+      margin-bottom: 2.6rem;
+    }
+    .intentionSecond {
+      padding-right: 12rem;
+    }
+  } 
+  .intentionAbout_circle {
+    grid-column: 6/13;
+    position: absolute;
+    top: -18rem;
+    height: 30rem;
+    width: 100%;
+    background-color: $primary;
+    border-radius: 100%;
+    z-index: 0;
+  }
+}
+
+.skillsAbout {
+  .skillsAbout_container {
+    margin-bottom: 1.8rem;
+    .skillsAbout_title {
+      @include title-primary-medium;
+    }
+  }
+  .skillsAbout_list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10rem 0;
+    .skillsAbout_item {
+      @include paragraph-semi-large;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+      &:not(:last-of-type) {
+        margin-right: 0.8rem;
+      }
+      &:nth-child(even) {
+        color: $primary;
+      }
+    }
+  }
+}

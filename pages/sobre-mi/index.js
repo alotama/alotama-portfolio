@@ -2,43 +2,47 @@ import React from 'react'
 import Layout from '../../components/layout'
 import ProjectCluster from '../../components/projectCluster'
 import { ListSkills, SocialLinks } from '../../utils'
+import styles from '../../styles/pages/about.module.scss'
 
 const AboutPage = () => {
   return (
     <Layout>
-      <section>
-        <div>
-          <h1>Sobre mí</h1>
-          <h2>Un nikkei viviendo en Argentina</h2>
+      <section className={styles.heroAbout}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Sobre mí</h1>
+          <h2 className={styles.heroSubtitle}>Un nikkei viviendo en Argentina</h2>
         </div>
-        <ul>
+        <ul className={styles.heroSocialLinks}>
           {SocialLinks.map((element, index) => (
-            <li key={`${element.label}-${index}`}><a href={element.link}>{element.label}</a></li>
+            <li className={styles.heroSocialLinks_item} key={`${element.label}-${index}`}><a href={element.link}>{element.label}</a></li>
           ))}
         </ul>
       </section>
-      <section>
-        <article>
-          <p>
+      <section className={styles.intentionAbout}>
+        <article className={styles.intentionAbout_content}>
+          <p className={styles.intentionFirst}>
             Analizo, diseño y programo soluciones sencillas y escalables para mejorar la experiencia
             de los usuarios con los productos
             o servicios digitales en todas
             las fases de su desarrollo
           </p>
-          <p>
+          <p className={styles.intentionSecond}>
             Me llamo Sebastián A. Tamashiro, pero todos me dicen Tama. Soy un nikkei, descendiente de inmigrantes japoneses, que vive en Argentina. <br />
             <br />
             Siempre me fascinó la posibilidad que brinda internet para ayudar, conectar o mejorar la vida de las personas creando algo desde cero con unas cuantas líneas de código y un diseño de interfaz simple e intuitivo.
           </p>
         </article>
+        <aside className={styles.intentionAbout_circle}>
+          <div className={styles.brand}/>
+        </aside>
       </section>
-      <section>
-        <div>
-          <h2>Herramientas</h2>
+      <section className={styles.skillsAbout}>
+        <div className={styles.skillsAbout_container}>
+          <h2 className={styles.skillsAbout_title}>Herramientas</h2>
         </div>
-        <ul>
+        <ul className={styles.skillsAbout_list}>
           {ListSkills.map((item, index) => (
-            <li key={`${item}-${index}`}>{item}</li>
+            <li className={styles.skillsAbout_item} key={`${item}-${index}`}>{item}</li>
           ))}
         </ul>
         <ProjectCluster

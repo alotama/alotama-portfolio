@@ -1,7 +1,9 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import styles from '../../styles/components/button.module.scss'
 
-const Button = ({ secondary, children }) => {
+const Button = ({ secondary, children, href }) => {
+  const router = useRouter()
   
   let buttonBasic = [styles.button]
 
@@ -13,7 +15,7 @@ const Button = ({ secondary, children }) => {
 
 
   return (
-    <button className={buttonClass}>
+    <button className={buttonClass} onClick={() => href && router.push(href)}>
       {children}
     </button>
   )
