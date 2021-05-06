@@ -6,7 +6,7 @@ const Logo = () => {
     <Image
       src="/brand/logo.svg"
       alt="alotama."
-      height={24}
+      height={30}
       width={'100%'}
     />
   )

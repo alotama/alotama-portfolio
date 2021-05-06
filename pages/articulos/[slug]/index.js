@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown"
 import { getPostBySlug, getAllPosts } from '../../../lib/api'
 import Image from 'next/image'
 import styles from '../../../styles/pages/post.module.scss'
-import Prism from "Prismjs";
+import Prism from "prismjs";
 import { motion } from "framer-motion";
 
 const components = {

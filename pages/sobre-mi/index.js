@@ -3,6 +3,7 @@ import Layout from '../../components/layout'
 import ProjectCluster from '../../components/projectCluster'
 import { ListSkills, SocialLinks } from '../../utils'
 import styles from '../../styles/pages/about.module.scss'
+import Image from 'next/image'
 
 const AboutPage = () => {
   return (
@@ -32,9 +33,14 @@ const AboutPage = () => {
             Siempre me fascinó la posibilidad que brinda internet para ayudar, conectar o mejorar la vida de las personas creando algo desde cero con unas cuantas líneas de código y un diseño de interfaz simple e intuitivo.
           </p>
         </article>
-        <aside className={styles.intentionAbout_circle}>
-          <div className={styles.brand}/>
-        </aside>
+        <figure className={styles.intentionAbout_circle}>
+          <Image
+            src={'/brand/circle.svg'}
+            layout={'fixed'}
+            width={'600'}
+            height={'600'}
+          />
+        </figure>
       </section>
       <section className={styles.skillsAbout}>
         <div className={styles.skillsAbout_container}>

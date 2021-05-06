@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-import ButtonLink from '../components/ButtonLink'
+import ButtonLink from '../components/buttonLink'
 import Link from 'next/link'
 import ProjectCluster from '../components/projectCluster'
 import ArticleCluster from '../components/articleCluster'
