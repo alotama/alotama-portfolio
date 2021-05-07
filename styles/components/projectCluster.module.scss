@@ -10,9 +10,7 @@
     .projectTitle {
       .featuredProject {
         margin-bottom: 1rem;
-        font-size: 0.8rem;
-        font-weight: 700;
-        line-height: 1;
+        @include title-primary-small;
         display: block;
       }
       .title {
