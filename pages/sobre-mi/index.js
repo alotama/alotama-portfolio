@@ -36,9 +36,9 @@ const AboutPage = () => {
         <figure className={styles.intentionAbout_circle}>
           <Image
             src={'/brand/circle.svg'}
-            layout={'fixed'}
-            width={'600'}
-            height={'600'}
+            layout={'intrinsic'}
+            width={'1200'}
+            height={'1200'}
           />
         </figure>
       </section>

@@ -1,0 +1,51 @@
+@import "../partials/variables.scss";
+
+.heroProject {
+  @include layout-grid;
+  align-items: center;
+  box-sizing: border-box;
+  height: $heightHero;
+  .heroProject_container {
+    grid-column: 1/8;
+    .heroProject_content {
+      margin-bottom: 2.5rem;
+    }
+  }
+  .heroProject_figure {
+    grid-column: 9/13;
+  }
+}
+
+.heroProject_title {
+  @include title-primary-large;
+}
+.heroProject_category {
+  @include title-secondary-large;
+  cursor: pointer;
+  color: $primary;
+  position: relative;
+  &::after {
+    display: inline-block;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $primary;
+    position: absolute;
+    right: 0;
+    top: 36%;
+  }
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $primary;
+    position: absolute;
+    right: 0;
+    bottom: 36%;
+  }
+}

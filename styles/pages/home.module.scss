@@ -5,12 +5,13 @@ $margin-gap: 1.3rem;
 .hero {
   height: $heightHero;
   display: block;
-  margin-top: 5rem;
+  margin-top: 10rem;
+  // background-color: $primary;
   .heroWrapper {
     text-align: center;
     .heroContainer {
       @include layout-grid;
-      margin-bottom: $margin-gap;
+      margin-bottom: 2.5rem;
       .heroTitle {
         grid-column: 3/11;
         grid-row: 1/1;
@@ -26,8 +27,13 @@ $margin-gap: 1.3rem;
 }
 
 .heroButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   a {
-    margin-right: 1rem;
+    &:not(:last-of-type){
+      margin-right: 1rem;
+    }
   }
 }
 

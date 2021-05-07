@@ -1,10 +1,10 @@
 @import '../partials/variables.scss';
 
 .lastArticle {
-  height: $heightHero;
   @include layout-grid;
-  padding-top: 2rem;
+  align-items: center;
   box-sizing: border-box;
+  height: $heightHero;
   .lastArticle_post {
     grid-column: 1/8;
     .lastArticleSection {
@@ -20,7 +20,7 @@
 }
 
 .lastArticle_content {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   .lastArticle_detail {
     margin-bottom: 1.35rem;
     display: block;

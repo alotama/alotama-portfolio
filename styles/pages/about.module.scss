@@ -2,8 +2,12 @@
 
 .heroAbout {
   height: $heightHero;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
   .heroContent {
-    margin: 8rem 0 1.3rem 0;
+    margin-bottom: 1.3rem;
     .heroTitle {
       @include title-primary-large;
       @include last-point;
@@ -29,13 +33,13 @@
 .intentionAbout {
   @include layout-grid;
   position: relative;
+  margin-top: 4rem;
   .intentionAbout_content {
-    grid-column: 1/9;
+    grid-column: 1/10;
     position: relative;
     z-index: 1;
-    margin-top: 3.7rem;
     margin-bottom: 10rem;
-    padding-right: 1em;
+    // padding-right: 1em;
     .intentionFirst {
       @include paragraph-large;
       margin-bottom: 2.6rem;
@@ -45,9 +49,9 @@
     }
   } 
   .intentionAbout_circle {
-    grid-column: 6/13;
+    grid-column: 7/13;
     position: absolute;
-    top: -18rem;
+    top: -13rem;
     z-index: 0;
   }
 }
