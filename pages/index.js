@@ -5,6 +5,7 @@ import Link from 'next/link'
 import ProjectCluster from '../components/projectCluster'
 import ArticleCluster from '../components/articleCluster'
 import styles from '../styles/pages/home.module.scss'
+import { getAllPosts } from '../lib/api'
 
 export default function Home() {
   return (
@@ -87,4 +88,19 @@ export default function Home() {
       />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+  ])
+
+  return {
+    props: { allPosts },
+  }
 }
