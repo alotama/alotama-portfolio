@@ -2,13 +2,15 @@
 
 .header {
   background-color: $white;
-  @include master-container;
   padding: 1rem 0;
   position: fixed;
   top: 0; 
   left: 0;
   right: 0;
   z-index: 100;
+  .header__container {
+    @include master-container;
+  }
   .header__wrapper {
     display: flex;
     justify-content: space-between;

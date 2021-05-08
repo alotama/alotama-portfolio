@@ -8,4 +8,9 @@ slug: 'redlines'
 date: '2020-03-16T05:35:07.322Z'
 ---
 
-asdasdasdasdasdasdasdasd
+![redlines-1](/projects/redlines/redlines-1.png)
+![redlines-2](/projects/redlines/redlines-2.png)
+![redlines-3](/projects/redlines/redlines-3.png)
+![redlines-4](/projects/redlines/redlines-4.png)
+![redlines-5](/projects/redlines/redlines-5.png)
+![redlines-6](/projects/redlines/redlines-6.png)

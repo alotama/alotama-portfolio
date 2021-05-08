@@ -3,7 +3,21 @@ import Header from '../header'
 import Footer from '../footer'
 import styles from '../../styles/components/layout.module.scss'
 
-const Layout = ({children}) => {
+export const LayoutProject = ({ children }) => (
+  <>
+    <Head>
+      <title>alotama - Sebastián Tamashiro</title>
+      <meta name="robots" content="noindex" />
+    </Head>
+    <Header />
+    <main>
+      {children}
+    </main>
+    <Footer />
+  </>
+)
+
+const Layout = ({ children }) => {
   return (
     <>
       <Head>

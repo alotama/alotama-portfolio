@@ -4,8 +4,9 @@ import Button from '../../components/button'
 import ProjectCluster from '../../components/projectCluster'
 import styles from '../../styles/pages/project.module.scss'
 import Image from 'next/image'
+import { getAllProject } from '../../lib/api'
 
-const ProjectPage = () => {
+const ProjectPage = ({ allProjects }) => {
   const [categorySelected, setCategorySelected] = useState('')
   return (
     <Layout>
@@ -39,38 +40,35 @@ const ProjectPage = () => {
           )}
         </figure>
       </section>
-      <section>
-        <ProjectCluster
-          featured={true}
-          title={'Redlines'}
-          subtitle={'Connecting the dots'}
-          imageSrc={'/projects/redlines/portada.png'}
-          workType={['Diseño UI', 'Desarrollo Front-End']}
-        />
-        <ProjectCluster
-          featured={true}
-          title={'Redlines'}
-          subtitle={'Connecting the dots'}
-          imageSrc={'/projects/redlines/portada.png'}
-          workType={['Diseño UI', 'Desarrollo Front-End']}
-        />
-        <ProjectCluster
-          featured={true}
-          title={'Redlines'}
-          subtitle={'Connecting the dots'}
-          imageSrc={'/projects/redlines/portada.png'}
-          workType={['Diseño UI', 'Desarrollo Front-End']}
-        />
-        <ProjectCluster
-          featured={true}
-          title={'Redlines'}
-          subtitle={'Connecting the dots'}
-          imageSrc={'/projects/redlines/portada.png'}
-          workType={['Diseño UI', 'Desarrollo Front-End']}
-        />
+      <section className={styles.projectContainer}>
+        {allProjects && allProjects.map((project, index) => (
+          <ProjectCluster
+            compact
+            key={`${project.title}-${index}`}
+            title={project.title}
+            subtitle={project.tagline}
+            slug={project.slug}
+            imageSrc={project.coverImage}
+            workType={project.services}
+          />
+        ))}
       </section>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const allProjects = getAllProject([
+    'title',
+    'tagline',
+    'services',
+    'slug',
+    'coverImage',
+  ])
+
+  return {
+    props: { allProjects },
+  }
 }
 
 export default ProjectPage

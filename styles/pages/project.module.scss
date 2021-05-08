@@ -49,3 +49,9 @@
     bottom: 36%;
   }
 }
+
+.projectContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1rem;
+}

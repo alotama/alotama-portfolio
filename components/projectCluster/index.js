@@ -3,7 +3,14 @@ import Image from 'next/image'
 import styles from '../../styles/components/projectCluster.module.scss'
 import Link from 'next/link'
 
-const ProjectCluster = ({ featured, title, slug, subtitle, imageSrc, workType }) => {
+const ProjectCluster = ({ featured, compact, title, slug, subtitle, imageSrc, workType }) => {
+  let projectCluster = [styles.project]
+
+  if (compact) {
+    projectCluster.push(styles.compact)
+  }
+
+  const projectClusterClass = projectCluster.join(' ');
   return (
     <Link
       href={{
@@ -13,7 +20,7 @@ const ProjectCluster = ({ featured, title, slug, subtitle, imageSrc, workType })
       as={`/proyectos/${slug}`}
     >
       <a>
-        <section className={styles.project}>
+        <section className={projectClusterClass}>
           <article className={styles.projectInfo}>
             <div className={styles.projectTitle}>
               {featured && <span className={styles.featuredProject}>Proyecto destacado</span>}

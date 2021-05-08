@@ -1,0 +1,56 @@
+@import '../partials/variables.scss';
+
+.caseStudy {
+  height: $heightHero;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  @include master-container;
+  .caseStudy_content {
+    margin-bottom: 1.5rem;
+    .caseStudy_title {
+      @include title-primary-large;
+      @include last-point;
+    }
+    .caseStudy_tagline {
+      @include title-secondary-large;
+    }
+  }
+  .caseStudy_info {
+    @include layout-grid;
+    .caseStudy_description {
+      grid-column: 1/8;
+    }
+    .caseStudy_service {
+      grid-column: 10/13;
+      .caseStudy_serviceTitle {
+        @include title-primary-small;
+        margin-bottom: 0.25rem;
+      }
+      .caseStudy_serviceList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.caseStudy_cover {
+  position: relative;
+  @include master-container;
+  margin-bottom: 10rem;
+  .caseStudy_coverImage {
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    margin-top: -5rem;
+    height: 100%;
+  }
+}
+
+.caseStudy_markdown {
+  height: 100vh;
+  object-fit: fill;
+}
