@@ -54,3 +54,8 @@
   height: 100vh;
   object-fit: fill;
 }
+
+.caseStudy_final {
+  @include master-container;
+  margin-top: 10rem;
+}

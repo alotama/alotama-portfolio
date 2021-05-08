@@ -6,6 +6,7 @@ services: ['Diseño UX/UI','Desarrollo Front-End']
 coverImage: '/projects/feriadosnacionales/portada.png'
 slug: 'feriadosnacionales'
 date: '2020-03-16T05:35:07.322Z'
+next: 'redlines'
 ---
 
 asdasdasdasdasdasdasdasd

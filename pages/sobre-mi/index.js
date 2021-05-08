@@ -57,6 +57,7 @@ const AboutPage = () => {
           subtitle={'Connecting the dots'}
           imageSrc={'/projects/redlines/portada.png'}
           workType={['Diseño UI', 'Desarrollo Front-End']}
+          slug={'redlines'}
         />
       </section>
     </Layout>

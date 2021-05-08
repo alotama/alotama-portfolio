@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
-import { getProjectBySlug, getAllProject } from '../../../lib/api'
+import { getProjectBySlug, getRandomProject, getAllProject } from '../../../lib/api'
 import { LayoutProject as Layout } from '../../../components/layout'
 import styles from '../../../styles/pages/caseStudy.module.scss'
+import ProjectCluster from '../../../components/projectCluster'
 import ReactMarkdown from "react-markdown"
 
 const components = {
@@ -20,7 +21,7 @@ const components = {
   },
 }
 
-const ProjectPage = ({ title, tagline, description, content, services, developedAt, coverImage }) => {
+const ProjectPage = ({ title, tagline, description, content, slug, services, developedAt, coverImage, next }) => {
   return (
     <Layout>
       <section className={styles.caseStudy}>
@@ -71,12 +72,32 @@ const ProjectPage = ({ title, tagline, description, content, services, developed
           components={components}
         />
       </section>
+      <section className={styles.caseStudy_final}>
+        <ProjectCluster
+          title={next.title}
+          subtitle={next.tagline}
+          slug={next.slug}
+          imageSrc={next.coverImage}
+          workType={next.services}
+        />
+      </section>
     </Layout>
   )
 }
 
 export async function getStaticProps({ params }) {
   const project = getProjectBySlug(params.slug, [
+    'title',
+    'tagline',
+    'services',
+    'description',
+    'slug',
+    'content',
+    'coverImage',
+    'next'
+  ])
+
+  const nextProject = getProjectBySlug(project.next, [
     'title',
     'tagline',
     'services',
@@ -93,7 +114,9 @@ export async function getStaticProps({ params }) {
       services: project.services,
       description: project.description,
       coverImage: project.coverImage,
-      content: project.content
+      content: project.content,
+      slug: project.slug,
+      next: nextProject
     },
   }
 }

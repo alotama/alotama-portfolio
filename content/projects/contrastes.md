@@ -6,6 +6,7 @@ services: ['Diseño UI','Desarrollo Front-End']
 coverImage: '/projects/contrastes/portada.png'
 slug: 'contrastes'
 date: '2020-03-16T05:35:07.322Z'
+next: 'diligentes'
 ---
 
 asdasdasdasdasdasdasdasd

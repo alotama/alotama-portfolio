@@ -6,6 +6,7 @@ services: ['Diseño UI','Desarrollo Front-End']
 coverImage: '/projects/diligentes/portada.png'
 slug: 'diligentes'
 date: '2020-03-16T05:35:07.322Z'
+next: 'feriadosnacionales'
 ---
 
 asdasdasdasdasdasdasdasd

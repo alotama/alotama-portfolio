@@ -6,6 +6,7 @@ services: ['Diseño UI','Desarrollo Front-End']
 coverImage: '/projects/redlines/portada.png'
 slug: 'redlines'
 date: '2020-03-16T05:35:07.322Z'
+next: 'contrastes'
 ---
 
 ![redlines-1](/projects/redlines/redlines-1.png)

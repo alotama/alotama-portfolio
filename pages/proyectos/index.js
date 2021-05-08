@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../../components/layout'
-import Button from '../../components/button'
+import Button from '../../components/buttonLink'
 import ProjectCluster from '../../components/projectCluster'
 import styles from '../../styles/pages/project.module.scss'
 import Image from 'next/image'
@@ -20,7 +20,7 @@ const ProjectPage = ({ allProjects }) => {
               {categorySelected ? 'Diseño UI' : 'Desarrollo Front-End'}
             </h2>
           </div>
-          <Button>Ver todos</Button>
+          <Button href={'#projects'}>Ver todos</Button>
         </article>
         <figure className={styles.heroProject_figure}>
           {categorySelected ? (
@@ -40,7 +40,7 @@ const ProjectPage = ({ allProjects }) => {
           )}
         </figure>
       </section>
-      <section className={styles.projectContainer}>
+      <section className={styles.projectContainer} id={'projects'}>
         {allProjects && allProjects.map((project, index) => (
           <ProjectCluster
             compact
