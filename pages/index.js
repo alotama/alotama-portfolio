@@ -5,9 +5,9 @@ import Link from 'next/link'
 import ProjectCluster from '../components/projectCluster'
 import ArticleCluster from '../components/articleCluster'
 import styles from '../styles/pages/home.module.scss'
-import { getAllPosts } from '../lib/api'
+import { getAllPosts, getAllProject } from '../lib/api'
 
-export default function Home() {
+function Home({ lastPosts, featuredProject, projects }) {
   return (
     <Layout>
       <Head>
@@ -31,61 +31,42 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Link href='/proyectos'>
-        <a>
-          <ProjectCluster
-            featured={true}
-            title={'Redlines'}
-            subtitle={'Connecting the dots'}
-            imageSrc={'/projects/redlines/portada.png'}
-            workType={['Diseño UI', 'Desarrollo Front-End']}
-          />
-        </a>
-      </Link>
+      {featuredProject && (
+        <ProjectCluster
+          featured={true}
+          title={featuredProject.title}
+          subtitle={featuredProject.tagline}
+          imageSrc={featuredProject.coverImage}
+          workType={featuredProject.services}
+          slug={featuredProject.slug}
+        />
+      )}
       <section className={styles.articlesContainer}>
         <h2 className={styles.articlesTitle}>Últimos artículos</h2>
         <section className={styles.articlesLayout}>
-          <ArticleCluster
-            imageSrc={'/articles/codigo.png'}
-            title={"Contruir una API con GraphQL y MongoDB usando Express.js"}
-            excerpt={"Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web"}
-            publishDate={"15 de Abril 2021"}
-            duration={"7 minutos de lectura"}
-          />
-          <ArticleCluster
-            imageSrc={'/articles/codigo.png'}
-            title={"Contruir una API con GraphQL y MongoDB usando Express.js"}
-            excerpt={"Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web"}
-            publishDate={"15 de Abril 2021"}
-            duration={"7 minutos de lectura"}
-          />
-          <ArticleCluster
-            imageSrc={'/articles/codigo.png'}
-            title={"Contruir una API con GraphQL y MongoDB usando Express.js"}
-            excerpt={"Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web"}
-            publishDate={"15 de Abril 2021"}
-            duration={"7 minutos de lectura"}
-          />
+          {lastPosts && lastPosts.map((article, index) => (
+            <ArticleCluster
+              key={`${article.slug}-${index}`}
+              imageSrc={article.coverImage}
+              slug={article.slug}
+              title={article.title}
+              excerpt={article.excerpt}
+              publishDate={article.date}
+              duration={article.duration}
+            />
+          ))}
         </section>
       </section>
-      <ProjectCluster
-        title={'Redlines'}
-        subtitle={'Connecting the dots'}
-        imageSrc={'/projects/redlines/portada.png'}
-        workType={['Diseño UI', 'Desarrollo Front-End']}
-      />
-      <ProjectCluster
-        title={'Redlines'}
-        subtitle={'Connecting the dots'}
-        imageSrc={'/projects/redlines/portada.png'}
-        workType={['Diseño UI', 'Desarrollo Front-End']}
-      />
-      <ProjectCluster
-        title={'Redlines'}
-        subtitle={'Connecting the dots'}
-        imageSrc={'/projects/redlines/portada.png'}
-        workType={['Diseño UI', 'Desarrollo Front-End']}
-      />
+      {projects && projects.map((project, index) => (
+        <ProjectCluster
+          key={`${project.title}-${index}`}
+          title={project.title}
+          subtitle={project.tagline}
+          imageSrc={project.coverImage}
+          workType={project.services}
+          slug={project.slug}
+        />
+      ))}
     </Layout>
   )
 }
@@ -94,13 +75,27 @@ export async function getStaticProps() {
   const allPosts = getAllPosts([
     'title',
     'date',
+    'duration',
     'slug',
-    'author',
     'coverImage',
     'excerpt',
   ])
 
+  const allProjects = getAllProject([
+    'title',
+    'tagline',
+    'services',
+    'slug',
+    'coverImage',
+  ])
+
+  const lastPosts = allPosts.slice(0, 3)
+  const featuredProject = allProjects[0]
+  const projects = allProjects.slice(1, 4)
+
   return {
-    props: { allPosts },
+    props: { lastPosts, featuredProject, projects },
   }
 }
+
+export default Home;

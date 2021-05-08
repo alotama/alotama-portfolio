@@ -1,33 +1,45 @@
 import React from 'react'
 import Image from 'next/image'
-import styles from  '../../styles/components/projectCluster.module.scss'
+import styles from '../../styles/components/projectCluster.module.scss'
+import Link from 'next/link'
 
-const ProjectCluster = ({featured, title, subtitle, imageSrc, workType}) => {
+const ProjectCluster = ({ featured, title, slug, subtitle, imageSrc, workType }) => {
   return (
-    <section className={styles.project}>
-      <article className={styles.projectInfo}>
-        <div className={styles.projectTitle}>
-          {featured && <span className={styles.featuredProject}>Proyecto destacado</span>}
-          <h2 className={styles.title}>{title}</h2>
-          <h3 className={styles.description}>{subtitle}</h3>
-        </div>
-        <ul className={styles.projectCategory}>
-          {workType && workType.map((element, index) => (
-            <li key={`${element}-${index}`}>{element}</li>
-          ))}
-        </ul>
-      </article>
-      <figure className={styles.projectCoverPage}>
-        <Image
-          alt={title}
-          src={imageSrc}
-          layout="responsive"
-          width={800}
-          height={448}
-        />
-        <figcaption>Ver proyecto</figcaption>
-      </figure>
-    </section>
+    <Link
+      href={{
+        pathname: '/proyectos/[slug]',
+        query: { slug: slug },
+      }}
+      as={`/proyectos/${slug}`}
+    >
+      <a>
+        <section className={styles.project}>
+          <article className={styles.projectInfo}>
+            <div className={styles.projectTitle}>
+              {featured && <span className={styles.featuredProject}>Proyecto destacado</span>}
+              <h2 className={styles.title}>{title}</h2>
+              <h3 className={styles.description}>{subtitle}</h3>
+            </div>
+            <ul className={styles.projectCategory}>
+              {workType && workType.map((element, index) => (
+                <li key={`${element}-${index}`}>{element}</li>
+              ))}
+            </ul>
+          </article>
+          <figure className={styles.projectCoverPage}>
+
+            <Image
+              alt={title}
+              src={imageSrc}
+              layout="responsive"
+              width={800}
+              height={448}
+            />
+            <figcaption>Ver proyecto</figcaption>
+          </figure>
+        </section>
+      </a>
+    </Link>
   )
 }
 

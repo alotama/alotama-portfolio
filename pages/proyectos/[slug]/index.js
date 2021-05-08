@@ -1,9 +1,10 @@
 import React from 'react'
 import Button from '../../../components/button'
+import Layout from '../../../components/layout'
 
 const ProjectPage = () => {
   return (
-    <section>
+    <Layout>
       <article>
         <div>
           <h1>Proyectos.</h1>
@@ -11,7 +12,7 @@ const ProjectPage = () => {
         </div>
         <Button>Ver todos</Button>
       </article>
-    </section>
+    </Layout>
   )
 }
 
