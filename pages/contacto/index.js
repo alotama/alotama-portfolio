@@ -9,7 +9,7 @@ const ContactPage = () => {
       <article className={styles.heroContact}>
         <div className={styles.heroContact_container}>
           <h1 className={styles.heroContact_title}>Contacto</h1>
-          <h2 className={styles.heroContact_subtitle}>Desarrollo Front-End</h2>
+          <h2 className={styles.heroContact_subtitle}>Trabajemos juntos</h2>
         </div>
         <section className={styles.contactSection}>
           <form className={styles.contactForm}>

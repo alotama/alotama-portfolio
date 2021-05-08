@@ -5,6 +5,7 @@
   align-items: center;
   box-sizing: border-box;
   height: $heightHero;
+  margin-bottom: 3rem;
   .lastArticle_post {
     grid-column: 1/8;
     .lastArticleSection {
@@ -29,4 +30,17 @@
     @include title-primary-large; 
     margin-bottom: 1.3rem;  
   }
+}
+
+.articles_container {
+  .articles_container_title {
+    @include title-primary-medium;
+    margin-bottom: 3rem;
+  }
+}
+.articles_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1rem;
+  row-gap: 5rem;
 }

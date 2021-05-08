@@ -43,14 +43,21 @@ const ArticlesPage = ({ allPosts }) => {
           />
         </motion.figure>
       </section>
-      <section>
-        <h3>Todos los artículos</h3>
-        {/* <ArticleCluster />
-        <ArticleCluster />
-        <ArticleCluster />
-        <ArticleCluster />
-        <ArticleCluster />
-        <ArticleCluster /> */}
+      <section className={styles.articles_container}>
+        <h3 className={styles.articles_container_title}>Todos los artículos</h3>
+        <section className={styles.articles_grid}>
+          {morePosts.map((article, index) => (
+            <ArticleCluster
+              key={`${article.title}-${index}`}
+              imageSrc={article.coverImage}
+              slug={article.slug}
+              title={article.title}
+              excerpt={article.excerpt}
+              publishDate={article.date}
+              duration={article.duration}
+            />
+          ))}
+        </section>
       </section>
     </Layout>
   )
@@ -64,6 +71,7 @@ export async function getStaticProps() {
     'author',
     'coverImage',
     'excerpt',
+    'duration'
   ])
 
   return {
