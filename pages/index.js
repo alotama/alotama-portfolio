@@ -37,7 +37,7 @@ function Home({ lastPosts, featuredProject, projects }) {
       </section>
       {featuredProject && (
         <ProjectCluster
-          compact={!isDesktop ? true : false}
+          compact={isDesktop ? true : false}
           featured={true}
           title={featuredProject.title}
           subtitle={featuredProject.tagline}
@@ -65,7 +65,7 @@ function Home({ lastPosts, featuredProject, projects }) {
       {projects && projects.map((project, index) => (
         <ProjectCluster
           key={`${project.title}-${index}`}
-          compact={!isDesktop ? true : false}
+          compact={isDesktop ? true : false}
           title={project.title}
           subtitle={project.tagline}
           imageSrc={project.coverImage}

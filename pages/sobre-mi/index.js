@@ -59,7 +59,7 @@ const AboutPage = () => {
         </ul>
         <ProjectCluster
           featured={true}
-          compact={!isDesktop ? true : false}
+          compact={isDesktop ? true : false}
           title={'Redlines'}
           subtitle={'Connecting the dots'}
           imageSrc={'/projects/redlines/portada.png'}

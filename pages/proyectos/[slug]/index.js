@@ -78,7 +78,7 @@ const ProjectPage = ({ title, tagline, description, content, slug, services, dev
       </section>
       <section className={styles.caseStudy_final}>
         <ProjectCluster
-          compact={!isDesktop ? true : false}
+          compact={isDesktop ? true : false}
           title={next.title}
           subtitle={next.tagline}
           slug={next.slug}
