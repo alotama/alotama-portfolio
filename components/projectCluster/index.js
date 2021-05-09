@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Image from 'next/image'
 import styles from '../../styles/components/projectCluster.module.scss'
 import Link from 'next/link'
@@ -48,6 +49,16 @@ const ProjectCluster = ({ featured, compact, title, slug, subtitle, imageSrc, wo
       </a>
     </Link>
   )
+}
+
+ProjectCluster.propTypes = {
+  featured: PropTypes.bool, 
+  compact: PropTypes.bool, 
+  title: PropTypes.string,
+  slug: PropTypes.string,
+  subtitle: PropTypes.string, 
+  imageSrc: PropTypes.string, 
+  workType: PropTypes.string
 }
 
 export default ProjectCluster

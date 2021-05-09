@@ -9,6 +9,7 @@
   z-index: 100;
   padding: 1rem 0; 
   box-sizing: border-box;
+  @include paragraph-default;
   @include media-breakpoint-up($breakpoint-md){
     position: fixed;
   }

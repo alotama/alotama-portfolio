@@ -10,7 +10,7 @@ html, body {
   color: $black;
   font-weight: 300;
   letter-spacing: -0.02em;
-  @include media-breakpoint-up(768px){
+  @include media-breakpoint-up($breakpoint-md){
     padding: 0;
     font-size: 125%;
     line-height: 1.4;
@@ -24,6 +24,10 @@ figure, p, h1, h2, h3, h4, h5, h6, a {
 img {
   width: 100%;
   height: auto;
+}
+
+p, ul, a {
+  @include paragraph-default;
 }
 
 a {
