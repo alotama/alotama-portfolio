@@ -4,8 +4,12 @@ import ProjectCluster from '../../components/projectCluster'
 import { ListSkills, SocialLinks } from '../../utils'
 import styles from '../../styles/pages/about.module.scss'
 import Image from 'next/image'
+import { useMediaQuery } from 'react-responsive'
 
 const AboutPage = () => {
+  const isDesktop = useMediaQuery({
+    query: '(min-device-width: 48rem)'
+  })
   return (
     <Layout>
       <section className={styles.heroAbout}>
@@ -33,14 +37,16 @@ const AboutPage = () => {
             Siempre me fascinó la posibilidad que brinda internet para ayudar, conectar o mejorar la vida de las personas creando algo desde cero con unas cuantas líneas de código y un diseño de interfaz simple e intuitivo.
           </p>
         </article>
-        <figure className={styles.intentionAbout_circle}>
-          <Image
-            src={'/brand/circle.svg'}
-            layout={'intrinsic'}
-            width={'1200'}
-            height={'1200'}
-          />
-        </figure>
+        {isDesktop && (
+          <figure className={styles.intentionAbout_circle}>
+            <Image
+              src={'/brand/circle.svg'}
+              layout={'intrinsic'}
+              width={'1200'}
+              height={'1200'}
+            />
+          </figure>
+        )}
       </section>
       <section className={styles.skillsAbout}>
         <div className={styles.skillsAbout_container}>
@@ -53,6 +59,7 @@ const AboutPage = () => {
         </ul>
         <ProjectCluster
           featured={true}
+          compact={!isDesktop ? true : false}
           title={'Redlines'}
           subtitle={'Connecting the dots'}
           imageSrc={'/projects/redlines/portada.png'}

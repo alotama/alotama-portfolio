@@ -6,11 +6,15 @@ import styles from '../../styles/pages/articles.module.scss'
 import Image from 'next/image'
 import { motion } from "framer-motion";
 import { getAllPosts } from '../../lib/api'
+import { useMediaQuery } from 'react-responsive'
 
 const ArticlesPage = ({ allPosts }) => {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
 
+  const isDesktop = useMediaQuery({
+    query: '(min-device-width: 48rem)'
+  })
   return (
     <Layout>
       <section className={styles.lastArticle}>
@@ -29,19 +33,21 @@ const ArticlesPage = ({ allPosts }) => {
           </div>
           <Button href={`/articulos/${heroPost.slug}`}>Leer artículo</Button>
         </motion.article>
-        <motion.figure
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
-          className={styles.lastArticle_thumbnail}
-          layoutId="image">
-          <Image
-            src={'/articles/express/express-featured-image.png'}
-            height={'auto'}
-            width={328}
-            layout={'intrinsic'}
-          />
-        </motion.figure>
+        {isDesktop && (
+          <motion.figure
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className={styles.lastArticle_thumbnail}
+            layoutId="image">
+            <Image
+              src={'/articles/express/express-featured-image.png'}
+              height={'auto'}
+              width={328}
+              layout={'intrinsic'}
+            />
+          </motion.figure>
+        )}
       </section>
       <section className={styles.articles_container}>
         <h3 className={styles.articles_container_title}>Todos los artículos</h3>

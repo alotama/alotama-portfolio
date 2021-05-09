@@ -6,8 +6,12 @@ import ProjectCluster from '../components/projectCluster'
 import ArticleCluster from '../components/articleCluster'
 import styles from '../styles/pages/home.module.scss'
 import { getAllPosts, getAllProject } from '../lib/api'
+import { useMediaQuery } from 'react-responsive'
 
 function Home({ lastPosts, featuredProject, projects }) {
+  const isDesktop = useMediaQuery({
+    query: '(min-device-width: 48rem)'
+  })
   return (
     <Layout>
       <Head>
@@ -33,6 +37,7 @@ function Home({ lastPosts, featuredProject, projects }) {
       </section>
       {featuredProject && (
         <ProjectCluster
+          compact={!isDesktop ? true : false}
           featured={true}
           title={featuredProject.title}
           subtitle={featuredProject.tagline}
@@ -60,6 +65,7 @@ function Home({ lastPosts, featuredProject, projects }) {
       {projects && projects.map((project, index) => (
         <ProjectCluster
           key={`${project.title}-${index}`}
+          compact={!isDesktop ? true : false}
           title={project.title}
           subtitle={project.tagline}
           imageSrc={project.coverImage}

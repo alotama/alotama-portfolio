@@ -1,11 +1,14 @@
 @import '../partials/variables.scss';
 
 .heroAbout {
-  height: $heightHero;
   display: flex;
+  height: calc(100vh - 106px);
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
+  @include media-breakpoint-up($breakpoint-md){
+    height: $heightHero;
+  }
   .heroContent {
     margin-bottom: 1.3rem;
     .heroTitle {
@@ -35,17 +38,21 @@
   position: relative;
   margin-top: 4rem;
   .intentionAbout_content {
-    grid-column: 1/10;
+    grid-column: 1/13;
     position: relative;
     z-index: 1;
     margin-bottom: 10rem;
-    // padding-right: 1em;
+    @include media-breakpoint-up($breakpoint-md){
+      grid-column: 1/10;
+    }
     .intentionFirst {
       @include paragraph-large;
       margin-bottom: 2.6rem;
     }
     .intentionSecond {
-      padding-right: 12rem;
+      @include media-breakpoint-up($breakpoint-md){
+        padding-right: 12rem;
+      }
     }
   } 
   .intentionAbout_circle {
@@ -69,8 +76,10 @@
     margin: 0 0 10rem 0;
     .skillsAbout_item {
       @include paragraph-semi-large;
-      display: inline-block;
       margin-bottom: 0.4rem;
+      @include media-breakpoint-up($breakpoint-md){
+        display: inline-block;
+      }
       &:not(:last-of-type) {
         margin-right: 0.8rem;
       }

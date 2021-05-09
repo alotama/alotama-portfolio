@@ -5,23 +5,27 @@ import { LayoutProject as Layout } from '../../../components/layout'
 import styles from '../../../styles/pages/caseStudy.module.scss'
 import ProjectCluster from '../../../components/projectCluster'
 import ReactMarkdown from "react-markdown"
-
-const components = {
-  img: image => {
-    return (
-      <figure style={{ width: '100vw', height: 720, position: 'relative' }}>
-        <Image
-          src={image.src}
-          alt={image.alt}
-          layout='fill'
-          objectFit="scale-down"
-        />
-      </figure>
-    )
-  },
-}
+import { useMediaQuery } from 'react-responsive'
 
 const ProjectPage = ({ title, tagline, description, content, slug, services, developedAt, coverImage, next }) => {
+  const isDesktop = useMediaQuery({
+    query: '(min-device-width: 48rem)'
+  })
+
+  const components = {
+    img: image => {
+      return (
+        <figure style={{ width: isDesktop ? '100vw' : '100%', height: isDesktop ? 720 : 210, position: 'relative' }}>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            layout='fill'
+            objectFit="scale-down"
+          />
+        </figure>
+      )
+    },
+  }
   return (
     <Layout>
       <section className={styles.caseStudy}>
@@ -74,6 +78,7 @@ const ProjectPage = ({ title, tagline, description, content, slug, services, dev
       </section>
       <section className={styles.caseStudy_final}>
         <ProjectCluster
+          compact={!isDesktop ? true : false}
           title={next.title}
           subtitle={next.tagline}
           slug={next.slug}

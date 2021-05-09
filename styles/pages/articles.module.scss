@@ -4,10 +4,16 @@
   @include layout-grid;
   align-items: center;
   box-sizing: border-box;
-  height: $heightHero;
   margin-bottom: 3rem;
+  height: calc(100vh - 106px);
+  @include media-breakpoint-up($breakpoint-md){
+    height: $heightHero;
+  }
   .lastArticle_post {
-    grid-column: 1/8;
+    grid-column: 1/13;
+    @include media-breakpoint-up($breakpoint-md){
+      grid-column: 1/8;
+    }
     .lastArticleSection {
       margin-bottom: 1.7rem;
       .lastArticleSection_title {
@@ -40,7 +46,9 @@
 }
 .articles_grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   column-gap: 1rem;
   row-gap: 5rem;
+  @include media-breakpoint-up($breakpoint-md){
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

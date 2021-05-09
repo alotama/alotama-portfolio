@@ -3,36 +3,53 @@
 $margin-gap: 1.3rem;
 
 .hero {
-  height: $heightHero;
   display: flex;
   align-items: center;
-  // background-color: $primary;
+  height: calc(100vh - 106px);
+  @include media-breakpoint-up($breakpoint-md){
+    height: $heightHero;
+  }
   .heroWrapper {
     text-align: center;
     .heroContainer {
       @include layout-grid;
       margin-bottom: 2.5rem;
       .heroTitle {
-        grid-column: 3/11;
-        grid-row: 1/1;
+        grid-column: 1/13;
+        @include media-breakpoint-up($breakpoint-md){
+          grid-column: 3/11;
+          grid-row: 1/1;
+        }
         @include title-primary-large;
         @include last-point;
       }
       .heroContent {
-        grid-column: 4/10;
-        grid-row: 2/2;
+        grid-column: 1/13;
+        @include media-breakpoint-up($breakpoint-md){
+          grid-column: 4/10;
+          grid-row: 2/2;
+        }
       }
     }
   }
 }
 
 .heroButtons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  @include media-breakpoint-up($breakpoint-md){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   a {
+    // width: 100%;
+    display: block;
     &:not(:last-of-type){
-      margin-right: 1rem;
+      margin-bottom: 1rem;
+      @include media-breakpoint-up($breakpoint-md){
+        margin-right: 1rem;
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -46,7 +63,13 @@ $margin-gap: 1.3rem;
   }
   .articlesLayout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 1rem;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 5rem;
+    @include media-breakpoint-up($breakpoint-md){
+      grid-template-rows: none;
+      row-gap: 0;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1rem;
+    }
   }
 }

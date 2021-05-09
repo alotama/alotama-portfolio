@@ -2,11 +2,16 @@
 
 .project {
   display: flex;
-  align-items: center;
   margin-bottom: 10rem;
+  align-items: flex-start;
+  @include media-breakpoint-up($breakpoint-md){
+    align-items: center;
+  }
   .projectInfo {
-    width: 24rem;
-    margin-right: 1rem;
+    @include media-breakpoint-up($breakpoint-md){
+      width: 24rem;
+      margin-right: 1rem;
+    }
     .projectTitle {
       .featuredProject {
         margin-bottom: 1rem;

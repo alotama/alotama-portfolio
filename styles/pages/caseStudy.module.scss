@@ -1,12 +1,17 @@
 @import '../partials/variables.scss';
 
 .caseStudy {
-  height: $heightHero;
+  height: calc(100vh - 106px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   @include master-container;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  @include media-breakpoint-up($breakpoint-md){
+    height: $heightHero;
+  }
   .caseStudy_content {
     margin-bottom: 1.5rem;
     .caseStudy_title {
@@ -20,10 +25,16 @@
   .caseStudy_info {
     @include layout-grid;
     .caseStudy_description {
-      grid-column: 1/8;
+      grid-column: 1/13;
+      @include media-breakpoint-up($breakpoint-md){
+        grid-column: 1/8;
+      }
     }
     .caseStudy_service {
-      grid-column: 10/13;
+      grid-column: 1/13;
+      @include media-breakpoint-up($breakpoint-md){
+        grid-column: 10/13;
+      }
       .caseStudy_serviceTitle {
         @include title-primary-small;
         margin-bottom: 0.25rem;
@@ -41,12 +52,16 @@
   position: relative;
   @include master-container;
   margin-bottom: 10rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
   .caseStudy_coverImage {
     border-radius: 12px;
     overflow: hidden;
     display: flex;
-    margin-top: -5rem;
     height: 100%;
+    @include media-breakpoint-up($breakpoint-md){
+      margin-top: -5rem;
+    }
   }
 }
 
@@ -58,4 +73,6 @@
 .caseStudy_final {
   @include master-container;
   margin-top: 10rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
