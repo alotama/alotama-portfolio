@@ -12,6 +12,7 @@ function Home({ lastPosts, featuredProject, projects }) {
   const isDesktop = useMediaQuery({
     query: '(min-device-width: 48rem)'
   })
+
   return (
     <Layout>
       <Head>

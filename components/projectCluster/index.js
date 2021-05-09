@@ -6,7 +6,7 @@ import Link from 'next/link'
 const ProjectCluster = ({ featured, compact, title, slug, subtitle, imageSrc, workType }) => {
   let projectCluster = [styles.project]
 
-  if (compact) {
+  if (compact === true) {
     projectCluster.push(styles.compact)
   }
 
