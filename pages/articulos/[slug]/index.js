@@ -7,7 +7,6 @@ import { getPostBySlug, getAllPosts } from '../../../lib/api'
 import Image from 'next/image'
 import styles from '../../../styles/pages/post.module.scss'
 import Prism from "prismjs";
-import { motion } from "framer-motion";
 
 const components = {
   img: image => {
@@ -42,7 +41,7 @@ const PostPage = ({ post }) => {
         <h1>Loading…</h1>
       ) : (
         <>
-          <motion.section
+          <section
             nitial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
@@ -52,8 +51,8 @@ const PostPage = ({ post }) => {
               <h1 className={styles.postTitle} layoutId="title">{title}</h1>
               <small className={styles.duration}>Duración: {duration}</small>
             </div>
-          </motion.section>
-          <motion.figure
+          </section>
+          <figure
             nitial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -65,13 +64,13 @@ const PostPage = ({ post }) => {
               width={1016}
               layout={'intrinsic'}
             />
-          </motion.figure>
+          </figure>
           <section className={styles.postContent}>
             <aside className={styles.postContent_actions}>
               Bookmark
               Like
             </aside>
-            <motion.article
+            <article
               nitial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
@@ -81,7 +80,7 @@ const PostPage = ({ post }) => {
                 children={content}
                 components={components}
               />
-            </motion.article>
+            </article>
           </section>
         </>
       )}

@@ -4,7 +4,6 @@ import Button from '../../components/button'
 import ArticleCluster from '../../components/articleCluster'
 import styles from '../../styles/pages/articles.module.scss'
 import Image from 'next/image'
-import { motion } from "framer-motion";
 import { getAllPosts } from '../../lib/api'
 import { useMediaQuery } from 'react-responsive'
 
@@ -18,7 +17,7 @@ const ArticlesPage = ({ allPosts }) => {
   return (
     <Layout>
       <section className={styles.lastArticle}>
-        <motion.article
+        <article
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
@@ -32,9 +31,9 @@ const ArticlesPage = ({ allPosts }) => {
             <p className={styles.lastArticle_excerpt}>{heroPost.excerpt}</p>
           </div>
           <Button href={`/articulos/${heroPost.slug}`}>Leer artículo</Button>
-        </motion.article>
+        </article>
         {isDesktop && (
-          <motion.figure
+          <figure
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
@@ -46,7 +45,7 @@ const ArticlesPage = ({ allPosts }) => {
               width={328}
               layout={'intrinsic'}
             />
-          </motion.figure>
+          </figure>
         )}
       </section>
       <section className={styles.articles_container}>

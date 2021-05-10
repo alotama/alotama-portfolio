@@ -58,7 +58,7 @@ ProjectCluster.propTypes = {
   slug: PropTypes.string,
   subtitle: PropTypes.string, 
   imageSrc: PropTypes.string, 
-  workType: PropTypes.string
+  workType: PropTypes.array
 }
 
 export default ProjectCluster

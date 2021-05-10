@@ -9,4 +9,12 @@ date: '2020-03-16T05:35:07.322Z'
 next: 'diligentes'
 ---
 
-asdasdasdasdasdasdasdasd
+![contrastes-1](/projects/contrastes/contrastes-1.png)
+![contrastes-2](/projects/contrastes/contrastes-2.png)
+![contrastes-3](/projects/contrastes/contrastes-3.png)
+![contrastes-4](/projects/contrastes/contrastes-4.png)
+![contrastes-5](/projects/contrastes/contrastes-5.png)
+![contrastes-6](/projects/contrastes/contrastes-6.png)
+![contrastes-7](/projects/contrastes/contrastes-7.png)
+![contrastes-8](/projects/contrastes/contrastes-8.png)
+![contrastes-9](/projects/contrastes/contrastes-9.png)
