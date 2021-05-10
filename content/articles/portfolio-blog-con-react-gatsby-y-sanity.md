@@ -2,7 +2,7 @@
 title: 'Contruir una API con GraphQL y MongoDB usando Express.js'
 excerpt: 'Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web.'
 coverImage: '/articles/express/express-featured-image.png'
-date: '2020-03-16T05:35:07.322Z'
+date: '2019-07-10T03:00:00.000Z'
 duration: '10 minutos de lectura'
 ogImage:
   url: '/articles/express/express-featured-image.png'

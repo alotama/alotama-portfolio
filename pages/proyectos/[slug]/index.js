@@ -138,7 +138,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllProject(['slug'])
+  const posts = await getAllProject(['slug'])
 
   return {
     paths: posts.map((post) => {

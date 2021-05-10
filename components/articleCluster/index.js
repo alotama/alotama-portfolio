@@ -27,7 +27,7 @@ const ArticleCluster = ({ imageSrc, slug, title, excerpt, publishDate, duration 
             <p className={styles.articleExcerpt}>{excerpt}</p>
           </div>
           <div className={styles.articleDetail}>
-            <small>{`${publishDate}-${duration}`}</small>
+            <small>{`${publishDate} - ${duration}`}</small>
           </div>
         </a>
       </Link>

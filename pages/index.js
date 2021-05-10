@@ -74,10 +74,9 @@ function Home({ lastPosts, featuredProject, projects }) {
         </section>
       </section>
       {projects && projects.map((project, index) => (
-        <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
+        <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }} key={`${project.title}-${index}`}>
           {(matches) => matches ? (
             <ProjectCluster
-              key={`${project.title}-${index}`}
               compact={false}
               title={project.title}
               subtitle={project.tagline}
@@ -87,7 +86,6 @@ function Home({ lastPosts, featuredProject, projects }) {
             />
           ) : (
             <ProjectCluster
-              key={`${project.title}-${index}`}
               compact={true}
               title={project.title}
               subtitle={project.tagline}
@@ -103,7 +101,7 @@ function Home({ lastPosts, featuredProject, projects }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts([
+  const allPosts = await getAllPosts([
     'title',
     'date',
     'duration',
@@ -112,7 +110,7 @@ export async function getStaticProps() {
     'excerpt',
   ])
 
-  const allProjects = getAllProject([
+  const allProjects = await getAllProject([
     'title',
     'tagline',
     'services',
@@ -120,9 +118,12 @@ export async function getStaticProps() {
     'coverImage',
   ])
 
-  const lastPosts = allPosts.slice(0, 3)
-  const featuredProject = allProjects[0]
-  const projects = allProjects.slice(1, 4)
+  const allData = await Promise.all([allPosts, allProjects])
+
+  const lastPosts = allData[0].slice(0, 3)
+  const featuredProject = allData[1][0]
+  const projects = allData[1].slice(1, 4)
+
 
   return {
     props: { lastPosts, featuredProject, projects },

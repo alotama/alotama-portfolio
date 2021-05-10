@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
-        <article>Copyright 2021</article>
+        <span>Copyright 2021</span>
         <ul className={styles.footer__socialLinks}>
           {SocialLinks.map((element, index) => (
             <li key={`${element.label}-${index}`}><a href={element.link}>{element.label}</a></li>

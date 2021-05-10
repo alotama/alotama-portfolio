@@ -65,7 +65,7 @@ const ProjectPage = ({ allProjects }) => {
 }
 
 export async function getStaticProps() {
-  const allProjects = getAllProject([
+  const allProjects = await getAllProject([
     'title',
     'tagline',
     'services',

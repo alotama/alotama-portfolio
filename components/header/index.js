@@ -2,13 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import Logo from '../logo'
 import styles from '../../styles/components/header.module.scss'
-import { useMediaQuery } from 'react-responsive'
+import MediaQuery from 'react-responsive'
 
 
 const Header = () => {
-  const isDesktop = useMediaQuery({
-    query: '(min-device-width: 48rem)'
-  })
   return (
     <header className={styles.header}>
       <div className={styles.header__container}>
@@ -23,11 +20,11 @@ const Header = () => {
                 </a>
               </Link>
             </figure>
-            {!isDesktop && (
+            <MediaQuery maxDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
               <div className={styles.headerLenguage}>
                 ES
               </div>
-            )}
+            </MediaQuery>
           </article>
           <nav className={styles.header__navbar}>
             <Link
@@ -58,11 +55,11 @@ const Header = () => {
                 Contacto
             </a>
             </Link>
-            {isDesktop && (
+            <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
               <div className={styles.headerLenguage}>
                 ES
               </div>
-            )}
+            </MediaQuery>
           </nav>
         </section>
       </div>
