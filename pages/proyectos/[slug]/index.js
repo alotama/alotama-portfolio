@@ -5,12 +5,14 @@ import { LayoutProject as Layout } from '../../../components/layout'
 import styles from '../../../styles/pages/caseStudy.module.scss'
 import ProjectCluster from '../../../components/projectCluster'
 import ReactMarkdown from "react-markdown"
-import { useMediaQuery } from 'react-responsive'
+import MediaQuery, { useMediaQuery } from 'react-responsive'
 
 const ProjectPage = ({ title, tagline, description, content, slug, services, developedAt, coverImage, next }) => {
   const isDesktop = useMediaQuery({
     query: '(min-device-width: 48rem)'
   })
+
+  console.log('isDesktop', isDesktop ? true : false)
 
   const components = {
     img: image => {
@@ -77,14 +79,27 @@ const ProjectPage = ({ title, tagline, description, content, slug, services, dev
         />
       </section>
       <section className={styles.caseStudy_final}>
-        <ProjectCluster
-          compact={isDesktop ? true : false}
-          title={next.title}
-          subtitle={next.tagline}
-          slug={next.slug}
-          imageSrc={next.coverImage}
-          workType={next.services}
-        />
+        <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
+          {(matches) => matches ? (
+            <ProjectCluster
+              compact={false}
+              title={next.title}
+              subtitle={next.tagline}
+              slug={next.slug}
+              imageSrc={next.coverImage}
+              workType={next.services}
+            />
+          ) : (
+            <ProjectCluster
+              compact={true}
+              title={next.title}
+              subtitle={next.tagline}
+              slug={next.slug}
+              imageSrc={next.coverImage}
+              workType={next.services}
+            />
+          )}
+        </MediaQuery>
       </section>
     </Layout>
   )

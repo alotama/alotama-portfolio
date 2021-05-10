@@ -4,12 +4,9 @@ import ProjectCluster from '../../components/projectCluster'
 import { ListSkills, SocialLinks } from '../../utils'
 import styles from '../../styles/pages/about.module.scss'
 import Image from 'next/image'
-import { useMediaQuery } from 'react-responsive'
+import MediaQuery from 'react-responsive'
 
 const AboutPage = () => {
-  const isDesktop = useMediaQuery({
-    query: '(min-device-width: 48rem)'
-  })
   return (
     <Layout>
       <section className={styles.heroAbout}>
@@ -37,16 +34,18 @@ const AboutPage = () => {
             Siempre me fascinó la posibilidad que brinda internet para ayudar, conectar o mejorar la vida de las personas creando algo desde cero con unas cuantas líneas de código y un diseño de interfaz simple e intuitivo.
           </p>
         </article>
-        {isDesktop && (
-          <figure className={styles.intentionAbout_circle}>
-            <Image
-              src={'/brand/circle.svg'}
-              layout={'intrinsic'}
-              width={'1200'}
-              height={'1200'}
-            />
-          </figure>
-        )}
+        <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
+          {(matches) => matches && (
+            <figure className={styles.intentionAbout_circle}>
+              <Image
+                src={'/brand/circle.svg'}
+                layout={'intrinsic'}
+                width={'1200'}
+                height={'1200'}
+              />
+            </figure>
+          )}
+        </MediaQuery>
       </section>
       <section className={styles.skillsAbout}>
         <div className={styles.skillsAbout_container}>
@@ -57,15 +56,29 @@ const AboutPage = () => {
             <li className={styles.skillsAbout_item} key={`${item}-${index}`}>{item}</li>
           ))}
         </ul>
-        <ProjectCluster
-          featured={true}
-          compact={isDesktop ? true : false}
-          title={'Redlines'}
-          subtitle={'Connecting the dots'}
-          imageSrc={'/projects/redlines/portada.png'}
-          workType={['Diseño UI', 'Desarrollo Front-End']}
-          slug={'redlines'}
-        />
+        <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
+          {(matches) => matches ? (
+            <ProjectCluster
+              compact={false}
+              featured={true}
+              title={'Redlines'}
+              subtitle={'Connecting the dots'}
+              imageSrc={'/projects/redlines/portada.png'}
+              workType={['Diseño UI', 'Desarrollo Front-End']}
+              slug={'redlines'}
+            />
+          ) : (
+            <ProjectCluster
+              compact={true}
+              featured={true}
+              title={'Redlines'}
+              subtitle={'Connecting the dots'}
+              imageSrc={'/projects/redlines/portada.png'}
+              workType={['Diseño UI', 'Desarrollo Front-End']}
+              slug={'redlines'}
+            />
+          )}
+        </MediaQuery>
       </section>
     </Layout>
   )
