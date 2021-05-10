@@ -5,24 +5,20 @@ import { LayoutProject as Layout } from '../../../components/layout'
 import styles from '../../../styles/pages/caseStudy.module.scss'
 import ProjectCluster from '../../../components/projectCluster'
 import ReactMarkdown from "react-markdown"
-import MediaQuery, { useMediaQuery } from 'react-responsive'
+import MediaQuery from 'react-responsive'
 
 const ProjectPage = ({ title, tagline, description, content, slug, services, developedAt, coverImage, next }) => {
-  const isDesktop = useMediaQuery({
-    query: '(min-device-width: 48rem)'
-  })
-
-  console.log('isDesktop', isDesktop ? true : false)
-
   const components = {
     img: image => {
       return (
-        <figure style={{ width: isDesktop ? '100vw' : '100%', height: isDesktop ? 720 : 210, position: 'relative' }}>
+        <figure>
           <Image
             src={image.src}
             alt={image.alt}
-            layout='fill'
-            objectFit="scale-down"
+            height={2160}
+            width={3840}
+            layout='responsive'
+            // objectFit="scale-down"
           />
         </figure>
       )
