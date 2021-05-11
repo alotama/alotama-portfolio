@@ -2,7 +2,7 @@
 title: 'Los hooks de React.js más útiles'
 excerpt: 'Con la actualización 16.8.0 de React.js introdujeron los hooks. Estos son los más útiles y menos conocidos'
 coverImage: '/articles/express/express-featured-image.png'
-date: '2020-09-15T03:00:00.000Z'
+date: '09 marzo 2020'
 duration: '10 minutos de lectura'
 ogImage:
   url: '/articles/express/express-featured-image.png'

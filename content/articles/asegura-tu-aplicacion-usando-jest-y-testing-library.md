@@ -2,7 +2,7 @@
 title: 'Asegura tu aplicación usando Jest y Testing Library'
 excerpt: 'La única forma de garantizar que tu aplicación web funcione de la manera que esperas es haciendo testeos con Jest y Testing Library.'
 coverImage: '/articles/express/express-featured-image.png'
-date: '2020-10-05T03:00:00.000Z'
+date: '10 mayo 2020'
 duration: '10 minutos de lectura'
 ogImage:
   url: '/articles/express/express-featured-image.png'

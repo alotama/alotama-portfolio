@@ -66,10 +66,10 @@ const PostPage = ({ post }) => {
             />
           </figure>
           <section className={styles.postContent}>
-            <aside className={styles.postContent_actions}>
+            {/* <aside className={styles.postContent_actions}>
               Bookmark
               Like
-            </aside>
+            </aside> */}
             <article
               nitial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -89,7 +89,7 @@ const PostPage = ({ post }) => {
 }
 
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, [
+  const post = await getPostBySlug(params.slug, [
     'title',
     'date',
     'slug',
@@ -109,7 +109,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts(['slug'])
+  const posts = await getAllPosts(['slug', 'date'])
 
   return {
     paths: posts.map((post) => {
