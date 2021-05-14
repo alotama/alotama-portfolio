@@ -38,9 +38,9 @@ const ArticlesPage = ({ allPosts }) => {
             layoutId="image"
           >
             <Image
-              src={'/articles/express/express-featured-image.png'}
-              height={'auto'}
-              width={328}
+              src={heroPost.ogImage}
+              height={656}
+              width={656}
               layout={'intrinsic'}
             />
           </figure>
@@ -52,7 +52,7 @@ const ArticlesPage = ({ allPosts }) => {
           {morePosts.map((article, index) => (
             <ArticleCluster
               key={`${article.title}-${index}`}
-              imageSrc={article.coverImage}
+              imageSrc={article.thumbnail}
               slug={article.slug}
               title={article.title}
               excerpt={article.excerpt}
@@ -71,10 +71,10 @@ export async function getStaticProps() {
     'title',
     'date',
     'slug',
-    'author',
-    'coverImage',
     'excerpt',
-    'duration'
+    'duration',
+    'thumbnail',
+    'ogImage'
   ])
 
   return {

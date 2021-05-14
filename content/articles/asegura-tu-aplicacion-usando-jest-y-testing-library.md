@@ -4,8 +4,9 @@ excerpt: 'La única forma de garantizar que tu aplicación web funcione de la ma
 coverImage: '/articles/express/express-featured-image.png'
 date: '10 mayo 2020'
 duration: '10 minutos de lectura'
-ogImage:
-  url: '/articles/express/express-featured-image.png'
+ogImage: '/articles/scrapping/ogImage.png'
+thumbnail: '/articles/testing/thumbnail.png'
+featured: '/articles/testing/featured-image.png'
 ---
 
 ## Introducción

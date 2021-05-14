@@ -4,8 +4,9 @@ excerpt: 'Aprende a contruir  una simple API con GraphQL que se comunique con Mo
 coverImage: '/articles/express/express-featured-image.png'
 date: '09 julio 2019'
 duration: '10 minutos de lectura'
-ogImage:
-  url: '/articles/express/express-featured-image.png'
+ogImage: '/articles/gatsby/ogImage.png'
+thumbnail: '/articles/gatsby/thumbnail.png'
+featured: '/articles/gatsby/featured-image.png'
 ---
 
 ## Introducción

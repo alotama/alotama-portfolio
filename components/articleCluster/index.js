@@ -14,13 +14,12 @@ const ArticleCluster = ({ imageSrc, slug, title, excerpt, publishDate, duration 
         as={`/articulos/${slug}`}
       >
         <a>
-          <figure className={styles.articleCover} style={{ position: 'relative' }}>
+          <figure className={styles.articleCover}>
             <Image
-              style={{ position: 'absolute', top: 50 }}
               src={imageSrc}
               layout="intrinsic"
-              width={328}
-              height={252}
+              width={656}
+              height={504}
             />
           </figure>
           <div className={styles.articleInfo}>

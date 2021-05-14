@@ -4,8 +4,9 @@ excerpt: 'Con la actualización 16.8.0 de React.js introdujeron los hooks. Estos
 coverImage: '/articles/express/express-featured-image.png'
 date: '09 marzo 2020'
 duration: '10 minutos de lectura'
-ogImage:
-  url: '/articles/express/express-featured-image.png'
+ogImage: '/articles/express/ogImage.png'
+thumbnail: '/articles/express/thumbnail.png'
+featured: '/articles/express/featured-image.png'
 ---
 
 ## Introducción

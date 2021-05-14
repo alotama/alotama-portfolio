@@ -1,11 +1,11 @@
 ---
-title: 'Portfolio + Blog con React, Gatsby y Sanity.'
+title: 'Cómo scrapear usando Puppeteer.js paso a paso'
 excerpt: 'Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web.'
-coverImage: '/articles/express/express-featured-image.png'
-date: '12 Febrero 2020'
+date: '12 febrero 2020'
 duration: '10 minutos de lectura'
-ogImage:
-  url: '/articles/express/express-featured-image.png'
+ogImage: '/articles/scrapping/ogImage.png'
+thumbnail: '/articles/scrapping/thumbnail.png'
+featured: '/articles/scrapping/featured-image.png'
 ---
 
 ## Introducción

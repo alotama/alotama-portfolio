@@ -10,13 +10,25 @@ import Prism from "prismjs";
 
 const components = {
   img: image => {
-    return <Image src={image.src} alt={image.alt} height="200" width="355" />
+    return (
+      <figure>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          height="1600"
+          width="2560"
+          layout={'responsive'}
+        />
+      </figure>
+    )
   },
   p: (paragraph) => {
     const { node } = paragraph;
     if (node.children[0].type === "image") {
       const image = node.children[0];
-      return <Image src={image.url} alt={image.alt} height="200" width="355" />;
+      return (
+        <Image src={image.url} alt={image.alt} height="1600" width="2560" layout={'responsive'} />
+      )
     }
 
     return <p>{paragraph.children}</p>;

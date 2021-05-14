@@ -4,8 +4,9 @@ excerpt: 'Estructura tu código CSS de forma limpia, semánticamente y realmente
 coverImage: '/articles/express/express-featured-image.png'
 date: '10 mayo 2021'
 duration: '10 minutos de lectura'
-ogImage:
-  url: '/articles/express/express-featured-image.png'
+ogImage: '/articles/express/ogImage.png'
+thumbnail: '/articles/express/thumbnail.png'
+featured: '/articles/express/featured-image.png'
 ---
 
 ## Introducción

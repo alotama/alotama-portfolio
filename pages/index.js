@@ -60,17 +60,19 @@ function Home({ lastPosts, featuredProject, projects }) {
       <section className={styles.articlesContainer}>
         <h2 className={styles.articlesTitle}>Últimos artículos</h2>
         <section className={styles.articlesLayout}>
-          {lastPosts && lastPosts.map((article, index) => (
-            <ArticleCluster
-              key={`${article.slug}-${index}`}
-              imageSrc={article.coverImage}
-              slug={article.slug}
-              title={article.title}
-              excerpt={article.excerpt}
-              publishDate={article.date}
-              duration={article.duration}
-            />
-          ))}
+          {lastPosts && lastPosts.map((article, index) => {
+            return (
+              <ArticleCluster
+                key={`${article.slug}-${index}`}
+                imageSrc={article.thumbnail}
+                slug={article.slug}
+                title={article.title}
+                excerpt={article.excerpt}
+                publishDate={article.date}
+                duration={article.duration}
+              />
+            )
+          })}
         </section>
       </section>
       {projects && projects.map((project, index) => (
@@ -106,7 +108,7 @@ export async function getStaticProps() {
     'date',
     'duration',
     'slug',
-    'coverImage',
+    'thumbnail',
     'excerpt',
   ])
 
