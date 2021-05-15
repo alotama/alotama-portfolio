@@ -1,13 +1,16 @@
+import React, { useEffect } from 'react'
 import Image from 'next/image'
-import React from 'react'
 import { getProjectBySlug, getRandomProject, getAllProject } from '../../../lib/api'
 import { LayoutProject as Layout } from '../../../components/layout'
 import styles from '../../../styles/pages/caseStudy.module.scss'
 import ProjectCluster from '../../../components/projectCluster'
 import ReactMarkdown from "react-markdown"
 import MediaQuery from 'react-responsive'
+import { motion } from "framer-motion"
+import { InView } from 'react-intersection-observer';
 
 const ProjectPage = ({ title, tagline, description, content, slug, services, developedAt, coverImage, next }) => {
+
   const components = {
     img: image => {
       return (
@@ -18,9 +21,15 @@ const ProjectPage = ({ title, tagline, description, content, slug, services, dev
             height={2160}
             width={3840}
             layout='responsive'
-            // objectFit="scale-down"
           />
         </figure>
+      )
+    },
+    p: (paragraph) => {
+      return (
+        <div>
+          {paragraph.children}
+        </div>
       )
     },
   }
@@ -28,44 +37,74 @@ const ProjectPage = ({ title, tagline, description, content, slug, services, dev
     <Layout>
       <section className={styles.caseStudy}>
         <article>
-          <div className={styles.caseStudy_content}>
-            <h1 className={styles.caseStudy_title}>{title}</h1>
-            <h2 className={styles.caseStudy_tagline}>{tagline}</h2>
-          </div>
+          <InView triggerOnce={true}>
+            {({ ref, inView }) => (
+              <motion.div
+                ref={ref}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 1, delay: 0.25 }}
+                className={styles.caseStudy_content}>
+                <h1 className={styles.caseStudy_title}>{title}</h1>
+                <h2 className={styles.caseStudy_tagline}>{tagline}</h2>
+              </motion.div>
+            )}
+          </InView>
           <div className={styles.caseStudy_info}>
-            <div className={styles.caseStudy_description}>
-              <p>{description}</p>
-            </div>
-            <section className={styles.caseStudy_service}>
-              <article className={styles.caseStudy_serviceContainer}>
-                <h3 className={styles.caseStudy_serviceTitle}>Servicios</h3>
-                <ul className={styles.caseStudy_serviceList}>
-                  {services && services.map((service, index) => (
-                    <li className={styles.caseStudy_serviceList_item} key={`${service}-${index}`}>
-                      <small>{service}</small>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-              {developedAt && (
-                <article>
-                  <h3>Desarollo para</h3>
-                  <p>Name. Design Agency.</p>
-                </article>
+            <InView triggerOnce={true}>
+              {({ ref, inView }) => (
+                <motion.div
+                  ref={ref}
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 1, delay: 0.50 }}
+                  className={styles.caseStudy_description}>
+                  <p>{description}</p>
+                </motion.div>
               )}
-            </section>
+            </InView>
+            <InView triggerOnce={true}>
+              {({ ref, inView }) => (
+                <motion.section
+                  ref={ref}
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 1, delay: 1 }}
+                  className={styles.caseStudy_service}>
+                  <article className={styles.caseStudy_serviceContainer}>
+                    <h3 className={styles.caseStudy_serviceTitle}>Servicios</h3>
+                    <ul className={styles.caseStudy_serviceList}>
+                      {services && services.map((service, index) => (
+                        <li className={styles.caseStudy_serviceList_item} key={`${service}-${index}`}>
+                          <small>{service}</small>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </motion.section>
+              )}
+            </InView>
           </div>
         </article>
       </section>
       <section className={styles.caseStudy_cover}>
-        <figure className={styles.caseStudy_coverImage}>
-          <Image
-            src={coverImage}
-            height={588}
-            width={1016}
-            layout={'intrinsic'}
-          />
-        </figure>
+        <InView triggerOnce={true}>
+          {({ ref, inView }) => (
+            <motion.figure
+              ref={ref}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 1, delay: 1.5 }}
+              className={styles.caseStudy_coverImage}>
+              <Image
+                src={coverImage}
+                height={588}
+                width={1016}
+                layout={'intrinsic'}
+              />
+            </motion.figure>
+          )}
+        </InView>
       </section>
       <section className={styles.caseStudy_content}>
         <ReactMarkdown

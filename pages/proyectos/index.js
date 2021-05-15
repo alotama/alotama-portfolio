@@ -6,6 +6,9 @@ import styles from '../../styles/pages/project.module.scss'
 import Image from 'next/image'
 import { getAllProject } from '../../lib/api'
 import { useMediaQuery } from 'react-responsive'
+import { motion } from "framer-motion"
+import { pageVariants, pageTransition } from '../../utils'
+
 
 const ProjectPage = ({ allProjects }) => {
   const [categorySelected, setCategorySelected] = useState('')
@@ -16,7 +19,13 @@ const ProjectPage = ({ allProjects }) => {
   return (
     <Layout>
       <section className={styles.heroProject}>
-        <article className={styles.heroProject_container}>
+        <motion.article
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={pageVariants}
+          transition={pageTransition}
+          className={styles.heroProject_container}>
           <div className={styles.heroProject_content}>
             <h1 className={styles.heroProject_title}>Proyectos.</h1>
             <h2
@@ -26,9 +35,15 @@ const ProjectPage = ({ allProjects }) => {
             </h2>
           </div>
           <Button href={'#projects'}>Ver todos</Button>
-        </article>
+        </motion.article>
         {isDesktop && (
-          <figure className={styles.heroProject_figure}>
+          <motion.figure
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+            className={styles.heroProject_figure}>
             {categorySelected ? (
               <Image
                 src={'/projects/design.svg'}
@@ -44,7 +59,7 @@ const ProjectPage = ({ allProjects }) => {
                 layout={'intrinsic'}
               />
             )}
-          </figure>
+          </motion.figure>
         )}
       </section>
       <section className={styles.projectContainer} id={'projects'}>

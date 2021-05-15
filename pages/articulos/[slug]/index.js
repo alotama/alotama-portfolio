@@ -37,7 +37,7 @@ const components = {
 
 const PostPage = ({ post }) => {
   const router = useRouter()
-  const { content, coverImage, date, duration, title } = post
+  const { content, featured, date, duration, title } = post
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -70,7 +70,7 @@ const PostPage = ({ post }) => {
             transition={{ delay: 0.5, duration: 1 }}
             className={styles.thumbnail}>
             <Image
-              src={coverImage}
+              src={featured}
               alt={title}
               height={392}
               width={1016}
@@ -108,7 +108,7 @@ export async function getStaticProps({ params }) {
     'duration',
     'content',
     'ogImage',
-    'coverImage',
+    'featured',
   ])
 
   return {

@@ -18,3 +18,20 @@ export const SocialLinks = [
     link: 'https://www.linkedin.com/in/alotama/'
   }
 ]
+
+export const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+  },
+  out: {
+    opacity: 0,
+  }
+};
+
+export const pageTransition = {
+  ease: "easeInOut",
+  duration: 1
+};

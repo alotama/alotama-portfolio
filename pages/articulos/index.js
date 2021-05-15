@@ -6,6 +6,8 @@ import styles from '../../styles/pages/articles.module.scss'
 import Image from 'next/image'
 import { getAllPosts } from '../../lib/api'
 import MediaQuery from 'react-responsive'
+import { motion } from "framer-motion"
+import { pageVariants, pageTransition } from '../../utils'
 
 const ArticlesPage = ({ allPosts }) => {
   const heroPost = allPosts[0]
@@ -14,10 +16,12 @@ const ArticlesPage = ({ allPosts }) => {
   return (
     <Layout>
       <section className={styles.lastArticle}>
-        <article
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1 }}
+        <motion.article
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={pageVariants}
+          transition={pageTransition}
           className={styles.lastArticle_post}>
           <div className={styles.lastArticleSection}>
             <h2 className={styles.lastArticleSection_title}>Última publicación</h2>
@@ -28,12 +32,14 @@ const ArticlesPage = ({ allPosts }) => {
             <p className={styles.lastArticle_excerpt}>{heroPost.excerpt}</p>
           </div>
           <Button href={`/articulos/${heroPost.slug}`}>Leer artículo</Button>
-        </article>
+        </motion.article>
         <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
-          <figure
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
+          <motion.figure
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
             className={styles.lastArticle_thumbnail}
             layoutId="image"
           >
@@ -43,12 +49,19 @@ const ArticlesPage = ({ allPosts }) => {
               width={656}
               layout={'intrinsic'}
             />
-          </figure>
+          </motion.figure>
         </MediaQuery>
       </section>
       <section className={styles.articles_container}>
-        <h3 className={styles.articles_container_title}>Todos los artículos</h3>
-        <section className={styles.articles_grid}>
+        <motion.h3
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={pageVariants}
+          transition={pageTransition}
+          className={styles.articles_container_title}>Todos los artículos</motion.h3>
+        <section
+          className={styles.articles_grid}>
           {morePosts.map((article, index) => (
             <ArticleCluster
               key={`${article.title}-${index}`}

@@ -7,6 +7,8 @@ import ArticleCluster from '../components/articleCluster'
 import styles from '../styles/pages/home.module.scss'
 import { getAllPosts, getAllProject } from '../lib/api'
 import MediaQuery from 'react-responsive'
+import { motion } from "framer-motion"
+import { pageVariants, pageTransition } from '../utils'
 
 function Home({ lastPosts, featuredProject, projects }) {
   return (
@@ -19,17 +21,35 @@ function Home({ lastPosts, featuredProject, projects }) {
       <section className={styles.hero}>
         <div className={styles.heroWrapper}>
           <article className={styles.heroContainer}>
-            <h1 className={styles.heroTitle}>Sitios web simples, significantes y centrados en las personas</h1>
-            <p className={styles.heroContent}>Me desempeño en las áreas del diseño de interfáces y el desarrollo front-end de productos o servicios digitales</p>
+            <motion.h1
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+              className={styles.heroTitle}>Sitios web simples, significantes y centrados en las personas</motion.h1>
+            <motion.p
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+              className={styles.heroContent}>Me desempeño en las áreas del diseño de interfáces y el desarrollo front-end de productos o servicios digitales</motion.p>
           </article>
-          <div className={styles.heroButtons}>
+          <motion.div
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={pageTransition}
+            className={styles.heroButtons}>
             <Link href={'/proyectos'} passHref>
               <ButtonLink secondary>Ver proyectos</ButtonLink>
             </Link>
             <Link href={'/sobre-mi'} passHref>
               <ButtonLink>Sobre mí</ButtonLink>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
       {featuredProject && (
@@ -58,7 +78,13 @@ function Home({ lastPosts, featuredProject, projects }) {
         </MediaQuery>
       )}
       <section className={styles.articlesContainer}>
-        <h2 className={styles.articlesTitle}>Últimos artículos</h2>
+        <motion.h2
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={pageVariants}
+          transition={pageTransition}
+          className={styles.articlesTitle}>Últimos artículos</motion.h2>
         <section className={styles.articlesLayout}>
           {lastPosts && lastPosts.map((article, index) => {
             return (
