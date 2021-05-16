@@ -20,6 +20,7 @@ const ProjectPage = ({ title, tagline, description, content, slug, services, dev
             alt={image.alt}
             height={2160}
             width={3840}
+            quality={100}
             layout='responsive'
           />
         </figure>
