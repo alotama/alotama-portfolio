@@ -1,6 +1,6 @@
 ---
-title: 'Contruir una API con GraphQL y MongoDB usando Express.js'
-excerpt: 'Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web.'
+title: 'Crear tu propio blog utilizando React, Gatsby.js y markdown'
+excerpt: 'Construí de forma sencilla un sitio web con la ayuda de React, Gatsby.js y markdown para escribir y administrar el contenido.'
 coverImage: '/articles/express/express-featured-image.png'
 date: '09 julio 2019'
 duration: '10 minutos de lectura'

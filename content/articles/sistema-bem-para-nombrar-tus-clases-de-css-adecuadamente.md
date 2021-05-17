@@ -1,11 +1,11 @@
 ---
-title: 'Consejos para nombrar clases de CSS con sistema BEM'
+title: 'Sistema BEM para nombrar tus clases de CSS adecuadamente'
 excerpt: 'Estructura tu código CSS de forma limpia, semánticamente y realmente reutilizable sin tener conflictos en el futuro.'
 coverImage: '/articles/express/express-featured-image.png'
 date: '10 mayo 2021'
 duration: '10 minutos de lectura'
 ogImage: '/articles/express/ogImage.png'
-thumbnail: '/articles/express/thumbnail.png'
+thumbnail: '/articles/bem/thumbnail.png'
 featured: '/articles/express/featured-image.png'
 ---
 

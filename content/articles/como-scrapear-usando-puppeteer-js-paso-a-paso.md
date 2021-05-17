@@ -1,6 +1,6 @@
 ---
 title: 'Cómo scrapear usando Puppeteer.js paso a paso'
-excerpt: 'Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web.'
+excerpt: 'Scrapeá información de cualquier sitio web que quieras usando pupeteer.js y guardando la información en MongoDB.'
 date: '12 febrero 2020'
 duration: '10 minutos de lectura'
 ogImage: '/articles/scrapping/ogImage.png'

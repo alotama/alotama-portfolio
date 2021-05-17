@@ -1,5 +1,5 @@
 ---
-title: 'Cómo scrapear usando Puppeteer.js PASO a PASO'
+title: 'Contruir una API con GraphQL y MongoDB usando Express.js'
 excerpt: 'Aprende a contruir  una simple API con GraphQL que se comunique con MongoDB. Utiliza un solo endpoint para llenar de contenido tu sitio web.'
 date: '03 octubre 2020'
 duration: '10 minutos de lectura'
