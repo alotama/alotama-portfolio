@@ -26,6 +26,9 @@
     margin: 0;
     .heroSocialLinks_item {
       display: inline-block;
+      &:hover {
+        color: $primary;
+      }
       &:not(:last-of-type) {
         margin-right: 1rem;
       }

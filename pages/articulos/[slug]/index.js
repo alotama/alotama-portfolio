@@ -59,8 +59,8 @@ const PostPage = ({ post }) => {
             transition={{ delay: 0.1 }}
             className={styles.postHeader}>
             <div className={styles.postHeader_container}>
-              <small className={styles.postDate} layoutId="date">{date}</small>
-              <h1 className={styles.postTitle} layoutId="title">{title}</h1>
+              <small className={styles.postDate}>{date}</small>
+              <h1 className={styles.postTitle}>{title}</h1>
               <small className={styles.duration}>Duración: {duration}</small>
             </div>
           </section>

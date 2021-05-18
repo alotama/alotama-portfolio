@@ -27,8 +27,8 @@ const ArticlesPage = ({ allPosts }) => {
             <h2 className={styles.lastArticleSection_title}>Última publicación</h2>
           </div>
           <div className={styles.lastArticle_content}>
-            <small className={styles.lastArticle_detail} layoutId="date">{heroPost.date}</small>
-            <h1 className={styles.lastArticle_title} layoutId="title">{heroPost.title}</h1>
+            <small className={styles.lastArticle_detail}>{heroPost.date}</small>
+            <h1 className={styles.lastArticle_title}>{heroPost.title}</h1>
             <p className={styles.lastArticle_excerpt}>{heroPost.excerpt}</p>
           </div>
           <Button href={`/articulos/${heroPost.slug}`}>Leer artículo</Button>
@@ -41,7 +41,6 @@ const ArticlesPage = ({ allPosts }) => {
             variants={pageVariants}
             transition={pageTransition}
             className={styles.lastArticle_thumbnail}
-            layoutId="image"
           >
             <Image
               src={heroPost.ogImage}
