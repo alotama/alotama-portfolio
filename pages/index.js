@@ -152,7 +152,6 @@ export async function getStaticProps() {
   const featuredProject = allData[1][0]
   const projects = allData[1].slice(1, 4)
 
-
   return {
     props: { lastPosts, featuredProject, projects },
   }

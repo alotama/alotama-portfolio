@@ -21,7 +21,7 @@ const AboutPage = () => {
           transition={pageTransition}
           className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Sobre mí</h1>
-          <h2 className={styles.heroSubtitle}>Un nikkei viviendo en Argentina</h2>
+          <h2 className={styles.heroSubtitle}>Desarrollador Nikkei</h2>
         </motion.div>
         <ul className={styles.heroSocialLinks}>
           {SocialLinks.map((element, index) => (
@@ -86,20 +86,20 @@ const AboutPage = () => {
         <div className={styles.skillsAbout_container}>
           <h2 className={styles.skillsAbout_title}>Herramientas</h2>
         </div>
-        <ul className={styles.skillsAbout_list}>
-          {ListSkills.map((item, index) => (
-            <InView threshold={0.5} triggerOnce={true}>
-              {({ ref, inView }) => (
-                <motion.li
-                  ref={ref}
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                  transition={{ delay: 1 * 0.5 * index }}
-                  className={styles.skillsAbout_item} key={`${item}-${index}`}>{item}</motion.li>
-              )}
-            </InView>
-          ))}
-        </ul>
+        <InView threshold={0.25} triggerOnce={true}>
+          {({ ref, inView }) => (
+            <motion.ul
+              ref={ref}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ delay: 1 }}
+              className={styles.skillsAbout_list}>
+              {ListSkills.map((item, index) => (
+                <li className={styles.skillsAbout_item} key={`${item}-${index}`}>{item}</li>
+              ))}
+            </motion.ul>
+          )}
+        </InView>
         <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
           {(matches) => matches ? (
 

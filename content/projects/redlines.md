@@ -5,7 +5,7 @@ description: 'Redlines se trata de una startup ubicada en el corazón de la tecn
 services: ['Diseño UI','Desarrollo Front-End']
 coverImage: '/projects/redlines/portada.png'
 slug: 'redlines'
-date: '2020-03-16T05:35:07.322Z'
+date: '2021-03-16T05:35:07.322Z'
 next: 'contrastes'
 ---
 
