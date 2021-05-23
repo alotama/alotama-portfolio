@@ -27,6 +27,9 @@
   border-radius: 12px;
   overflow: hidden;
   margin: 4rem 0 4.5rem 0;
+  & > div {
+    vertical-align: top
+  }
 }
 
 .postContent {

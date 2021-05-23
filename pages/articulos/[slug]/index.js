@@ -69,7 +69,7 @@ const PostPage = ({ post }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
             className={styles.thumbnail}>
-            <Image
+            <Image              
               src={featured}
               alt={title}
               height={392}
