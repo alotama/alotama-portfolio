@@ -1,41 +1,52 @@
 import { useStaticQuery, graphql } from "gatsby"
 
 const HomeData = () => {
-    const {graphcms} = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query HomeQuery {
-      graphcms {
-        page(where: {page: "Home"}) {
+      graphCmsPage(page: {eq: "Home"}) {
+        title
+        subtitle
+        primaryCta
+        secondaryCta
+      }
+      allGraphCmsPost(limit: 3) {
+        nodes {
           title
-          subtitle
-          primaryCta
-          secondaryCta
-        }
-        posts {
-          title
+          excerpt
+          publicationDate
           url
           thumbnail {
-            url
-          }
-          updatedAt
-          excerpt
-        }
-        projects(where: {isFeatured: false}) {
-          name
-          tagline
-          slug
-          services {
-            name
-          }
-          isFeatured
-          featuredImage {
-            url
             altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+              }
+            }
           }
         }
       }
-    }`)
+      allGraphCmsProject(limit: 3, filter: {isFeatured: {eq: false}}) {
+        nodes {
+          slug
+          name
+          isFeatured
+          tagline
+          services {
+            name
+          }
+          featuredImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH)
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-    return graphcms
+  return data
 }
 
 export default HomeData;

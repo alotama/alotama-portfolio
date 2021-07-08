@@ -21,6 +21,16 @@ module.exports = {
     },
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-source-graphcms`,
+      options: {
+        downloadLocalImages: true,
+        endpoint: process.env.GRAPHCMS_PROJECT_API,
+        token: process.env.GRAPHCMS_PROD_AUTH_TOKEN,
+        locales: ['es'],
+        stages: ['PUBLISHED'],
+      },
+    },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
@@ -37,19 +47,6 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
-    },
-    {
-      resolve: "gatsby-source-graphql",
-      options: {
-        typeName: "GraphCMS",
-        fieldName: "graphcms",
-        url: process.env.GRAPHCMS_PROJECT_API,
-        // HTTP headers
-        headers: {
-          // Learn about environment variables: https://gatsby.dev/env-vars
-          Authorization: `Bearer ${process.env.GRAPHCMS_PROD_AUTH_TOKEN}`,
-        },
-      },
     },
   ],
 };
