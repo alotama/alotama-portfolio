@@ -53,12 +53,11 @@ const ProjectCluster = ({ featured, compact, title, slug, subtitle, imageSrc, wo
                 </div>
                 <ul className={styles.projectCategory}>
                   {workType && workType.map((element, index) => (
-                    <li key={`${element}-${index}`}>{element}</li>
+                    <li key={`${element.name}-${index}`}>{element.name}</li>
                   ))}
                 </ul>
               </article>
               <figure className={styles.projectCoverPage}>
-
                 <Image
                   alt={title}
                   src={imageSrc}

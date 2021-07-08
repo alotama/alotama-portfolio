@@ -13,5 +13,13 @@ module.exports = {
     }
 
     return config
-  }
+  },
+  env: {
+    GRAPHCMS_PROJECT_API: process.env.GRAPHCMS_PROJECT_API,
+    GRAPHCMS_PROD_AUTH_TOKEN: process.env.GRAPHCMS_PROD_AUTH_TOKEN
+  },
+
+  images: {
+    domains: ['media.graphcms.com'],
+  },
 }

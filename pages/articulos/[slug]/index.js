@@ -7,6 +7,7 @@ import { getPostBySlug, getAllPosts } from '../../../lib/api'
 import Image from 'next/image'
 import styles from '../../../styles/pages/post.module.scss'
 import Prism from "prismjs";
+import ArticleQuery from "../../../lib/query/ArticlesQuery"
 
 const components = {
   img: image => {
@@ -69,7 +70,7 @@ const PostPage = ({ post }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
             className={styles.thumbnail}>
-            <Image              
+            <Image
               src={featured}
               alt={title}
               height={392}
@@ -121,17 +122,11 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts(['slug', 'date'])
+  const { data } = await ArticleQuery
+  const { page, posts } = data
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      }
-    }),
-    fallback: false,
+    props: { page, posts },
   }
 }
 

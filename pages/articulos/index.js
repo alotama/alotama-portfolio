@@ -8,10 +8,12 @@ import { getAllPosts } from '../../lib/api'
 import MediaQuery from 'react-responsive'
 import { motion } from "framer-motion"
 import { pageVariants, pageTransition } from '../../utils'
+import ProjectQuery from "../../lib/query/ProjectsQuery"
+import ArticleQuery from "../../lib/query/ArticlesQuery"
 
-const ArticlesPage = ({ allPosts }) => {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+const ArticlesPage = ({ page, posts }) => {
+  const heroPost = posts[0]
+  const morePosts = posts.slice(1)
 
   return (
     <Layout>
@@ -24,14 +26,14 @@ const ArticlesPage = ({ allPosts }) => {
           transition={pageTransition}
           className={styles.lastArticle_post}>
           <div className={styles.lastArticleSection}>
-            <h2 className={styles.lastArticleSection_title}>Última publicación</h2>
+            <h2 className={styles.lastArticleSection_title}>{page.title}</h2>
           </div>
           <div className={styles.lastArticle_content}>
             <small className={styles.lastArticle_detail}>{heroPost.date}</small>
             <h1 className={styles.lastArticle_title}>{heroPost.title}</h1>
             <p className={styles.lastArticle_excerpt}>{heroPost.excerpt}</p>
           </div>
-          <Button href={`/articulos/${heroPost.slug}`}>Leer artículo</Button>
+          <Button href={`/articulos/${heroPost.url}`}>{page.primaryCta}</Button>
         </motion.article>
         <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
           <motion.figure
@@ -43,7 +45,7 @@ const ArticlesPage = ({ allPosts }) => {
             className={styles.lastArticle_thumbnail}
           >
             <Image
-              src={heroPost.ogImage}
+              src={heroPost.seo.ogImage.url}
               height={656}
               width={656}
               layout={'intrinsic'}
@@ -58,14 +60,14 @@ const ArticlesPage = ({ allPosts }) => {
           exit="out"
           variants={pageVariants}
           transition={pageTransition}
-          className={styles.articles_container_title}>Todos los artículos</motion.h3>
+          className={styles.articles_container_title}>{page.subtitle}</motion.h3>
         <section
           className={styles.articles_grid}>
           {morePosts.map((article, index) => (
             <ArticleCluster
               key={`${article.title}-${index}`}
-              imageSrc={article.thumbnail}
-              slug={article.slug}
+              imageSrc={article.thumbnail.url}
+              slug={article.url}
               title={article.title}
               excerpt={article.excerpt}
               publishDate={article.date}
@@ -79,18 +81,11 @@ const ArticlesPage = ({ allPosts }) => {
 }
 
 export async function getStaticProps() {
-  const allPosts = await getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'excerpt',
-    'duration',
-    'thumbnail',
-    'ogImage'
-  ])
+  const { data } = await ArticleQuery
+  const { page, posts } = data
 
   return {
-    props: { allPosts },
+    props: { page, posts },
   }
 }
 

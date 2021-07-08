@@ -4,8 +4,9 @@ import Button from '../../components/button'
 import styles from '../../styles/pages/contact.module.scss'
 import { motion } from "framer-motion"
 import { InView } from 'react-intersection-observer';
+import ContactQuery from "../../lib/query/ContactQuery"
 
-const ContactPage = () => {
+const ContactPage = ({ page, contactInfos }) => {
   return (
     <Layout>
       <article className={styles.heroContact}>
@@ -17,8 +18,8 @@ const ContactPage = () => {
               animate={inView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 1, delay: 0.25 }}
               className={styles.heroContact_container}>
-              <h1 className={styles.heroContact_title}>Contacto</h1>
-              <h2 className={styles.heroContact_subtitle}>Trabajemos juntos</h2>
+              <h1 className={styles.heroContact_title}>{page.title}</h1>
+              <h2 className={styles.heroContact_subtitle}>{page.subtitle}</h2>
             </motion.div>
           )}
         </InView>
@@ -62,14 +63,12 @@ const ContactPage = () => {
                 animate={inView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 1, delay: 1 }}
                 className={styles.contactInfo}>
-                <div className={styles.contactInfo_section}>
-                  <h3 className={styles.contact_label}>Ubicación</h3>
-                  <small>Buenos Aires, Argentina</small>
-                </div>
-                <div className={styles.contactInfo_section}>
-                  <h3 className={styles.contact_label}>E-mail</h3>
-                  <small>sebastian@alotama.com</small>
-                </div>
+                {contactInfos && contactInfos.map((element, index) => (
+                  <div className={styles.contactInfo_section} key={`${element}-${index}`}>
+                    <h3 className={styles.contact_label}>{element.title}</h3>
+                    <small>{element.content}</small>
+                  </div>
+                ))}
               </motion.article>
             )}
           </InView>
@@ -78,5 +77,15 @@ const ContactPage = () => {
     </Layout>
   )
 }
+
+export async function getStaticProps() {
+  const { data } = await ContactQuery
+  const { page, contactInfos } = data
+
+  return {
+    props: { page, contactInfos },
+  }
+}
+
 
 export default ContactPage

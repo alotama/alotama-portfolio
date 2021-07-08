@@ -9,8 +9,9 @@ import { getAllPosts, getAllProject } from '../lib/api'
 import MediaQuery from 'react-responsive'
 import { motion } from "framer-motion"
 import { pageVariants, pageTransition } from '../utils'
+import HomeQuery from "../lib/query/HomeQuery"
 
-function Home({ lastPosts, featuredProject, projects }) {
+function Home({ page, posts, projects, featuredProject }) {
   return (
     <Layout>
       <Head>
@@ -27,14 +28,14 @@ function Home({ lastPosts, featuredProject, projects }) {
               exit="out"
               variants={pageVariants}
               transition={pageTransition}
-              className={styles.heroTitle}>Sitios web simples, significantes y centrados en las personas</motion.h1>
+              className={styles.heroTitle}>{page.title}</motion.h1>
             <motion.p
               initial="initial"
               animate="in"
               exit="out"
               variants={pageVariants}
               transition={pageTransition}
-              className={styles.heroContent}>Me desempeño en las áreas del diseño de interfáces y el desarrollo front-end de productos o servicios digitales</motion.p>
+              className={styles.heroContent}>{page.subtitle}</motion.p>
           </article>
           <motion.div
             initial="initial"
@@ -44,10 +45,10 @@ function Home({ lastPosts, featuredProject, projects }) {
             transition={pageTransition}
             className={styles.heroButtons}>
             <Link href={'/proyectos'} passHref>
-              <ButtonLink secondary>Ver proyectos</ButtonLink>
+              <ButtonLink secondary>{page.primaryCta}</ButtonLink>
             </Link>
             <Link href={'/sobre-mi'} passHref>
-              <ButtonLink>Sobre mí</ButtonLink>
+              <ButtonLink>{page.secondaryCta}</ButtonLink>
             </Link>
           </motion.div>
         </div>
@@ -57,20 +58,20 @@ function Home({ lastPosts, featuredProject, projects }) {
           {(matches) => matches ? (
             <ProjectCluster
               compact={false}
-              featured={true}
-              title={featuredProject.title}
+              featured={featuredProject.isFeatured}
+              title={featuredProject.name}
               subtitle={featuredProject.tagline}
-              imageSrc={featuredProject.coverImage}
+              imageSrc={featuredProject.featuredImage.url}
               workType={featuredProject.services}
               slug={featuredProject.slug}
             />
           ) : (
             <ProjectCluster
               compact={true}
-              featured={true}
-              title={featuredProject.title}
+              featured={featuredProject.isFeatured}
+              title={featuredProject.name}
               subtitle={featuredProject.tagline}
-              imageSrc={featuredProject.coverImage}
+              imageSrc={featuredProject.featuredImage.url}
               workType={featuredProject.services}
               slug={featuredProject.slug}
             />
@@ -86,16 +87,16 @@ function Home({ lastPosts, featuredProject, projects }) {
           transition={pageTransition}
           className={styles.articlesTitle}>Últimos artículos</motion.h2>
         <section className={styles.articlesLayout}>
-          {lastPosts && lastPosts.map((article, index) => {
+          {posts && posts.map((article, index) => {
             return (
               <ArticleCluster
                 key={`${article.slug}-${index}`}
-                imageSrc={article.thumbnail}
-                slug={article.slug}
+                imageSrc={article.thumbnail.url}
+                slug={article.url}
                 title={article.title}
                 excerpt={article.excerpt}
-                publishDate={article.date}
-                duration={article.duration}
+                publishDate={article.updatedAt}
+                duration={'10 minutos'}
               />
             )
           })}
@@ -106,9 +107,9 @@ function Home({ lastPosts, featuredProject, projects }) {
           {(matches) => matches ? (
             <ProjectCluster
               compact={false}
-              title={project.title}
+              title={project.name}
               subtitle={project.tagline}
-              imageSrc={project.coverImage}
+              imageSrc={project.featuredImage.url}
               workType={project.services}
               slug={project.slug}
             />
@@ -117,7 +118,7 @@ function Home({ lastPosts, featuredProject, projects }) {
               compact={true}
               title={project.title}
               subtitle={project.tagline}
-              imageSrc={project.coverImage}
+              imageSrc={project.featuredImage.url}
               workType={project.services}
               slug={project.slug}
             />
@@ -129,31 +130,13 @@ function Home({ lastPosts, featuredProject, projects }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = await getAllPosts([
-    'title',
-    'date',
-    'duration',
-    'slug',
-    'thumbnail',
-    'excerpt',
-  ])
+  const { data } = await HomeQuery
+  const { page, posts, projects } = data
 
-  const allProjects = await getAllProject([
-    'title',
-    'tagline',
-    'services',
-    'slug',
-    'coverImage',
-  ])
-
-  const allData = await Promise.all([allPosts, allProjects])
-
-  const lastPosts = allData[0].slice(0, 3)
-  const featuredProject = allData[1][0]
-  const projects = allData[1].slice(1, 4)
+  const featuredProject = projects.filter(project => project.isFeatured === true)[0]
 
   return {
-    props: { lastPosts, featuredProject, projects },
+    props: { page, posts, projects, featuredProject },
   }
 }
 

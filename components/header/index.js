@@ -20,11 +20,11 @@ const Header = () => {
                 </a>
               </Link>
             </figure>
-            <MediaQuery maxDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
+           {/* <MediaQuery maxDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
               <div className={styles.headerLenguage}>
                 ES
               </div>
-            </MediaQuery>
+            </MediaQuery>*/}
           </article>
           <nav className={styles.header__navbar}>
             <Link
@@ -55,11 +55,11 @@ const Header = () => {
                 Contacto
             </a>
             </Link>
-            <MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
+            {/*<MediaQuery minDeviceWidth={'48rem'} device={{ deviceWidth: '70em' }}>
               <div className={styles.headerLenguage}>
                 ES
               </div>
-            </MediaQuery>
+            </MediaQuery>*/}
           </nav>
         </section>
       </div>

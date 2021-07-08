@@ -8,8 +8,10 @@ import MediaQuery from 'react-responsive'
 import { motion } from "framer-motion"
 import { pageVariants, pageTransition } from '../../utils'
 import { InView } from 'react-intersection-observer';
+import HomeQuery from "../../lib/query/HomeQuery"
+import AboutQuery from "../../lib/query/AboutQuery"
 
-const AboutPage = () => {
+const AboutPage = ({ page, socialMedias, skills, projects }) => {
   return (
     <Layout>
       <section className={styles.heroAbout}>
@@ -20,16 +22,16 @@ const AboutPage = () => {
           variants={pageVariants}
           transition={pageTransition}
           className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Sobre mí</h1>
-          <h2 className={styles.heroSubtitle}>Desarrollador Nikkei</h2>
+          <h1 className={styles.heroTitle}>{page.title}</h1>
+          <h2 className={styles.heroSubtitle}>{page.subtitle}</h2>
         </motion.div>
         <ul className={styles.heroSocialLinks}>
-          {SocialLinks.map((element, index) => (
+          {socialMedias.map((social, index) => (
             <motion.li
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 * 0.5 * index }}
-              className={styles.heroSocialLinks_item} key={`${element.label}-${index}`}><a href={element.link}>{element.label}</a></motion.li>
+              className={styles.heroSocialLinks_item} key={`${social.name}-${index}`}><a href={social.url}>{social.name}</a></motion.li>
           ))}
         </ul>
       </section>
@@ -43,10 +45,7 @@ const AboutPage = () => {
                 animate={inView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 1 }}
                 className={styles.intentionFirst}>
-                Analizo, diseño y programo soluciones sencillas y escalables para mejorar la experiencia
-                de los usuarios con los productos
-                o servicios digitales en todas
-                las fases de su desarrollo
+                {page.content.raw.children[0].children[0].text}
               </motion.p>
             )}
           </InView>
@@ -58,9 +57,9 @@ const AboutPage = () => {
                 animate={inView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 1 }}
                 className={styles.intentionSecond}>
-                Me llamo Sebastián A. Tamashiro, pero todos me dicen Tama. Soy un nikkei, descendiente de inmigrantes japoneses, que vive en Argentina. <br />
+                {page.content.raw.children[1].children[0].text} <br />
                 <br />
-                Siempre me fascinó la posibilidad que brinda internet para ayudar, conectar o mejorar la vida de las personas creando algo desde cero con unas cuantas líneas de código y un diseño de interfaz simple e intuitivo.
+                {page.content.raw.children[2].children[0].text}
               </motion.p>
             )}
           </InView>
@@ -94,8 +93,8 @@ const AboutPage = () => {
               animate={inView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: 1 }}
               className={styles.skillsAbout_list}>
-              {ListSkills.map((item, index) => (
-                <li className={styles.skillsAbout_item} key={`${item}-${index}`}>{item}</li>
+              {skills.map((item, index) => (
+                <li className={styles.skillsAbout_item} key={`${item.skill}-${index}`}>{item.skill}</li>
               ))}
             </motion.ul>
           )}
@@ -105,24 +104,24 @@ const AboutPage = () => {
 
             <ProjectCluster
               compact={false}
-              featured={true}
-              title={'Redlines'}
-              subtitle={'Connecting the dots'}
-              imageSrc={'/projects/redlines/portada.png'}
-              workType={['Diseño UI', 'Desarrollo Front-End']}
-              slug={'redlines'}
+              featured={projects[0].isFeatured}
+              title={projects[0].name}
+              subtitle={projects[0].tagline}
+              imageSrc={projects[0].featuredImage.url}
+              workType={projects[0].services}
+              slug={projects[0].slug}
             />
 
           ) : (
 
             <ProjectCluster
               compact={true}
-              featured={true}
-              title={'Redlines'}
-              subtitle={'Connecting the dots'}
-              imageSrc={'/projects/redlines/portada.png'}
-              workType={['Diseño UI', 'Desarrollo Front-End']}
-              slug={'redlines'}
+              featured={projects[0].isFeatured}
+              title={projects[0].name}
+              subtitle={projects[0].tagline}
+              imageSrc={projects[0].featuredImage.url}
+              workType={projects[0].services}
+              slug={projects[0].slug}
             />
 
           )}
@@ -131,5 +130,15 @@ const AboutPage = () => {
     </Layout>
   )
 }
+
+export async function getStaticProps() {
+  const { data } = await AboutQuery
+  const { page, socialMedias, skills, projects } = data
+
+  return {
+    props: { page, socialMedias, skills, projects },
+  }
+}
+
 
 export default AboutPage

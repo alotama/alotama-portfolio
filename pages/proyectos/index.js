@@ -8,9 +8,11 @@ import { getAllProject } from '../../lib/api'
 import { useMediaQuery } from 'react-responsive'
 import { motion } from "framer-motion"
 import { pageVariants, pageTransition } from '../../utils'
+import AboutQuery from "../../lib/query/AboutQuery"
+import ProjectQuery from "../../lib/query/ProjectsQuery"
 
 
-const ProjectPage = ({ allProjects }) => {
+const ProjectPage = ({ page, services, projects }) => {
   const [categorySelected, setCategorySelected] = useState('')
 
   const isDesktop = useMediaQuery({
@@ -27,11 +29,11 @@ const ProjectPage = ({ allProjects }) => {
           transition={pageTransition}
           className={styles.heroProject_container}>
           <div className={styles.heroProject_content}>
-            <h1 className={styles.heroProject_title}>Proyectos.</h1>
+            <h1 className={styles.heroProject_title}>{page.title}</h1>
             <h2
               className={styles.heroProject_category}
               onClick={() => setCategorySelected(!categorySelected)}>
-              {categorySelected ? 'Diseño UI' : 'Desarrollo Front-End'}
+              {categorySelected ? services[0].name : services[1].name}
             </h2>
           </div>
           <Button href={'#projects'}>Ver todos</Button>
@@ -63,14 +65,14 @@ const ProjectPage = ({ allProjects }) => {
         )}
       </section>
       <section className={styles.projectContainer} id={'projects'}>
-        {allProjects && allProjects.map((project, index) => (
+        {projects && projects.map((project, index) => (
           <ProjectCluster
             compact
-            key={`${project.title}-${index}`}
-            title={project.title}
+            key={`${project.name}-${index}`}
+            title={project.name}
             subtitle={project.tagline}
             slug={project.slug}
-            imageSrc={project.coverImage}
+            imageSrc={project.featuredImage.url}
             workType={project.services}
           />
         ))}
@@ -80,16 +82,11 @@ const ProjectPage = ({ allProjects }) => {
 }
 
 export async function getStaticProps() {
-  const allProjects = await getAllProject([
-    'title',
-    'tagline',
-    'services',
-    'slug',
-    'coverImage',
-  ])
+  const { data } = await ProjectQuery
+  const { page, services, projects } = data
 
   return {
-    props: { allProjects },
+    props: { page, services, projects },
   }
 }
 
