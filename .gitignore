@@ -3,4 +3,6 @@ node_modules/
 public
 .idea/
 
+# local env files
+.env.development
 .env.development
