@@ -47,11 +47,5 @@ fragment Page on Page {
       stage
     }
   }
-  header {
-    ... on Header {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
+  slug
 }

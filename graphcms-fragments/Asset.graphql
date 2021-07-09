@@ -33,13 +33,6 @@ fragment Asset on Asset {
   size
   mimeType
   altText
-  logoHeader {
-    ... on Header {
-      remoteTypeName: __typename
-      remoteId: id
-      stage
-    }
-  }
   ogImageSeo {
     ... on Seo {
       remoteTypeName: __typename

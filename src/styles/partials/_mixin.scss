@@ -1,0 +1,21 @@
+@mixin master-container {
+  max-width: 1016px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+@mixin last-point {
+  &::after {
+    content: '.';
+    color: $primary;
+    font-size: 1em;
+  }
+}
+
+@mixin layout-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 1.3rem;
+}
