@@ -1,0 +1,28 @@
+@import "../partials/variables";
+
+#home {
+  .hero {
+    .hero-body {
+      display: block;
+      padding: 3rem 0 7rem;
+      width: 1016px;
+      margin: 0 auto;
+      .title {
+        @include title-primary-large;
+        @include last-point;
+        color: $black;
+        padding: 0 0.2em;
+      }
+      .subtitle {
+        @include paragraph-default;
+        color: $black;
+      }
+    }
+  }
+  .lasts-posts-section {
+    margin-bottom: 10rem;
+    .section-title {
+      margin-bottom: 4rem;
+    }
+  }
+}

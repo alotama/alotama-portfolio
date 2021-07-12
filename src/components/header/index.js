@@ -1,26 +1,30 @@
 import React from 'react';
 import {Link} from "gatsby";
-import {GatsbyImage} from "gatsby-plugin-image";
+import Logo from "./logo";
 
-const Header = ({logo, navbar}) => (
-   <nav className="navbar" role="navigation" aria-label="main navigation">
-      <figure className={"navbar-brand"}>
-         {logo && (
-            <Link to={'/'}>
-               <GatsbyImage alt={logo.altText} image={logo.localFile.childImageSharp.gatsbyImageData} />
-            </Link>
-         )}
-      </figure>
-      <div className={"navbar-menu"}>
-         <div className="navbar-end">
-         {navbar && navbar.nodes.map((item, index) => (
-            <Link to={item.slug} key={`${item.page}-${index}`} className={"navbar-item"}>
-               {item.page}
-            </Link>
-         ))}
-         </div>
+const Header = ({navbar}) => (
+   <header className={"navbar is-fixed-top"}>
+      <div className={"container is-max-desktop"}>
+         <nav className="navbar-row" role="navigation" aria-label="main navigation">
+            <figure className={"navbar-brand"}>
+               <div className="navbar-item">
+                  <Link to={'/'}>
+                     <Logo/>
+                  </Link>
+               </div>
+            </figure>
+            <div className={"navbar-menu"}>
+               <div className="navbar-end">
+                  {navbar && navbar.nodes.map((item, index) => (
+                     <Link to={item.slug} key={`${item.page}-${index}`} className={"navbar-item"}>
+                        {item.page}
+                     </Link>
+                  ))}
+               </div>
+            </div>
+         </nav>
       </div>
-   </nav>
+   </header>
 );
 
 export default Header;

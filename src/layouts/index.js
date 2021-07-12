@@ -1,21 +1,23 @@
 import React from 'react';
 import Header from "../components/header";
 import Footer from "../components/footer";
-import LogoQuery from "../utils/queries/LogoQuery";
-import 'bulma/css/bulma.min.css';
+import HeaderQuery from "../utils/queries/HeaderQuery";
+import {Helmet} from "react-helmet";
+import '../styles/styles.scss'
+import FooterQuery from "../utils/queries/FooterQuery";
 
-const DefaultLayout = ({children}) => {
-   const {graphCmsAsset: logo, allGraphCmsPage: navbar} = LogoQuery()
+const DefaultLayout = ({page, children}) => {
+   const {allGraphCmsPage: navbar} = HeaderQuery()
+   const {allGraphCmsSocialMedia: footer} = FooterQuery()
    return (
       <>
          <Header
-            logo={logo}
             navbar={navbar}
          />
-         <main className={"main"}>
-            {children}
+         <main id={page}>
+         {children}
          </main>
-         <Footer/>
+         <Footer social={footer}/>
       </>
    )
 };

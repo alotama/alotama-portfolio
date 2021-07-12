@@ -19,7 +19,11 @@ const HomeData = () => {
             altText
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  layout: FIXED
+                  width: 304
+                )
               }
             }
           }
@@ -37,7 +41,12 @@ const HomeData = () => {
           featuredImage {
             localFile {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  layout: CONSTRAINED
+                  width: 640
+                  height: 360
+                )
               }
             }
           }

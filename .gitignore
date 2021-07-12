@@ -5,4 +5,5 @@ public
 
 # local env files
 .env.development
-.env.development
+
+graphcms-fragments/

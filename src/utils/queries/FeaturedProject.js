@@ -15,7 +15,12 @@ const FeaturedProjectQuery = () => {
                     altText
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+                            gatsbyImageData(
+                                placeholder: BLURRED
+                                layout: CONSTRAINED
+                                width: 640
+                                height: 360
+                            )
                         }
                     }
                 }

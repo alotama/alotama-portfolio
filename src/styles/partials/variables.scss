@@ -1,3 +1,16 @@
-@import './colors', './mixin', './typography', './breakpoint';
+@import './colors', './typography', './mixin', './spacing';
 
-$heightHero: 100vh
+$body-background-color: $white;
+$scheme-main: $white;
+$text: $black;
+$footer-background-color: $white;
+$footer-padding: 1rem;
+
+.button {
+  padding: .8em 3em;
+  text-transform: uppercase;
+  .is-primary {
+    font-family: 0.8rem;
+    font-weight: 700;
+  }
+}
