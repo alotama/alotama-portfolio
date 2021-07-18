@@ -13,6 +13,30 @@ html, body {
   letter-spacing: -0.02em;
 }
 
+a.navbar-item.active {
+  color: $primary;
+  position: relative;
+  font-weight: 700;
+  &::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: $primary;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+  }
+}
+
+.section {
+  padding: 0;
+  margin-bottom: $spacing-30;
+}
+
+.hero-body {
+  padding: 0;
+}
+
 .is-max-desktop {
   max-width: 1016px;
   padding: .5rem 1rem;
@@ -35,6 +59,7 @@ html, body {
     .navbar-brand {
       align-items: center;
     }
+
   }
 }
 

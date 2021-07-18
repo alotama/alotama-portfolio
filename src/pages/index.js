@@ -22,7 +22,7 @@ const IndexPage = () => {
                      </div>
                   </div>
                   <div className="columns is-centered has-text-centered">
-                     <div className={"column is-6"}>
+                     <div className={"column is-7"}>
                         <p className="subtitle">
                            {page.subtitle}
                         </p>
@@ -82,7 +82,7 @@ const IndexPage = () => {
                      subtitle={project.tagline}
                      imageSrc={project.featuredImage.localFile.childImageSharp.gatsbyImageData}
                      altText={project.featuredImage.altText}
-                     workType={project.services.name}
+                     workType={project.services}
                   />
                ))}
             </section>

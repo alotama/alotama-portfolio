@@ -5,12 +5,15 @@ $scheme-main: $white;
 $text: $black;
 $footer-background-color: $white;
 $footer-padding: 1rem;
+$navbar-item-hover-background-color: inherit;
+$navbar-item-hover-color: $primary;
 
 .button {
-  padding: .8em 3em;
+  padding: 0.25rem 3rem;
   text-transform: uppercase;
-  .is-primary {
-    font-family: 0.8rem;
-    font-weight: 700;
-  }
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-sizing: content-box;
+  border-color: $primary;
+  border-radius: 4px;
 }

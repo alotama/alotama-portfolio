@@ -1,9 +1,9 @@
 import {useStaticQuery, graphql} from "gatsby"
 
-const HeaderQuery = () => {
+const HeaderData = () => {
    const data = useStaticQuery(graphql`
        query HeaderQuery {
-           allGraphCmsPage(filter: {page: {ne: "Home"}}) {
+           allGraphCmsPage(filter: {page: {ne: "Home"}}, sort: {order: ASC, fields: order}) {
                nodes {
                    page
                    slug
@@ -15,4 +15,4 @@ const HeaderQuery = () => {
    return data
 }
 
-export default HeaderQuery;
+export default HeaderData;

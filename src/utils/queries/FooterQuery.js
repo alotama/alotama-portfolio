@@ -1,6 +1,6 @@
 import {useStaticQuery, graphql} from "gatsby"
 
-const HeaderQuery = () => {
+const FooterData = () => {
    const data = useStaticQuery(graphql`
        query FooterQuery {
            allGraphCmsSocialMedia {
@@ -15,4 +15,4 @@ const HeaderQuery = () => {
    return data
 }
 
-export default HeaderQuery;
+export default FooterData;

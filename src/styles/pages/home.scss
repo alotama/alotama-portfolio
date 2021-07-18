@@ -2,11 +2,15 @@
 
 #home {
   .hero {
+    padding-bottom: 4rem;
+
     .hero-body {
-      display: block;
-      padding: 3rem 0 7rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 1016px;
       margin: 0 auto;
+
       .title {
         @include title-primary-large;
         @include last-point;

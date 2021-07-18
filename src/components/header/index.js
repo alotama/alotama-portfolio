@@ -16,7 +16,12 @@ const Header = ({navbar}) => (
             <div className={"navbar-menu"}>
                <div className="navbar-end">
                   {navbar && navbar.nodes.map((item, index) => (
-                     <Link to={item.slug} key={`${item.page}-${index}`} className={"navbar-item"}>
+                     <Link
+                        to={`/${item.slug}`}
+                        key={`${item.page}-${index}`}
+                        className={"navbar-item"}
+                        activeClassName="active"
+                     >
                         {item.page}
                      </Link>
                   ))}

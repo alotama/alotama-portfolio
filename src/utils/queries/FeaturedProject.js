@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby"
 
-const FeaturedProjectQuery = () => {
+const FeaturedProjectData = () => {
     const data = useStaticQuery(graphql`
         query FeaturedProjectQuery {
             graphCmsProject(isFeatured: {eq: true}) {
@@ -31,4 +31,4 @@ const FeaturedProjectQuery = () => {
     return data
 }
 
-export default FeaturedProjectQuery;
+export default FeaturedProjectData;
