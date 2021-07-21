@@ -39,6 +39,7 @@ const HomeData = () => {
             name
           }
           featuredImage {
+            altText
             localFile {
               childImageSharp {
                 gatsbyImageData(

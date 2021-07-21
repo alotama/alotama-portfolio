@@ -56,9 +56,10 @@ const IndexPage = () => {
                <h2 className={"title is-3 section-title"}>Últimos artículos</h2>
                <div className={"columns is-variable is-2"}>
                   {posts && posts.nodes.map((post, index) => (
-                     <article className="column is-one-third">
+                     <article
+                        className="column is-one-third"
+                        key={`${post.url}-${index}`}>
                         <PostCluster
-                           key={`${post.url}-${index}`}
                            slug={post.url}
                            altText={post.thumbnail.altText}
                            imageSrc={post.thumbnail.localFile.childImageSharp.gatsbyImageData}

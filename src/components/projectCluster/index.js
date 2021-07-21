@@ -5,7 +5,7 @@ import {GatsbyImage} from "gatsby-plugin-image";
 const ProjectCluster = ({featured, compact, title, slug, subtitle, imageSrc, altText, workType}) => {
    return (
       <article className={"projectCluster"}>
-         <Link to={slug}>
+         <Link to={`/proyectos/${slug}`}>
             <div className="card">
                <div className="card-header">
                   {featured && <span className="projectCluster--featured">Proyecto destacado</span>}

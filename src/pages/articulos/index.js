@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
-import ProjectQuery from "../../utils/queries/ProjectQuery";
+import React from 'react';
 import DefaultLayout from "../../layouts";
 import {Link} from "gatsby";
-import ProjectCluster from "../../components/projectCluster";
 import ArticleData from "../../utils/queries/ArticlesQuery";
 import PostCluster from "../../components/postCluster";
 import {GatsbyImage} from "gatsby-plugin-image";
 
-const ProjectPage = (props) => {
+const ProjectPage = () => {
    const { graphCmsPage: page, allGraphCmsPost: posts } = ArticleData()
    const LastPost = posts.nodes[0];
    const AllPosts = posts.nodes.slice(1)

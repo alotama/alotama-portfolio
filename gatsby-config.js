@@ -19,6 +19,15 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Karla`
+        ],
+        display: 'swap'
+      }
+    },
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     {

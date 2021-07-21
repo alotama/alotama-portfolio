@@ -1,9 +1,8 @@
 import React from 'react';
 import DefaultLayout from "../../layouts";
-import {Link} from "gatsby";
 import ContactQuery from "../../utils/queries/ContactQuery";
 
-const ProjectPage = (props) => {
+const ProjectPage = () => {
    const {graphCmsPage: page, allGraphCmsContactInfo: contact } = ContactQuery()
 
    return (
@@ -13,23 +12,23 @@ const ProjectPage = (props) => {
                <h1 className={"title"}>{page.title}</h1>
                <h2 className={"subtitle"}>{page.subtitle}</h2>
             </section>
-            <section className="section">
+            <form className="section">
                <div className="columns">
                   <div className="column">
                      <div className="columns">
                         <div className="column">
-                           <label className={"label"}>Nombre</label>
-                           <input className="input" type="text" placeholder="Text input" />
+                           <label htmlFor={"name"} className={"label"}>Nombre</label>
+                           <input id={"name"} className="input" type="text" placeholder="Text input" />
                         </div>
                         <div className="column">
-                           <label className={"label"}>E-mail</label>
-                           <input className="input" type="text" placeholder="Text input" />
+                           <label htmlFor={"email"} className={"label"}>E-mail</label>
+                           <input id={"email"} className="input" type="text" placeholder="Text input" />
                         </div>
                      </div>
                      <div className="columns">
                         <div className="column">
-                           <label className={"label"}>Mensaje</label>
-                           <textarea className="textarea" placeholder="e.g. Hello world"></textarea>
+                           <label htmlFor={"messege"} className={"label"}>Mensaje</label>
+                           <textarea id={"messege"} className="textarea" placeholder="e.g. Hello world"></textarea>
                         </div>
                      </div>
                   </div>
@@ -42,7 +41,7 @@ const ProjectPage = (props) => {
                      ))}
                   </section>
                </div>
-            </section>
+            </form>
          </div>
       </DefaultLayout>
 )

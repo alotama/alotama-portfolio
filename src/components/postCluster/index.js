@@ -1,10 +1,9 @@
 import React from "react";
 import {GatsbyImage} from "gatsby-plugin-image";
 import {Link} from "gatsby";
-import './postCluster.scss'
 
 const PostCluster = ({slug, altText, imageSrc, title, excerpt, publishDate, duration}) => (
-   <Link to={slug} className={"card postCluster"}>
+   <Link to={`/articulos/${slug}`} className={"card postCluster"}>
       <figure className={"card-image postCluster__cover"}>
          <GatsbyImage className={"image is-4by3"} alt={altText} image={imageSrc}/>
       </figure>

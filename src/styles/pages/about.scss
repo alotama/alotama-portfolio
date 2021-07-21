@@ -3,5 +3,68 @@
 #about {
   .hero-body {
     padding: 0;
+    .title {
+      @include title-primary-large;
+      @include last-point;
+    }
+    .subtitle {
+      @include title-secondary-large;
+      color: $primary;
+    }
+    .socialMedias {
+      .socialMedia-item {
+        display: inline-block;
+        &:not(:last-of-type) {
+          margin-right: 1rem;
+        }
+        a {
+          color: $black;
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+  .intention-about {
+    .columns {
+      position: relative;
+      .intention-first {
+        p:first-of-type {
+          margin-bottom: 2.6rem;
+          strong {
+            display: block;
+            padding-right: 1em;
+            @include paragraph-large;
+            color: $black;
+          }
+        }
+        p:not(:first-of-type) {
+          width: 60%;
+        }
+      }
+      .intention-circle {
+        position: absolute;
+        right: 0;
+        top: -13rem;
+        z-index: -1;
+      }
+    }
+  }
+  .skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10rem 0;
+    .skills-item {
+      @include paragraph-semi-large;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+      &:not(:last-of-type) {
+        margin-right: 0.8rem;
+      }
+      &:nth-child(even) {
+        color: $primary;
+      }
+    }
   }
 }

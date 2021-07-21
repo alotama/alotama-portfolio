@@ -2,7 +2,6 @@ import React from 'react';
 import Header from "../components/header";
 import Footer from "../components/footer";
 import HeaderQuery from "../utils/queries/HeaderQuery";
-import {Helmet} from "react-helmet";
 import '../styles/styles.scss'
 import FooterQuery from "../utils/queries/FooterQuery";
 

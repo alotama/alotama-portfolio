@@ -1,13 +1,11 @@
 import React from 'react';
 import DefaultLayout from "../../layouts";
-import {Link} from "gatsby";
 import AboutQuery from "../../utils/queries/AboutQuery";
-import '../../styles/pages/about.scss'
 import parse from 'html-react-parser';
-import {GatsbyImage} from "gatsby-plugin-image";
 import BrandCircle from "../../components/Icons/circle";
 import FeaturedProjectQuery from "../../utils/queries/FeaturedProject";
 import ProjectCluster from "../../components/projectCluster";
+import '../../styles/pages/about.scss'
 
 const AboutPage = (props) => {
    const {graphCmsPage: page, allGraphCmsSocialMedia: social, allGraphCmsSkill: skills} = AboutQuery()
@@ -22,8 +20,6 @@ const AboutPage = (props) => {
                         <p className="title">
                            {page.title}
                         </p>
-                     </div>
-                     <div className={"column is-full"}>
                         <p className="subtitle">
                            {page.subtitle}
                         </p>
@@ -32,9 +28,9 @@ const AboutPage = (props) => {
                         <ul className="socialMedias">
                            {social.nodes.map((item, index) => (
                               <li className="socialMedia-item" key={`${item.name}-${index}`}>
-                                 <Link to={item.url}>
+                                 <a href={item.url}>
                                     {item.name}
-                                 </Link>
+                                 </a>
                               </li>
                            ))}
                         </ul>
@@ -44,22 +40,18 @@ const AboutPage = (props) => {
             </section>
             <section className={"section intention-about"}>
                <div className="columns">
-                  <div className="column">
+                  <div className="column is-10 intention-first">
                      <article className={"content"}>
                         {parse(page.content.html)}
                      </article>
                   </div>
-                  <div className="column">
+                  <div className="column intention-circle">
                      <BrandCircle/>
                   </div>
                </div>
             </section>
             <section className="section">
-               <div className="colums">
-                  <div className="column">
-                     <h2 className="title">Herramientas</h2>
-                  </div>
-               </div>
+               <h2 className="title">Herramientas</h2>
                <article className="section">
                   <ul className="skill-list">
                      {skills.nodes.map((skill, index) => (

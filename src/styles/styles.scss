@@ -16,7 +16,6 @@ html, body {
 a.navbar-item.active {
   color: $primary;
   position: relative;
-  font-weight: 700;
   &::after {
     content: "";
     width: 100%;

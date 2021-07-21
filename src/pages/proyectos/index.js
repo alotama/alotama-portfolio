@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ProjectQuery from "../../utils/queries/ProjectQuery";
 import DefaultLayout from "../../layouts";
 import {Link} from "gatsby";
 import ProjectCluster from "../../components/projectCluster";
 
-const ProjectPage = (props) => {
+const ProjectPage = () => {
    const {graphCmsPage: page, allGraphCmsService: services, allGraphCmsProject: projects} = ProjectQuery()
-   const [categorySelected, setCategorySelected] = useState('')
 
    return (
       <DefaultLayout page={"project"}>
@@ -20,9 +19,8 @@ const ProjectPage = (props) => {
                         </p>
                      </div>
                      <div className={"column is-full"}>
-                        <p className="subtitle"
-                           onClick={() => setCategorySelected(!categorySelected)}>
-                           {categorySelected ? services.nodes[0].name : services.nodes[1].name}
+                        <p className="subtitle">
+                           {services.nodes[0].name}
                         </p>
                      </div>
                      <div className="column is-full">
@@ -34,6 +32,7 @@ const ProjectPage = (props) => {
             <section className="section" id={'all-projects'}>
                {projects && projects.nodes.map((project, index) => (
                   <ProjectCluster
+                     key={`${project.name}-${index}`}
                      featured={project.isFeatured}
                      compact={true}
                      title={project.name}
