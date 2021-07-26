@@ -9,7 +9,6 @@ const ProjectPage = () => {
    const { graphCmsPage: page, allGraphCmsPost: posts } = ArticleData()
    const LastPost = posts.nodes[0];
    const AllPosts = posts.nodes.slice(1)
-   console.log('AllPosts >', AllPosts)
 
    return (
       <DefaultLayout page={"project"}>

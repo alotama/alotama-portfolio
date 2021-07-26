@@ -1,4 +1,5 @@
 $family-sans-serif: 'Karla', sans-serif;
+$family-primary: $family-sans-serif;
 
 @mixin title-primary-large {
   font-size: 2.8rem;
@@ -42,7 +43,7 @@ $family-sans-serif: 'Karla', sans-serif;
 }
 
 @mixin title-primary-post {
-  font-size: 2.4rem;
+  font-size: 2.36rem;
   font-weight: 700;
   line-height: 1.16667;
   letter-spacing: -0.04em;
