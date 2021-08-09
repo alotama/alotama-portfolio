@@ -1,29 +1,30 @@
 const format = require('date-fns/format')
 const es = require('date-fns/locale').es
-const GraphQLString = require('gatsby/graphql').GraphQLString
 
-exports.createResolvers = ({ actions, cache, createNodeId, createResolvers, store, reporter }) => {
-   createResolvers({
+exports.createResolvers = ({ createResolvers }) => {
+   const resolvers = {
       GraphCMS_Post: {
          duration: {
-            type: `String`,
-            resolve(source, args, context, info) {
-               const PostNodes = context.nodeModel.getNodeById({ id: 'GraphCMS_Post' })
-               const PostContent = PostNodes
-               console.log('PostContent ->', PostContent)
-               const ReadingTime = Math.ceil(PostContent.match(/(\w+)/g).length/200)
-               return `${ReadingTime} minutos de lectura`;
+            type: 'String',
+            resolve(source) {
+               return Math.ceil(source.content.match(/(\w+)/g).length/300)
+            },
+         },
+         formattedPublicationDate: {
+            type: 'String',
+            resolve(source) {
+               return format(new Date(source.publicationDate), 'dd MMMM yyyy', { locale: es })
             },
          },
       },
-   })
+   }
+   createResolvers(resolvers)
 }
 
-
 exports.createPages = async ({graphql, actions}) => {
-   const {createPage} = actions
+   const { createPage } = actions
 
-   const result = await graphql(`
+   const result =  await graphql(`
    query PostsQuery {
      allGraphCmsPost {
        nodes {
@@ -40,7 +41,8 @@ exports.createPages = async ({graphql, actions}) => {
            metaDescription
          }
          remoteId
-         publicationDate
+         duration
+         formattedPublicationDate
          updatedAt
        }
      }
@@ -54,7 +56,6 @@ exports.createPages = async ({graphql, actions}) => {
    const posts = result.data.allGraphCmsPost.nodes || []
    posts.forEach(post => {
       const path = `/articulos/${post.url}`
-      const publicationDate = format(new Date(post.publicationDate), 'dd MMMM yyyy', { locale: es })
       const updateDate = format(new Date(post.updatedAt), 'dd MMMM yyyy', { locale: es })
 
       createPage({
@@ -66,7 +67,8 @@ exports.createPages = async ({graphql, actions}) => {
             content: post.content,
             featuredImage: post.featuredImage,
             seo: post.seo,
-            publicationDate: publicationDate,
+            duration: post.duration,
+            publicationDate: post.formattedPublicationDate,
             updateDate: {
                formatted: updateDate,
                original: post.updatedAt,

@@ -4,6 +4,7 @@ import {Link} from "gatsby";
 import ArticleData from "../../utils/queries/ArticlesQuery";
 import PostCluster from "../../components/postCluster";
 import {GatsbyImage} from "gatsby-plugin-image";
+import '../../styles/pages/articles.scss'
 
 const ProjectPage = () => {
    const { graphCmsPage: page, allGraphCmsPost: posts } = ArticleData()
@@ -11,25 +12,25 @@ const ProjectPage = () => {
    const AllPosts = posts.nodes.slice(1)
 
    return (
-      <DefaultLayout page={"project"}>
+      <DefaultLayout page={"articles"}>
          <div className="container is-max-desktop">
             <section className="hero is-fullheight-with-navbar">
                <div className="hero-body">
-                  <div className="columns is-multiline">
-                     <div className={"column is-full"}>
-                        <p className="title">
+                  <div className="columns is-vcentered">
+                     <div className={"column is-7"}>
+                        <p className="subtitle">
                            {page.title}
                         </p>
-                        <p>{LastPost.publicationDate}</p>
+                        <p className="date">{LastPost.formattedPublicationDate}</p>
                         <h1 className="title">
                            {LastPost.title}
                         </h1>
-                        <p>{LastPost.excerpt}</p>
+                        <p className="excerpt">{LastPost.excerpt}</p>
                         <div className="section">
                            <Link to={LastPost.url} className={"button"}>{page.primaryCta}</Link>
                         </div>
                      </div>
-                     <div className="column">
+                     <div className="column" align="right">
                         <GatsbyImage
                            alt={LastPost.altText}
                            image={LastPost.seo.ogImage.localFile.childImageSharp.gatsbyImageData}
@@ -50,8 +51,8 @@ const ProjectPage = () => {
                            imageSrc={post.thumbnail.localFile.childImageSharp.gatsbyImageData}
                            title={post.title}
                            excerpt={post.excerpt}
-                           publishDate={post.publicationDate}
-                           duration={'10 minutos'}
+                           publishDate={post.formattedPublicationDate}
+                           duration={post.duration}
                         />
                      </article>
                   ))}

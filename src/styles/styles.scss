@@ -11,6 +11,11 @@ html, body {
   color: $black;
   font-weight: 300;
   letter-spacing: -0.02em;
+  font-family: $family-primary;
+}
+
+small {
+  font-size: 80%;
 }
 
 .navbar {
@@ -54,6 +59,7 @@ a.navbar-item {
 }
 
 .title {
+  color: $black;
   &.is-3 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -123,6 +129,13 @@ a.navbar-item {
 .postCluster {
   box-shadow: none;
 
+  .postCluster__cover {
+    border: 4px solid $black;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
   .card-content {
     padding: 0;
 
@@ -135,6 +148,7 @@ a.navbar-item {
 
 .footer {
   margin-top: 5rem;
+  padding: 0;
   .footer__socialLinks {
     li {
       display: inline-block;

@@ -24,6 +24,7 @@ const components = {
 }
 
 const Post = ({pageContext}) => {
+   console.log('pageContext ->', pageContext)
    return (
       <DefaultLayout page={'posts'}>
          <section className="hero">
@@ -35,6 +36,7 @@ const Post = ({pageContext}) => {
                         <h1 className="title">
                            {pageContext.title}
                         </h1>
+                        <p>Duración: {`${pageContext.duration} minutos de lectura`}</p>
                      </div>
                   </section>
                   <GatsbyImage className={'featuredImage'} alt={pageContext.featuredImage.altText} image={pageContext.featuredImage.gatsbyImageData}/>

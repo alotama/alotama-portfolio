@@ -1,0 +1,9 @@
+@import "../partials/variables";
+
+#contact {
+  .contact-info__item {
+    &:first-of-type {
+      margin-bottom: 2rem;
+    }
+  }
+}

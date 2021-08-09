@@ -13,11 +13,12 @@ const ArticleData = () => {
                    title
                    url
                    excerpt
-                   publicationDate
+                   duration
+                   formattedPublicationDate
                    thumbnail {
                        localFile {
                            childImageSharp {
-                               gatsbyImageData(placeholder: BLURRED, layout: FIXED, width: 304)
+                               gatsbyImageData(placeholder: BLURRED, layout: FIXED, width: 290)
                            }
                        }
                    }

@@ -2,7 +2,7 @@
 
 #about {
   .hero-body {
-    padding: 0;
+    padding: 0 0 5rem 0;
     .title {
       @include title-primary-large;
       @include last-point;
@@ -27,6 +27,7 @@
     }
   }
   .intention-about {
+    margin-bottom: 10rem;
     .columns {
       position: relative;
       .intention-first {
@@ -46,9 +47,15 @@
       .intention-circle {
         position: absolute;
         right: 0;
-        top: -13rem;
+        top: -10rem;
         z-index: -1;
       }
+    }
+  }
+  .skills {
+    .title {
+      @include title-primary-medium;
+      margin-bottom: 1.8rem;
     }
   }
   .skill-list {

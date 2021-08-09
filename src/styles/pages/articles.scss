@@ -1,0 +1,25 @@
+@import "../partials/variables";
+
+#articles {
+  .hero-body {
+    padding-bottom: 3rem;
+    .column:nth-child(2) {
+      justify-content: flex-end;
+    }
+    .title {
+      @include title-primary-large;
+      font-weight: 700;
+      margin-bottom: 1.3rem;
+    }
+    .subtitle {
+      @include title-secondary-medium;
+      margin-bottom: 1.7rem;
+    }
+    .date {
+      margin-bottom: 1.35rem;
+    }
+    .excerpt {
+      margin-bottom: 2.5rem;
+    }
+  }
+}

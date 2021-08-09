@@ -11,7 +11,7 @@ const PostCluster = ({slug, altText, imageSrc, title, excerpt, publishDate, dura
          <h3 className={"title is-4 postInfo__title"}>{title}</h3>
          <div className={"content postCluster__detail"}>
             <p className={"postInfo__excerpt"}>{excerpt}</p>
-            <small>{`${publishDate} - ${duration}`}</small>
+            <small>{`${publishDate} - ${duration} minutos de lectura`}</small>
          </div>
       </div>
    </Link>

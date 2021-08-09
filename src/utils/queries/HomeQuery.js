@@ -13,8 +13,9 @@ const HomeData = () => {
         nodes {
           title
           excerpt
-          publicationDate
           url
+          duration
+          formattedPublicationDate
           thumbnail {
             altText
             localFile {

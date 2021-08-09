@@ -65,8 +65,8 @@ const IndexPage = () => {
                            imageSrc={post.thumbnail.localFile.childImageSharp.gatsbyImageData}
                            title={post.title}
                            excerpt={post.excerpt}
-                           publishDate={post.publicationDate}
-                           duration={'10 minutos'}
+                           publishDate={post.formattedPublicationDate}
+                           duration={post.duration}
                         />
                      </article>
                   ))}

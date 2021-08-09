@@ -1,0 +1,17 @@
+@import "../partials/variables";
+
+#project {
+  .hero-body {
+    padding: 0 0 4rem 0;
+
+    .title {
+      @include title-primary-large;
+      @include last-point;
+    }
+
+    .subtitle {
+      @include title-secondary-large;
+      color: $primary;
+    }
+  }
+}

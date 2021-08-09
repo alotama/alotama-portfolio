@@ -3,6 +3,7 @@ import ProjectQuery from "../../utils/queries/ProjectQuery";
 import DefaultLayout from "../../layouts";
 import {Link} from "gatsby";
 import ProjectCluster from "../../components/projectCluster";
+import '../../styles/pages/project.scss'
 
 const ProjectPage = () => {
    const {graphCmsPage: page, allGraphCmsService: services, allGraphCmsProject: projects} = ProjectQuery()
@@ -17,8 +18,6 @@ const ProjectPage = () => {
                         <p className="title">
                            {page.title}
                         </p>
-                     </div>
-                     <div className={"column is-full"}>
                         <p className="subtitle">
                            {services.nodes[0].name}
                         </p>

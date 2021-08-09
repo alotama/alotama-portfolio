@@ -50,7 +50,7 @@ const AboutPage = (props) => {
                   </div>
                </div>
             </section>
-            <section className="section">
+            <section className="section skills">
                <h2 className="title">Herramientas</h2>
                <article className="section">
                   <ul className="skill-list">
